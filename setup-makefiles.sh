@@ -14,7 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-DEVICE=umts_sholes
+DEVICE=sholest
 
 mkdir -p ../../../vendor/motorola/$DEVICE
 
@@ -53,7 +53,7 @@ DEVICE_PACKAGE_OVERLAYS := vendor/motorola/__DEVICE__/overlay
 \$(call inherit-product, vendor/motorola/__DEVICE__/__DEVICE__-vendor-blobs.mk)
 EOF
 
-(cat << EOF) | sed s/__DEVICE__/$DEVICE/g > ../../../vendor/motorola/umts_sholes/BoardConfigVendor.mk
+(cat << EOF) | sed s/__DEVICE__/$DEVICE/g > ../../../vendor/motorola/sholest/BoardConfigVendor.mk
 # Copyright (C) 2010 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -75,8 +75,8 @@ BOARD_GPS_LIBRARIES := libgps
 USE_CAMERA_STUB := false
 EOF
 
-mkdir -p ../../../vendor/motorola/umts_sholes/overlay/packages/apps/Launcher2/res/layout
-(cat << EOF) | sed s/__DEVICE__/$DEVICE/g > ../../../vendor/motorola/umts_sholes/overlay/packages/apps/Launcher2/res/layout/all_apps.xml
+mkdir -p ../../../vendor/motorola/sholest/overlay/packages/apps/Launcher2/res/layout
+(cat << EOF) | sed s/__DEVICE__/$DEVICE/g > ../../../vendor/motorola/sholest/overlay/packages/apps/Launcher2/res/layout/all_apps.xml
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Copyright (C) 2010 The Android Open Source Project
 

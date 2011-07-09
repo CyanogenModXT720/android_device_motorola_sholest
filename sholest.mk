@@ -27,10 +27,10 @@ $(call inherit-product, device/common/gps/gps_eu_supl.mk)
 ## (1) First, the most specific values, i.e. the aspects that are specific to GSM
 
 PRODUCT_COPY_FILES += \
-    device/motorola/umts_sholes/init.mapphone_umts.rc:root/init.mapphone_umts.rc
+    device/motorola/sholest/init.mapphone_umts.rc:root/init.mapphone_umts.rc
 
 ## (2) Also get non-open-source GSM-specific aspects if available
-$(call inherit-product-if-exists, vendor/motorola/umts_sholes/umts_sholes-vendor.mk)
+$(call inherit-product-if-exists, vendor/motorola/sholest/sholest-vendor.mk)
 
 ## (3)  Finally, the least specific parts, i.e. the non-GSM-specific aspects
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -54,7 +54,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
         ro.product.max_num_touch=4 \
         ro.com.google.gmsversion=2.2_r8 
 
-DEVICE_PACKAGE_OVERLAYS += device/motorola/umts_sholes/overlay
+DEVICE_PACKAGE_OVERLAYS += device/motorola/sholest/overlay
 
 PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
@@ -70,7 +70,7 @@ PRODUCT_COPY_FILES += \
 
 # media config xml file
 PRODUCT_COPY_FILES += \
-    device/motorola/umts_sholes/media_profiles.xml:system/etc/media_profiles.xml
+    device/motorola/sholest/media_profiles.xml:system/etc/media_profiles.xml
 
 PRODUCT_PACKAGES += \
     librs_jni
@@ -82,33 +82,33 @@ PRODUCT_TAGS += dalvik.gc.type-precise
 PRODUCT_LOCALES += hdpi
 
 PRODUCT_COPY_FILES += \
-    device/motorola/umts_sholes/vold.fstab:system/etc/vold.fstab \
-    device/motorola/umts_sholes/prebuilt/default.prop:system/default.prop \
-    device/motorola/umts_sholes/prebuilt/etc/apns-conf.xml:system/etc/apns-conf.xml \
-    device/motorola/umts_sholes/prebuilt/etc/init.d/10overclock:/system/etc/init.d/10overclock \
-    device/motorola/umts_sholes/prebuilt/etc/location.cfg:/system/etc/location.cfg \
-    device/motorola/umts_sholes/prebuilt/etc/rootfs/default.prop:/system/etc/rootfs/default.prop \
-    device/motorola/umts_sholes/prebuilt/etc/rootfs/init.rc:/system/etc/rootfs/init.rc \
-    device/motorola/umts_sholes/prebuilt/etc/rootfs/init.mapphone_umts.rc:/system/etc/rootfs/init.mapphone_umts.rc \
-    device/motorola/umts_sholes/prebuilt/etc/wifi/tiwlan.ini:/system/etc/wifi/tiwlan.ini \
-    device/motorola/umts_sholes/prebuilt/bin/2nd-init:/system/bin/2nd-init \
-    device/motorola/umts_sholes/prebuilt/bin/init_prep_keypad.sh:/system/bin/init_prep_keypad.sh \
-    device/motorola/umts_sholes/prebuilt/bin/sh_hijack.sh:/system/bin/sh_hijack.sh \
-    device/motorola/umts_sholes/prebuilt/usr/keychars/sholesp2a-keypad.kcm.bin:/system/usr/keychars/sholesp2a-keypad.kcm.bin \
-    device/motorola/umts_sholes/prebuilt/app/Usb.apk:/system/app/Usb.apk \
-    device/motorola/umts_sholes/prebuilt/app/Toggle2G.apk:/system/app/Toggle2G.apk \
-    device/motorola/umts_sholes/prebuilt/app/Toggle_2G_Notification_Plugin.apk:/system/app/Toggle_2G_Notification_Plugin.apk \
-    device/motorola/umts_sholes/prebuilt/lib/modules/symsearch.ko:/system/lib/modules/symsearch.ko \
-    device/motorola/umts_sholes/prebuilt/lib/modules/cpufreq_interactive.ko:/system/lib/modules/cpufreq_interactive.ko \
-    device/motorola/umts_sholes/prebuilt/lib/modules/cpufreq_smartass.ko:/system/lib/modules/cpufreq_smartass.ko \
-    device/motorola/umts_sholes/prebuilt/lib/modules/cpufreq_stats.ko:/system/lib/modules/cpufreq_stats.ko \
-    device/motorola/umts_sholes/prebuilt/lib/modules/cpufreq_conservative.ko:/system/lib/modules/cpufreq_conservative.ko \
-    device/motorola/umts_sholes/prebuilt/lib/modules/overclock.ko:/system/lib/modules/overclock.ko \
-    device/motorola/umts_sholes/prebuilt/lib/modules/ext4.ko:/system/lib/modules/ext4.ko \
-    device/motorola/umts_sholes/prebuilt/lib/modules/jbd2.ko:/system/lib/modules/jbd2.ko \
-    device/motorola/umts_sholes/prebuilt/lib/modules/mbcache.ko:/system/lib/modules/mbcache.ko
+    device/motorola/sholest/vold.fstab:system/etc/vold.fstab \
+    device/motorola/sholest/prebuilt/default.prop:system/default.prop \
+    device/motorola/sholest/prebuilt/etc/apns-conf.xml:system/etc/apns-conf.xml \
+    device/motorola/sholest/prebuilt/etc/init.d/10overclock:/system/etc/init.d/10overclock \
+    device/motorola/sholest/prebuilt/etc/location.cfg:/system/etc/location.cfg \
+    device/motorola/sholest/prebuilt/etc/rootfs/default.prop:/system/etc/rootfs/default.prop \
+    device/motorola/sholest/prebuilt/etc/rootfs/init.rc:/system/etc/rootfs/init.rc \
+    device/motorola/sholest/prebuilt/etc/rootfs/init.mapphone_umts.rc:/system/etc/rootfs/init.mapphone_umts.rc \
+    device/motorola/sholest/prebuilt/etc/wifi/tiwlan.ini:/system/etc/wifi/tiwlan.ini \
+    device/motorola/sholest/prebuilt/bin/2nd-init:/system/bin/2nd-init \
+    device/motorola/sholest/prebuilt/bin/init_prep_keypad.sh:/system/bin/init_prep_keypad.sh \
+    device/motorola/sholest/prebuilt/bin/sh_hijack.sh:/system/bin/sh_hijack.sh \
+    device/motorola/sholest/prebuilt/usr/keychars/sholesp2a-keypad.kcm.bin:/system/usr/keychars/sholesp2a-keypad.kcm.bin \
+    device/motorola/sholest/prebuilt/app/Usb.apk:/system/app/Usb.apk \
+    device/motorola/sholest/prebuilt/app/Toggle2G.apk:/system/app/Toggle2G.apk \
+    device/motorola/sholest/prebuilt/app/Toggle_2G_Notification_Plugin.apk:/system/app/Toggle_2G_Notification_Plugin.apk \
+    device/motorola/sholest/prebuilt/lib/modules/symsearch.ko:/system/lib/modules/symsearch.ko \
+    device/motorola/sholest/prebuilt/lib/modules/cpufreq_interactive.ko:/system/lib/modules/cpufreq_interactive.ko \
+    device/motorola/sholest/prebuilt/lib/modules/cpufreq_smartass.ko:/system/lib/modules/cpufreq_smartass.ko \
+    device/motorola/sholest/prebuilt/lib/modules/cpufreq_stats.ko:/system/lib/modules/cpufreq_stats.ko \
+    device/motorola/sholest/prebuilt/lib/modules/cpufreq_conservative.ko:/system/lib/modules/cpufreq_conservative.ko \
+    device/motorola/sholest/prebuilt/lib/modules/overclock.ko:/system/lib/modules/overclock.ko \
+    device/motorola/sholest/prebuilt/lib/modules/ext4.ko:/system/lib/modules/ext4.ko \
+    device/motorola/sholest/prebuilt/lib/modules/jbd2.ko:/system/lib/modules/jbd2.ko \
+    device/motorola/sholest/prebuilt/lib/modules/mbcache.ko:/system/lib/modules/mbcache.ko
 
-$(call inherit-product-if-exists, vendor/motorola/umts_sholes/umts_sholes-vendor.mk)
+$(call inherit-product-if-exists, vendor/motorola/sholest/sholest-vendor.mk)
 
 # media profiles and capabilities spec
 # $(call inherit-product, device/motorola/sholes/media_a1026.mk)
@@ -119,5 +119,5 @@ $(call inherit-product-if-exists, vendor/motorola/umts_sholes/umts_sholes-vendor
 $(call inherit-product, build/target/product/full.mk)
 
 
-PRODUCT_NAME := umts_sholes
-PRODUCT_DEVICE := umts_sholes
+PRODUCT_NAME := sholest
+PRODUCT_DEVICE := sholest

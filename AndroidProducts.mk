@@ -18,4 +18,4 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/umts_sholes.mk
+    $(LOCAL_DIR)/sholest.mk

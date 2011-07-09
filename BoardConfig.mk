@@ -26,7 +26,7 @@
 USE_CAMERA_STUB := true
 
 # inherit from the proprietary version
--include vendor/motorola/umts_sholes/BoardConfigVendor.mk
+-include vendor/motorola/sholest/BoardConfigVendor.mk
 
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_RECOVERY := true
@@ -65,7 +65,7 @@ BUILD_PV_VIDEO_ENCODERS := 1
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
 
-BOARD_EGL_CFG := device/motorola/umts_sholes/egl.cfg
+BOARD_EGL_CFG := device/motorola/sholest/egl.cfg
 
 BOARD_BOOTIMAGE_PARTITION_SIZE := 0x00380000
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x00480000
