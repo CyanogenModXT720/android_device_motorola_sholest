@@ -1,0 +1,6 @@
+#!/system/bin/sh
+
+[ -e /dev/block/mmcblk0p3 ] || exit 0
+
+mkswap /dev/block/mmcblk0p3
+swapon /dev/block/mmcblk0p3

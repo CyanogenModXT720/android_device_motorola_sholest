@@ -32,8 +32,10 @@ TARGET_NO_BOOTLOADER := true
 TARGET_NO_RECOVERY := true
 TARGET_NO_KERNEL := true
 TARGET_NO_RADIOIMAGE := true
-
 TARGET_BOARD_PLATFORM := omap3
+
+TARGET_OTA_NO_KERNEL := true
+TARGET_OTA_EXTRA_ARGS := -e device/motorola/sholest/install-orbootstrap --no_kernel true --no_recovery true --backup false --override_device sholest
 
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
@@ -56,11 +58,12 @@ WIFI_FIRMWARE_LOADER        := "wlan_loader"
 
 BOARD_USES_GENERIC_AUDIO := false
 #BOARD_USES_ECLAIR_LIBCAMERA := true
-#BOARD_USES_ECLAIR_LIBAUDIO := true
+BOARD_USES_ECLAIR_LIBAUDIO := true
+#BOARD_HAVE_BAD_FMRADIO := true
 
-HARDWARE_OMX := true
-BUILD_WITH_TI_AUDIO := 1
-BUILD_PV_VIDEO_ENCODERS := 1
+#HARDWARE_OMX := true
+#BUILD_WITH_TI_AUDIO := 1
+#BUILD_PV_VIDEO_ENCODERS := 1
 
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true

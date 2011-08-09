@@ -1,0 +1,7 @@
+#Color properties
+color3.LED=#001
+color32.background=#000000A0
+color32.title=#FF131FFF
+color32.menu=#4060FFFF
+color32.selection=#FFFFFFFF
+color32.script=#FFFF00FF

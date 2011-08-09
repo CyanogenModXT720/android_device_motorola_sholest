@@ -32,7 +32,6 @@ on init
     write /sys/power/sleep_while_idle 1
     write /sys/power/enable_off_mode 1
 
-
 # Mount mtd partitions
     # mount /pds as r/w
     # We chown/chmod /pds again so because mount is run as root + defaults
@@ -54,27 +53,34 @@ on init
 
 on early-boot
 
-# Adjust the out of memory thresholds to account for the larget
-# space on sholes.  These numbers are in pages (4k).  Must be kept
-# in sync with init.rc.  This must be done before the regular init.rc
-# since these properies can't change once set.
-    setprop ro.FOREGROUND_APP_MEM 2048
-    setprop ro.VISIBLE_APP_MEM 3072
-    setprop ro.SECONDARY_SERVER_MEM 6144
-    setprop ro.BACKUP_APP_MEM 6144
-    setprop ro.HOME_APP_MEM 6144
-    setprop ro.HIDDEN_APP_MEM 7168
-    setprop ro.CONTENT_PROVIDER_MEM 8192
-    setprop ro.EMPTY_APP_MEM 8192
+# Install kernel modules
+    insmod /system/lib/modules/twofish_common.ko
+    insmod /system/lib/modules/twofish.ko
+    insmod /system/lib/modules/dm-mod.ko
+    insmod /system/lib/modules/dm-crypt.ko
+
+# Install BP related kernel modules
+    #Start the engine modules for netmux first for other daemons depends on it
+    insmod /system/lib/modules/netmux.ko
+    insmod /system/lib/modules/netmux_linkdriver.ko
+    insmod /system/lib/modules/sim.ko
+    insmod /system/lib/modules/modem_pm_driver.ko
+    insmod /system/lib/modules/sec.ko
+
+# Install custom kernel modules
+    insmod /system/lib/modules/jbd.ko
+    insmod /system/lib/modules/ext3.ko
+    insmod /system/lib/modules/ext2.ko
+    insmod /system/lib/modules/cpufreq_conservative.ko
     
     chmod 0666 /dev/DspBridge
     class_start media_early_init
 
 on boot
 
-# Overwrite what init.rc selected for the memory killer params to match above.
-    write /sys/module/lowmemorykiller/parameters/minfree 2048,3072,6144,7168,8192,8192
-    
+    # sensor interface
+    chown compass compass /dev/kxtf9
+    chmod 660 /dev/kxtf9
     chown compass compass /dev/lis331dlh
     chmod 660 /dev/lis331dlh
     chown compass compass /dev/akm8973
@@ -172,15 +178,21 @@ on boot
 
 # Permissions for video
     chmod 0770 /dev/hp3a-omap
-    chmod 0770 /dev/hplens-omap
     chmod 0770 /dev/video0
     chmod 0770 /dev/video1
     chmod 0770 /dev/video2
+    chmod 0770 /dev/bd7885
+    chmod 0770 /dev/bu9847
+    chmod 0770 /dev/mipi_dli_tester
     chown media camera /dev/hp3a-omap
-    chown media camera /dev/hplens-omap
     chown media camera /dev/video0
     chown media graphics /dev/video1
     chown media graphics /dev/video2
+    chown media camera /dev/bd7885
+    chown media camera /dev/bu9847
+    chown media camera /dev/mipi_dli_tester
+# Permission for linear vibrator
+    chown system system /sys/class/timed_output/lvibrator/enable
 
 # enable usb adb mode
 #    write /dev/usb_device_mode msc_adb
@@ -196,6 +208,18 @@ chown mot_usb mot_usb /dev/usb_device_mode
 chown mot_usb mot_usb /proc/mtpctl
 
 mount rootfs rootfs / ro remount
+
+# Define Motorola DBVC ATVC Property defaults (failsafe properties)
+    setprop ro.sys.atvc_allow_netmon_usb 0
+    setprop ro.sys.atvc_allow_netmon_ih 0
+    setprop ro.sys.atvc_allow_res_core 0
+    setprop ro.sys.atvc_allow_res_panic 0
+    setprop ro.sys.atvc_allow_all_adb 0
+    setprop ro.sys.atvc_allow_all_core 0
+    setprop ro.sys.atvc_allow_efem 0
+    setprop ro.sys.atvc_allow_bp_log 0
+    setprop ro.sys.atvc_allow_ap_mot_log 0
+    setprop ro.sys.atvc_allow_gki_log 0
 
 # Change the ownership of led files.
    chown system system /sys/class/leds/lcd-backlight/als
@@ -215,6 +239,17 @@ mount rootfs rootfs / ro remount
    chmod 0660 /sys/class/leds/torch-flash/flash_light
    chown system system /sys/class/leds/torch-flash/camera_strobe
    chown system system /sys/class/leds/torch-flash/flash_light
+   chown system system /sys/class/leds/spotlight/brightness
+   chown system system /sys/class/leds/red/brightness
+   chown system system /sys/class/leds/green/brightness
+   chown system system /sys/class/leds/blue/brightness
+   chown system system /sys/class/leds/af-led/brightness
+   chown system system /sys/class/leds/button-backlight/brightness
+   chmod 777 /sys/class/leds/red/brightness
+   chmod 777 /sys/class/leds/green/brightness
+   chmod 777 /sys/class/leds/blue/brightness
+   chmod 777 /sys/class/leds/af-led/brightness
+   chmod 777 /sys/class/leds/button-backlight/brightness
 
 # flashlight
    chown system camera /sys/class/leds/spotlight/brightness
@@ -228,38 +263,14 @@ mount rootfs rootfs / ro remount
     chown system graphics /dev/pvrsrvkm
 
 # Power Management Settings
-    write /sys/devices/platform/ohci.0/usb2/2-3/power/level auto
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 250000
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 550000
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor ondemand
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 250000
     write /sys/devices/system/cpu/cpu0/cpufreq/ondemand/up_threshold 86
     write /sys/devices/system/cpu/cpu0/cpufreq/ondemand/sampling_rate 46875
-    # Wakelock debug
-    write /sys/module/wakelock/parameters/debug_mask 7
 
-    write /sys/power/sr_vdd1_autocomp 1
-    write /sys/power/sr_vdd2_autocomp 1
-    write /sys/power/enable_abb_mode 1 
 
 # Enable panic on softlockup
     write /proc/sys/kernel/softlockup_panic 1
-
-# Set OMAP DSS update_mode to 1 (auto) to get rid of the DSI errors
-    write /sys/devices/omapdss/display0/update_mode 1
-
-# Install kernel modules
-
-# Install BP related kernel modules
-    #Start the engine modules for netmux first for other daemons depends on it
-    insmod /system/lib/modules/netmux.ko
-    insmod /system/lib/modules/netmux_linkdriver.ko
-    insmod /system/lib/modules/sim.ko
-    insmod /system/lib/modules/modem_pm_driver.ko
-    insmod /system/lib/modules/sec.ko
-
-    insmod /system/lib/modules/mbcache.ko
-    insmod /system/lib/modules/jbd2.ko
-    insmod /system/lib/modules/ext4.ko
 
 # Start services
     exec /system/bin/mot_boot_mode
@@ -529,6 +540,16 @@ service secclkd /system/bin/secclkd
     user system
     group system radio
     oneshot 
+
+service fmradio /system/bin/fmradioserver
+    class post-zygote_services
+    group bluetooth net_raw net_bt net_bt_admin
+
+# Factory change ONLY - close shutter during power up
+service shutter /system/bin/shutter -1
+    class post-zygote_services
+    oneshot
+    
 
 # bugreport is triggered by the KEY_LEFTSHIFT and KEY_MENU keycodes
 service bugreport /system/bin/dumpstate -d -v -o /sdcard/bugreports/bugreport

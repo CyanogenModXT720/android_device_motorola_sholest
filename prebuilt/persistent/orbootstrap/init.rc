@@ -1,0 +1,38 @@
+
+on init
+    export PATH /sbin:/bin
+    export ANDROID_ROOT /system
+    export ANDROID_ASSETS /system/app
+    export ANDROID_DATA /data
+    export LD_LIBRARY_PATH /lib
+    export EXTERNAL_STORAGE /sdcard
+    export INIT_DIR /sdcard/OpenRecovery/init
+    export APP_DIR /app
+    export TAGPREFIX /tags/.
+    export DEVICE_MEM_TYPE mtd
+
+    mkdir /sdcard
+    mkdir /system
+    mkdir /data
+    mkdir /cache
+    mkdir /etc
+    mount /tmp /tmp tmpfs
+
+		write /etc/reinit 1
+		write /etc/bootstrap 1
+    write /sys/class/leds/lcd-backlight/als  0
+    write /sys/class/leds/lcd-backlight/brightness  255
+    write /sys/power/cpuidle_deepest_state   0
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor performance
+
+on boot
+
+    ifup lo
+    hostname localhost
+    domainname localdomain
+
+    class_start default
+
+
+service recovery /sbin/recovery
+
