@@ -1,5 +1,8 @@
 #!/system/bin/sh
 
+# Skip unless app2ext is selected
+[ -f /system/etc/sdext/app2ext ] || exit 0
+
 if [ "$SD_EXT_DIRECTORY" = "" ];
 then
 	SD_EXT_DIRECTORY=/sd-ext
