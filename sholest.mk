@@ -107,6 +107,7 @@ PRODUCT_COPY_FILES += \
     device/motorola/sholest/prebuilt/lib/modules/ext3.ko:/system/lib/modules/ext3.ko \
     device/motorola/sholest/prebuilt/lib/modules/ext4.ko:/system/lib/modules/ext4.ko \
     device/motorola/sholest/prebuilt/lib/modules/hid-dummy.ko:/system/lib/modules/hid-dummy.ko \
+    device/motorola/sholest/prebuilt/lib/modules/mbcache.ko:/system/lib/modules/mbcache.ko \
     device/motorola/sholest/prebuilt/lib/modules/jbd2.ko:/system/lib/modules/jbd2.ko \
     device/motorola/sholest/prebuilt/lib/modules/jbd.ko:/system/lib/modules/jbd.ko \
     device/motorola/sholest/prebuilt/lib/modules/modem_pm_driver.ko:/system/lib/modules/modem_pm_driver.ko \

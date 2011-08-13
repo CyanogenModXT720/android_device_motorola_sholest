@@ -68,9 +68,15 @@ on early-boot
     insmod /system/lib/modules/sec.ko
 
 # Install custom kernel modules
-    insmod /system/lib/modules/jbd.ko
-    insmod /system/lib/modules/ext3.ko
-    insmod /system/lib/modules/ext2.ko
+    insmod /system/lib/modules/crc16.ko
+    insmod /system/lib/modules/mbcache.ko
+    insmod /system/lib/modules/jbd2.ko
+    insmod /system/lib/modules/ext4.ko
+
+#    insmod /system/lib/modules/jbd.ko
+#    insmod /system/lib/modules/ext4.ko
+#    insmod /system/lib/modules/ext3.ko
+#    insmod /system/lib/modules/ext2.ko
     insmod /system/lib/modules/cpufreq_conservative.ko
     
     chmod 0666 /dev/DspBridge
