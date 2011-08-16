@@ -1,58 +1,35 @@
 #!/system/bin/sh
-#
 # mount ext partition from sd card
-
-# Skip unless app2ext or link2sd is selected
-[ -f /system/etc/sdext/app2ext -o -f /system/etc/sdext/link2sd ] || exit 0
 
 BB="logwrapper busybox";
 
-if [ "$SD_EXT_DIRECTORY" = "" ];
-then
-    SD_EXT_DIRECTORY=/sd-ext;
-fi;
+sdext=${SD_EXT_DIRECTORY:-/sd-ext}
+sdext2=/data/sdext2
+mmcblk=/dev/block/mmcblk0p2
+opt=noatime,nodiratime,barrier=1
 
-# find SD Card
-for MMC_NUM in `seq 0 9`;
-do
-    MMC_TYPE=`cat /sys/block/mmcblk$MMC_NUM/device/type`
-    if [ "$MMC_TYPE" = "SD" ];
-    then
-        # 2nd partition of sdcard should be the sd-ext if exist
-        SD_EXT_PART=/dev/block/mmcblk${MMC_NUM}p2
-        break
-    fi
-done
+# Try a few times for $mmcblk
+[ -b $mmcblk ] || sleep 3             # 1. Try to be patient
+[ -b $mmcblk ] || mknod $mmcblk 179 2 # 2. Fine. I'll create the block device
+[ -b $mmcblk ] || exit 0              # 3. Seriously? FML
 
-if [ -b "$SD_EXT_PART" ];
-then
-    log -p i -t mountsd "Checking filesystems..";
+# Prep mountpoint
+rm -f $sdext # survives iff directory
+install -m 771 -o 1000 -g 1000 -d $sdext
 
-    # fsck the sdcard filesystem first
-    if [ -x `which e2fsck` ];
-    then
-        e2fsck -y $SD_EXT_PART
-        e2fsk_exitcode=$?
-    else
-        echo "executable e2fsck not found, assuming no filesystem errors"
-        e2fsk_exitcode=0
-    fi
+log -p i -t mountsd "Checking filesystems...";
+$BB e2fsck -y $mmcblk; exitcode=$?
+setprop cm.e2fsck.errors ${exitcode:=666};
+if [ $exitcode -lt 2 ] ; then
+    $BB mount -o $opt -t auto $mmcblk $sdext
+    install -m 771 -o 1000 -g 1000 -d $sdext
+else
+    log -p i -t mountsd "e2fsck of $sdext failed ($exitcode)";
+fi
 
-    # set property with exit code in case an error occurs
-    setprop cm.e2fsck.errors $e2fsk_exitcode;
-    if [ "$e2fsk_exitcode" -lt 2 ];
-    then
-        # mount and set perms
-        $BB mount -o noatime,nodiratime,barrier=1 -t auto $SD_EXT_PART $SD_EXT_DIRECTORY;
-        if [ "$?" = 0 ];
-        then
-            $BB chown 1000:1000 $SD_EXT_DIRECTORY;
-            $BB chmod 771 $SD_EXT_DIRECTORY;
-            log -p i -t mountsd "$SD_EXT_DIRECTORY successfully mounted";
-        else
-            log -p e -t mountsd "Unable to mount filesystem for $SD_EXT_DIRECTORY!";
-        fi
-    else
-        log -p e -t mountsd "Unable to repair filesystem, disabling apps2sd";
-    fi
+if grep -q " $sdext " /proc/mounts ; then
+    log -p i -t mountsd "$sdext successfully mounted";
+    exit 0
+else
+    log -p e -t mountsd "Unable to mount filesystem for $sdext!";
 fi

@@ -1,29 +1,33 @@
 #!/system/bin/sh
 
-# Forbid Link2SD from monkeying around on its own
-if [ -f /system/etc/11link2sd ] ; then
-	busybox mount -o remount,rw /system
-	rm /system/etc/11link2sd
-	sync
-	busybox mount -o remount,ro /system
+sdext2=/data/sdext2
+mmcblk=/dev/block/mmcblk0p2
+
+# Oh Link2SD, you so funny
+init=/system/etc/11link2sd
+if [ -e $init ] ; then
+    busybox mount -o remount,rw /system
+    rm $init
+    sync
+    busybox mount -o remount,ro /system
 fi
 
-# Don't do anything else unless link2sd is selected
-[ -f /system/etc/sdext/link2sd ] || exit
+# Prep mountpoint
+rm -f $sdext2 # survives iff directory
+install -m 771 -o 1000 -g 1000 -d $sdext2
 
-if [ "$SD_EXT_DIRECTORY" = "" ];
-then
-        SD_EXT_DIRECTORY=/sd-ext
+# Handle ext parition
+if grep -q " $sdext " /proc/mounts ; then
+    if -d $sdext/link2sd ; then
+	install -m 771 -o 1000 -g 1000 -d $sdext/link2sd
+	mount -o bind $sdext/link2sd/ $sdext2
+	install -m 771 -o 1000 -g 1000 -d $sdext2
+    fi
+else
+    # Try a fat partition
+    if fsck_msdos -y $mmcblk; then
+	install -m 771 -o 1000 -g 1000 -d $sdext2
+	mount -o $opt -t auto $mmcblk $sdext2
+	install -m 771 -o 1000 -g 1000 -d $sdext2
+    fi
 fi
-if [ "`egrep -q $SD_EXT_DIRECTORY /proc/mounts;echo $?`" != "0" ];
-then
-        echo "$SD_EXT_DIRECTORY not mounted.. skipping link2sd"
-        exit
-fi
-
-for dir in $SD_EXT_DIRECTORY/link2sd /data/sdext2 ; do
-	[ -d $dir/ ] || install -m 771 -o 1000 -g 1000 -d $dir
-	[ -d $dir/ ] || exit 1
-done
-
-mount -o bind $SD_EXT_DIRECTORY/link2sd/ /data/sdext2
