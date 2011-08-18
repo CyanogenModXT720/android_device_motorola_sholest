@@ -10,12 +10,12 @@ adr=`grep -m 1 omap2_clk_init_cpufreq_table /proc/kallsyms | cut -f1 -d" "`
 echo 0x$adr > /proc/overclock/omap2_clk_init_cpufreq_table_addr
 
 ## Exit if module not loaded
-[[ -d /proc/overclock ]] || exit
+[ -d /proc/overclock ] || exit
 
 ## Autoload Milestone Overclock settings
 
 /system/xbin/mount -o ro /dev/block/mmcblk0p1 /sdcard
-[[ $? -eq 0 ]] || exit
+[ $? -eq 0 ] || exit
 
 ## Autoload Milestone Overclock settings
 # Milestone Overclock saves it's autoload values inside:
@@ -34,14 +34,14 @@ getMilestoneOverclockPref () {
 ## Make sure module is loaded and that autoload is requested
 # Beware! It's possible the user had autoload set/saved on the sdcard
 # from a previous ROM but has no preferences! So check for both.
-if [[ -f $pathautoload && -f $pathprefs ]] ; then
+if [ -f $pathautoload -a -f $pathprefs ] ; then
     # Extract max_rate, max_vsel values from Milestone Overclock
     # preferences
     autoloadRate=$(getMilestoneOverclockPref autoloadRate)
     autoloadVsel=$(getMilestoneOverclockPref autoloadVsel)
 
     # Ensure both values were successfully read
-    if [[ ! -z "$autoloadRate" && ! -z "$autoloadVsel" ]] ; then
+    if [ ! -z "$autoloadRate" -a ! -z "$autoloadVsel" ] ; then
 echo $autoloadRate > /proc/overclock/max_rate
 echo $autoloadVsel > /proc/overclock/max_vsel
 log -p w set milestone overclock max_rate=$autoloadRate
