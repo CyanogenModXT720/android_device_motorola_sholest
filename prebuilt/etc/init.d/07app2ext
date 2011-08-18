@@ -11,8 +11,7 @@ rm -rf $sdext/dalvik-cache
 
 if [ ! -d $sdext/link2sd ] ; then
     for dir in app app-private; do
-	source=$sdext/$dir
-	target=/data/$dir
+	[ -d $sdext/$dir ] || continue
 	if ! grep -q " /data/$dir " /proc/mounts ; then
 	    rm /data/$dir # survives iff directory
 	    install -m 771 -o 1000 -g 1000 -d /data/$dir
