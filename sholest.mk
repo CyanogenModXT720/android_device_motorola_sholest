@@ -81,10 +81,11 @@ PRODUCT_TAGS += dalvik.gc.type-precise
 # Passion uses high-density artwork where available
 PRODUCT_LOCALES += hdpi
 
+#    device/motorola/sholest/prebuilt/app/Usb.apk:system/app/Usb.apk \
+
 PRODUCT_COPY_FILES += \
     device/motorola/sholest/vold.fstab:system/etc/vold.fstab \
     device/motorola/sholest/prebuilt/default.prop:system/default.prop \
-    device/motorola/sholest/prebuilt/app/Usb.apk:system/app/Usb.apk \
     device/motorola/sholest/prebuilt/etc/location.cfg:/system/etc/location.cfg \
     device/motorola/sholest/prebuilt/etc/apns-conf.xml:system/etc/apns-conf.xml \
     device/motorola/sholest/prebuilt/etc/spn-conf.xml:system/etc/spn-conf.xml \
