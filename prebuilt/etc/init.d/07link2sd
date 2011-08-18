@@ -1,5 +1,6 @@
 #!/system/bin/sh
 
+sdext=${SD_EXT_DIRECTORY:-/sd-ext}
 sdext2=/data/sdext2
 mmcblk=/dev/block/mmcblk0p2
 
@@ -18,7 +19,7 @@ install -m 771 -o 1000 -g 1000 -d $sdext2
 
 # Handle ext parition
 if grep -q " $sdext " /proc/mounts ; then
-    if -d $sdext/link2sd ; then
+    if [ -d $sdext/link2sd ] ; then
 	install -m 771 -o 1000 -g 1000 -d $sdext/link2sd
 	mount -o bind $sdext/link2sd/ $sdext2
 	install -m 771 -o 1000 -g 1000 -d $sdext2
