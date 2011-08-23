@@ -89,6 +89,8 @@ PRODUCT_COPY_FILES += \
     device/motorola/sholest/prebuilt/etc/location.cfg:/system/etc/location.cfg \
     device/motorola/sholest/prebuilt/etc/apns-conf.xml:system/etc/apns-conf.xml \
     device/motorola/sholest/prebuilt/etc/spn-conf.xml:system/etc/spn-conf.xml \
+    device/motorola/sholest/prebuilt/etc/init.d/04mmcblk:/system/etc/init.d/04mmcblk \
+    device/motorola/sholest/prebuilt/etc/init.d/04symlinks:/system/etc/init.d/04symlinks \
     device/motorola/sholest/prebuilt/etc/init.d/05mountsd:/system/etc/init.d/05mountsd \
     device/motorola/sholest/prebuilt/etc/init.d/06swap:/system/etc/init.d/06swap \
     device/motorola/sholest/prebuilt/etc/init.d/07app2ext:/system/etc/init.d/07app2ext \

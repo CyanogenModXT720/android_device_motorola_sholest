@@ -1,10 +1,6 @@
 #!/system/bin/sh
 
 mmcblk=/dev/block/mmcblk0p3
-
-# Try a few times for $mmcblk
-[ -b $mmcblk ] || sleep 3             # 1. Try to be patient
-[ -b $mmcblk ] || mknod $mmcblk 179 3 # 2. Fine. I'll create the block device
-[ -b $mmcblk ] || exit 0              # 3. Seriously? FML
-
 mkswap $mmcblk && swapon $mmcblk
+echo 100 > /proc/sys/vm/swappiness
+

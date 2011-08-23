@@ -4,18 +4,14 @@
 BB="logwrapper busybox";
 
 sdext=${SD_EXT_DIRECTORY:-/sd-ext}
-sdext2=/data/sdext2
 mmcblk=/dev/block/mmcblk0p2
 opt=noatime,nodiratime,barrier=1
-
-# Try a few times for $mmcblk
-[ -b $mmcblk ] || sleep 3             # 1. Try to be patient
-[ -b $mmcblk ] || mknod $mmcblk 179 2 # 2. Fine. I'll create the block device
-[ -b $mmcblk ] || exit 0              # 3. Seriously? FML
 
 # Prep mountpoint
 rm -f $sdext # survives iff directory
 install -m 771 -o 1000 -g 1000 -d $sdext
+
+[ -b $mmcblk ] || exit 0
 
 log -p i -t mountsd "Checking filesystems...";
 $BB e2fsck -y $mmcblk; exitcode=$?
@@ -33,3 +29,4 @@ if grep -q " $sdext " /proc/mounts ; then
 else
     log -p e -t mountsd "Unable to mount filesystem for $sdext!";
 fi
+

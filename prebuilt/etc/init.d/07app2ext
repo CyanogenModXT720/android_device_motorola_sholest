@@ -5,19 +5,16 @@ sdext=${SD_EXT_DIRECTORY:-/sd-ext}
 # Ensure $sdext is actually mounted
 grep -q " $sdext " /proc/mounts || exit 0
 
-rm /data/dalvik-cache # survives iff directory
-install -m 771 -o 1000 -g 1000 -d /data/dalvik-cache
 rm -rf $sdext/dalvik-cache
 
 if [ ! -d $sdext/link2sd ] ; then
     for dir in app app-private; do
-	[ -d $sdext/$dir ] || continue
+	[ -d $sdext/$dir -a -d /data/$dir ] || continue
+	install -m 771 -o 1000 -g 1000 -d $sdext/$dir
 	if ! grep -q " /data/$dir " /proc/mounts ; then
-	    rm /data/$dir # survives iff directory
-	    install -m 771 -o 1000 -g 1000 -d /data/$dir
-	    install -m 771 -o 1000 -g 1000 -d $sdext/$dir
 	    mv -f /data/$dir/* $sdext/$dir/
 	    mount -o bind $sdext/$dir/ /data/$dir
 	fi
     done
 fi
+

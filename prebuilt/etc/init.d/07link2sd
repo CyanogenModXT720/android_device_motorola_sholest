@@ -28,7 +28,8 @@ else
     # Try a fat partition
     if fsck_msdos -y $mmcblk; then
 	install -m 771 -o 1000 -g 1000 -d $sdext2
-	mount -o $opt -t auto $mmcblk $sdext2
+	mount -o $opt -t vfat $mmcblk $sdext2
 	install -m 771 -o 1000 -g 1000 -d $sdext2
     fi
 fi
+
