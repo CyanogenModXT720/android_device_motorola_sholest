@@ -34,6 +34,9 @@ mot.proximity.delay=450
 #proximit sensor disable touch distance 
 mot.proximity.distance=100
 
+persist.sys.one_percent_batt=0
+
+persist.sys.qtouch_num=2
 
 ## Specific properties available only in CM6 for Milestone
 
@@ -57,4 +60,8 @@ ro.config.no_action_on_plug=0
 ##
 
 windowsmgr.max_events_per_sec=60
+
+# Maximum time (in msec) we allow the CallerInfo query to run,
+# before giving up and falling back to the default ringtone.
+ro.ringtone_query_wait_time=1500
 

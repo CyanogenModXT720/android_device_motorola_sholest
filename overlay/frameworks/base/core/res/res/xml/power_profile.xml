@@ -25,7 +25,7 @@
   <!-- CPU wakelock held for 830ms on bluetooth headset at command. 43mA * 830 -->
   <item name="bluetooth.at">35690</item>
   <item name="screen.full">115</item>
-  <item name="wifi.on">4</item>
+  <item name="wifi.on">10</item>
   <item name="wifi.active">130</item>
   <item name="wifi.scan">104</item>
   <item name="dsp.audio">75</item>
