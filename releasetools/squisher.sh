@@ -49,3 +49,7 @@ echo
 #cp -f $ANDROID_BUILD_TOP/vendor/motorola/sholest/proprietary/boot.img $REPACK/ota/
 cp -f $ANDROID_BUILD_TOP/device/motorola/sholest/updater-script $REPACK/ota/META-INF/com/google/android/updater-script
 
+# Save build manifest into update
+repo manifest -r -o $REPACK/ota/system/repo-default.xml
+gzip $REPACK/ota/system/repo-default.xml
+
