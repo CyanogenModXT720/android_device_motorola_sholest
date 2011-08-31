@@ -74,8 +74,8 @@ PRODUCT_COPY_FILES += \
     device/motorola/sholest/media_profiles.xml:system/etc/media_profiles.xml
 
 PRODUCT_PACKAGES += \
-    librs_jni \
-    Usb
+    librs_jni
+#    Usb
 
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
