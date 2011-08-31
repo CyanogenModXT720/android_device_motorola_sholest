@@ -34,6 +34,7 @@ $(call inherit-product-if-exists, vendor/motorola/sholest/sholest-vendor.mk)
 
 ## (3)  Finally, the least specific parts, i.e. the non-GSM-specific aspects
 PRODUCT_PROPERTY_OVERRIDES += \
+	qemu.sf.lcd_density=240 \
 	ro.com.android.wifi-watchlist=GoogleGuest \
 	ro.error.receiver.system.apps=com.google.android.feedback \
 	ro.setupwizard.enterprise_mode=1 \
