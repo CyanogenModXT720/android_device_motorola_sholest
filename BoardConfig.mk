@@ -23,7 +23,7 @@
 # WARNING: This line must come *before* including the proprietary
 # variant, so that it gets overwritten by the parent (which goes
 # against the traditional rules of inheritance).
-USE_CAMERA_STUB := true
+USE_CAMERA_STUB := false
 
 # inherit from the proprietary version
 -include vendor/motorola/sholest/BoardConfigVendor.mk
@@ -32,6 +32,7 @@ TARGET_NO_BOOTLOADER := true
 TARGET_NO_RECOVERY := true
 TARGET_NO_KERNEL := true
 TARGET_NO_RADIOIMAGE := true
+
 TARGET_BOARD_PLATFORM := omap3
 
 TARGET_OTA_NO_KERNEL := true
@@ -50,6 +51,7 @@ BOARD_WPA_SUPPLICANT_DRIVER := CUSTOM
 BOARD_WPA_SUPPLICANT_PRIVATE_LIB := libCustomWifi
 WPA_SUPPLICANT_VERSION      := VER_0_6_X
 BOARD_WLAN_DEVICE           := tiwlan0
+# BOARD_SOFTAP_DEVICE         := tiwlan0
 WIFI_DRIVER_MODULE_PATH     := "/system/lib/modules/tiwlan_drv.ko"
 BOARD_WLAN_TI_STA_DK_ROOT   := system/wlan/ti/wilink_6_1
 WIFI_DRIVER_MODULE_ARG      := ""
@@ -61,9 +63,11 @@ BOARD_USES_GENERIC_AUDIO := false
 BOARD_USES_ECLAIR_LIBAUDIO := true
 #BOARD_HAVE_BAD_FMRADIO := true
 
-#HARDWARE_OMX := true
-#BUILD_WITH_TI_AUDIO := 1
-#BUILD_PV_VIDEO_ENCODERS := 1
+HARDWARE_OMX := true
+BUILD_WITH_TI_AUDIO := 1
+BUILD_PV_VIDEO_ENCODERS := 1
+BUILD_JPEG_DECODER := 1
+BUILD_JPEG_ENCODER := 1
 
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
@@ -78,9 +82,11 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 
 BOARD_HAS_SMALL_RECOVERY := true
 
-TARGET_RECOVERY_UI_LIB := librecovery_ui_sholes librecovery_ui_generic
+#TARGET_RECOVERY_UI_LIB := librecovery_ui_sholes librecovery_ui_generic
 
-TARGET_RECOVERY_UPDATER_LIBS += librecovery_updater_generic
+#TARGET_RECOVERY_UPDATER_LIBS += librecovery_updater_generic
 
 USE_SHOLES_PROPERTY := true
 
+# Override cyanogen squisher to customize our update zip package
+TARGET_CUSTOM_RELEASETOOL := ./device/motorola/sholest/releasetools/squisher

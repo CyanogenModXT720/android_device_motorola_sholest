@@ -73,15 +73,14 @@ PRODUCT_COPY_FILES += \
     device/motorola/sholest/media_profiles.xml:system/etc/media_profiles.xml
 
 PRODUCT_PACKAGES += \
-    librs_jni
+    librs_jni \
+    Usb
 
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
 
 # Passion uses high-density artwork where available
 PRODUCT_LOCALES += hdpi
-
-#    device/motorola/sholest/prebuilt/app/Usb.apk:system/app/Usb.apk \
 
 PRODUCT_COPY_FILES += \
     device/motorola/sholest/vold.fstab:system/etc/vold.fstab \
