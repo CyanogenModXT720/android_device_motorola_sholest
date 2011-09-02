@@ -20,6 +20,10 @@
 # definition file).
 #
 
+SHOLEST_BUILD_USB_APK = false
+SHOLEST_BUILD_OMX = false
+SHOLEST_KOREAN_IME = false
+
 # WARNING: This line must come *before* including the proprietary
 # variant, so that it gets overwritten by the parent (which goes
 # against the traditional rules of inheritance).
@@ -63,11 +67,13 @@ BOARD_USES_GENERIC_AUDIO := false
 BOARD_USES_ECLAIR_LIBAUDIO := true
 #BOARD_HAVE_BAD_FMRADIO := true
 
+ifneq ($(SHOLEST_BUILD_OMX),true)
 HARDWARE_OMX := true
 BUILD_WITH_TI_AUDIO := 1
 BUILD_PV_VIDEO_ENCODERS := 1
 BUILD_JPEG_DECODER := 1
 BUILD_JPEG_ENCODER := 1
+endif
 
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true

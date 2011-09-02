@@ -75,7 +75,6 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PACKAGES += \
     librs_jni
-#    Usb
 
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
@@ -167,7 +166,9 @@ PRODUCT_COPY_FILES += \
     device/motorola/sholest/prebuilt/etc/rootfs/init.mapphone_umts.rc:/system/etc/rootfs/init.mapphone_umts.rc \
     device/motorola/sholest/prebuilt/etc/rootfs/init.rc:/system/etc/rootfs/init.rc
 
-$(call inherit-product-if-exists, vendor/motorola/sholest/sholest-vendor.mk)
+ifneq ($(SHOLEST_BUILD_USB_APK),true)
+PRODUCT_PACKAGES += Usb
+endif
 
 # media profiles and capabilities spec
 # $(call inherit-product, device/motorola/sholes/media_a1026.mk)
