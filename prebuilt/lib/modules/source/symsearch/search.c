@@ -23,65 +23,75 @@
 #include <linux/module.h>
 #include <linux/kernel.h>
 #include <linux/init.h>
-
-#include <linux/proc_fs.h>
+#include <linux/fs.h>
+#include <linux/seq_file.h>
 #include <linux/string.h>
-#include <linux/vmalloc.h>
-#include <asm/uaccess.h>
-
 #include "symsearch.h"
-
-#define BUF_SIZE PAGE_SIZE
-static char *buf;
-
-static int proc_kallsyms_lookup_name_read(char *buffer, char **buffer_location,
-					  off_t offset, int count, int *eof, void *data)
-{
-	int ret;
-
-	if (offset > 0)
-		ret = 0;
-	else
-		ret = scnprintf(buffer, count, "0x%x\n", (uint)lookup_symbol_address);
-
-	return ret;
-}
-
-static int proc_kallsyms_lookup_name_write(struct file *filp, const char __user *buffer,
-		unsigned long len, void *data)
-{
-	uint *address;
-
-	if(!len || len >= BUF_SIZE)
-		return -ENOSPC;
-
-	if(copy_from_user(buf, buffer, len))
-		return -EFAULT;
-
-	buf[len] = 0;
-
-	if(sscanf(buf, "%x", &address) == 1)
-		lookup_symbol_address = (lookup_symbol_address_fp)address;
-	else
-		printk(KERN_INFO "symsearch: could not read kallsyms_lookup_name address\n");
-
-	return len;
-}
 
 SYMSEARCH_INIT_FUNCTION(lookup_symbol_address);
 EXPORT_SYMBOL(lookup_symbol_address);
 
+/****************************************************/
+/* The following must agree with: kernel/kallsyms.h */
+/*                                kernel/kallsyms.c */
+#define KSYM_NAME_LEN 128
+
+struct kallsym_iter
+{
+	loff_t pos;
+	unsigned long value;
+	unsigned int nameoff; /* If iterating in core kernel symbols */
+	char type;
+	char name[KSYM_NAME_LEN];
+	char module_name[MODULE_NAME_LEN];
+	int exported;
+};
+/****************************************************/
+
+/* Find kallsyms_lookup_name as demonstrated here:
+   http://www.mail-archive.com/openib-general@openib.org/msg08734.html
+ */
+static void init_kallsyms_lookup_name(void)
+{
+	struct file *kallsyms;
+	struct seq_file *seq;
+	struct kallsym_iter *iter;
+	loff_t pos = 0;
+
+	kallsyms = filp_open("/proc/kallsyms", O_RDONLY, 0);
+	if (!kallsyms) {
+		printk("Failed to open /proc/kallsyms");
+		return;
+	}
+
+	seq = (struct seq_file *)kallsyms->private_data;
+	if (!seq) {
+		printk("Failed to fetch sequential file.");
+		goto err_close;
+	}
+
+	for (iter = seq->op->start(seq, &pos);
+	     iter != NULL;
+	     iter = seq->op->next(seq, iter, &pos))
+	if (!strcmp(iter->name, "kallsyms_lookup_name")) {
+		lookup_symbol_address = (lookup_symbol_address_fp)iter->value;
+		printk(KERN_INFO "symsearch: Found kallsyms_lookup_name() at %p.", lookup_symbol_address);
+		break ;
+	}
+
+err_close:
+	filp_close(kallsyms, NULL);
+}
+
 static int __init 
 symsearch_init(void)
 {
-	struct proc_dir_entry *proc_entry;
-
-	buf = (char *)vmalloc(BUF_SIZE);
-
-	proc_mkdir("symsearch", NULL);
-	proc_entry = create_proc_read_entry("symsearch/kallsyms_lookup_name", 0644, NULL, proc_kallsyms_lookup_name_read, NULL);
-	proc_entry->write_proc = proc_kallsyms_lookup_name_write;
-
+	init_kallsyms_lookup_name();
+	if(!lookup_symbol_address) 
+	{
+		printk(KERN_INFO "symsearch: could not find kallsyms_lookup_name.\n");
+		return -EBUSY;
+	}
 	return 0;
 }
 
