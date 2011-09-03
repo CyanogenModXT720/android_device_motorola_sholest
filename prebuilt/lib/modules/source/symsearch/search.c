@@ -23,42 +23,65 @@
 #include <linux/module.h>
 #include <linux/kernel.h>
 #include <linux/init.h>
+
+#include <linux/proc_fs.h>
 #include <linux/string.h>
+#include <linux/vmalloc.h>
+#include <asm/uaccess.h>
+
 #include "symsearch.h"
 
-extern int 
-kallsyms_on_each_symbol(int (*fn)(void *, const char *, struct module *,
-				      unsigned long),
-			    void *data);
+#define BUF_SIZE PAGE_SIZE
+static char *buf;
+
+static int proc_kallsyms_lookup_name_read(char *buffer, char **buffer_location,
+					  off_t offset, int count, int *eof, void *data)
+{
+	int ret;
+
+	if (offset > 0)
+		ret = 0;
+	else
+		ret = scnprintf(buffer, count, "0x%x\n", (uint)lookup_symbol_address);
+
+	return ret;
+}
+
+static int proc_kallsyms_lookup_name_write(struct file *filp, const char __user *buffer,
+		unsigned long len, void *data)
+{
+	uint *address;
+
+	if(!len || len >= BUF_SIZE)
+		return -ENOSPC;
+
+	if(copy_from_user(buf, buffer, len))
+		return -EFAULT;
+
+	buf[len] = 0;
+
+	if(sscanf(buf, "%x", &address) == 1)
+		lookup_symbol_address = (lookup_symbol_address_fp)address;
+	else
+		printk(KERN_INFO "symsearch: could not read kallsyms_lookup_name address\n");
+
+	return len;
+}
 
 SYMSEARCH_INIT_FUNCTION(lookup_symbol_address);
 EXPORT_SYMBOL(lookup_symbol_address);
 
-static int 
-find_kallsyms_lookup_name(void* data, const char* name, 
-                          struct module * module, unsigned long address)
-{
-	//kallsyms_lookup_name is our friend
-	if (!strcmp(name, "kallsyms_lookup_name"))
-	{
-		printk(KERN_INFO "symsearch: found kallsyms_lookup_name on 0x%lx.\n", address);
-		lookup_symbol_address = (lookup_symbol_address_fp)address;
-		return 1;
-	}
-
-	return 0;
-} 
-
 static int __init 
 symsearch_init(void)
 {
-	//kallsyms export the kallsyms_on_each_symbol so use that
-	kallsyms_on_each_symbol(&find_kallsyms_lookup_name, NULL);
-	if(!lookup_symbol_address) 
-	{
-		printk(KERN_INFO "symsearch: could not find kallsyms_lookup_name.\n");
-		return -EBUSY;
-	}
+	struct proc_dir_entry *proc_entry;
+
+	buf = (char *)vmalloc(BUF_SIZE);
+
+	proc_mkdir("symsearch", NULL);
+	proc_entry = create_proc_read_entry("symsearch/kallsyms_lookup_name", 0644, NULL, proc_kallsyms_lookup_name_read, NULL);
+	proc_entry->write_proc = proc_kallsyms_lookup_name_write;
+
 	return 0;
 }
 
