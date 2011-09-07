@@ -19,6 +19,8 @@
 # not specialized for any geography.
 #
 
+SHOLEST_CM6_RELEASE=6.3.0-RC4
+
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
 # The gps config appropriate for this device
