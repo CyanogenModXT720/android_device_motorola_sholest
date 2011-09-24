@@ -404,14 +404,14 @@ service catcommands /system/bin/catcommands
     class pre-zygote_services
     group radio 
 
-service bplogd_daemon /system/bin/bplogd_daemon
-    class pre-zygote_services
-    socket dlog_cmds stream 660 radio log
-    socket bp_pd_status stream 660 radio log
-    socket bp_aol_cmd stream 666 radio log
-    user radio
-    group radio inet log sdcard_rw
-    oneshot
+#service bplogd_daemon /system/bin/bplogd_daemon
+#    class pre-zygote_services
+#    socket dlog_cmds stream 660 radio log
+#    socket bp_pd_status stream 660 radio log
+#    socket bp_aol_cmd stream 666 radio log
+#    user radio
+#    group radio inet log sdcard_rw
+#    oneshot
 
 service clean_dex /system/bin/sh /system/bin/clean_dex.sh
     class pre-zygote_services
