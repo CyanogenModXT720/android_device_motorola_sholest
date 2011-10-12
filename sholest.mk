@@ -173,6 +173,8 @@ ifneq ($(SHOLEST_BUILD_USB_APK),true)
 PRODUCT_PACKAGES += Usb
 endif
 
+$(call inherit-product, device/motorola/sholest/sholest-vendor-blobs.mk)
+
 # media profiles and capabilities spec
 # $(call inherit-product, device/motorola/sholes/media_a1026.mk)
 

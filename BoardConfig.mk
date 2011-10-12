@@ -30,7 +30,6 @@ SHOLEST_KOREAN_IME = false
 USE_CAMERA_STUB := false
 
 # inherit from the proprietary version
--include vendor/motorola/sholest/BoardConfigVendor.mk
 
 BOARD_USES_GENERIC_AUDIO := false
 TARGET_NO_BOOTLOADER := true
@@ -91,7 +90,9 @@ USE_SHOLES_PROPERTY := true
 TARGET_NEEDS_MOTOROLA_HIJACK := true
 #TARGET NO KERNEL from Quarx advice:
 
+BOARD_NO_RGBX_8888 := true
 # Prebuilt boot.img
+
 LOCAL_KERNEL := device/motorola/sholest/kernel
 PRODUCT_COPY_FILES += \
 	$(LOCAL_KERNEL):kernel
