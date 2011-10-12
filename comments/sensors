@@ -1,0 +1,13 @@
+it seems that some orientation of the pictures taken from camera within cyanos are rotated wrong
+
+as this is just a tag in the exif will check if the property
+
+ro.media.capture.flip=horizontalandvertical
+ro.media.sensor.orient=90
+
+ro.com.motorola.smartsensor=true
+
+
+will make some sense
+
+hope that the smartsenor one will have effect against the compas rotated to 90 degree too
