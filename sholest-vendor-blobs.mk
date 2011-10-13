@@ -18,6 +18,7 @@ PRODUCT_COPY_FILES := \
     device/motorola/sholest/proprietary/lib/libcamera.so:obj/lib/libcamera.so \
     device/motorola/sholest/proprietary/lib/liboemcamera.so:obj/lib/liboemcamera.so \
     device/motorola/sholest/proprietary/lib/libaudio.so:obj/lib/libaudio.so \
+    device/motorola/sholest/proprietary/lib/libaudiopolicy.so:obj/lib/libaudiopolicy.so \
     device/motorola/sholest/proprietary/lib/libril-moto-umts-1.so:obj/lib/libril-moto-umts-1.so \
     device/motorola/sholest/proprietary/lib/hw/gralloc.omap3.so:obj/lib/hw/gralloc.omap3.so \
     device/motorola/sholest/proprietary/lib/hw/lights.sholes.so:obj/lib/hw/lights.sholes.so \
