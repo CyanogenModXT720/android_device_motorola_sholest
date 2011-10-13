@@ -171,6 +171,7 @@ PRODUCT_COPY_FILES += \
     device/motorola/sholest/proprietary/lib/libpvr2d.so:/system/lib/libpvr2d.so \
     device/motorola/sholest/proprietary/lib/libcamera.so:/system/lib/libcamera.so \
     device/motorola/sholest/proprietary/lib/libaudio.so:/system/lib/libaudio.so \
+    device/motorola/sholest/proprietary/lib/libaudiopolicy.so:/system/lib/libaudiopolicy.so \
     device/motorola/sholest/proprietary/lib/libgki.so:/system/lib/libgki.so \
     device/motorola/sholest/proprietary/lib/libbattd.so:/system/lib/libbattd.so \
     device/motorola/sholest/proprietary/lib/libsecclkdlib.so:/system/lib/libsecclkdlib.so \
