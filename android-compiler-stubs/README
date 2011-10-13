@@ -1,0 +1,14 @@
+tried to optimize for arm7l 
+
+as it turns out that armv7l is actually (surprise:) armv7a
+
+tried to use codesourcery android toolchain, which is 4.5.2 version
+
+the goal was to be able to use -mfp vfpv3, turns out that codesourvery is using it if specified neon
+
+badly no luck with mfp neon and forcing -mfloat-abi=hard  (which is supposed to work in 4.4.x version)
+
+anyway everything should be compiled with the same mfloat-abi, so the used softfp seems reasonable enough
+
+
+also defined (actually copied from armv7-a) new target armv7-l

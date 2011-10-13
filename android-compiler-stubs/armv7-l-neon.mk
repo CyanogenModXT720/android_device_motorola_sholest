@@ -1,0 +1,1 @@
+/home/july/cyano/nadlabak/build/core/combo/arch/arm/armv7-l-neon.mk
