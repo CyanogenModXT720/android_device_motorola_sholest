@@ -32,13 +32,13 @@
     <bool name="config_sf_slowBlur">true</bool>
     
     <!-- The duration (in milliseconds) of a short animation. -->
-    <integer name="config_shortAnimTime">150</integer>
+    <integer name="config_shortAnimTime">50</integer>
     
     <!-- The duration (in milliseconds) of a medium-length animation. -->
-    <integer name="config_mediumAnimTime">300</integer>
+    <integer name="config_mediumAnimTime">150</integer>
     
     <!-- The duration (in milliseconds) of a long animation. -->
-    <integer name="config_longAnimTime">400</integer>
+    <integer name="config_longAnimTime">200</integer>
 
     <!-- The duration (in milliseconds) that the radio will scan for a signal
          when there's no network connection. If the scan doesn't timeout, use zero -->
@@ -123,7 +123,7 @@
 
     <!-- The number of degrees to rotate the display when the device is in a desk dock.
          A value of -1 means no change in orientation by default. -->
-    <integer name="config_deskDockRotation">90</integer>
+    <integer name="config_deskDockRotation">-1</integer>
 
     <!-- The number of degrees to rotate the display when the device is in a car dock.
          A value of -1 means no change in orientation by default. -->
@@ -144,7 +144,7 @@
     <!-- Control whether being in the desk dock should enable accelerometer
          based screen orientation.  Note this should probably default to true
          like car dock, but we haven't had a chance to test it. -->
-    <bool name="config_deskDockEnablesAccelerometer">false</bool>
+    <bool name="config_deskDockEnablesAccelerometer">true</bool>
 
     <!-- Control whether being in the car dock should enable accelerometer based
          screen orientation.  This defaults to true because putting a device in
@@ -219,7 +219,7 @@
     <integer name="config_lowBatteryWarningLevel">15</integer>
 
     <!-- Close low battery warning when battery level reaches this value -->
-    <integer name="config_lowBatteryCloseWarningLevel">20</integer>
+    <integer name="config_lowBatteryCloseWarningLevel">30</integer>
 
     <!-- Default color for notification LED. -->
     <color name="config_defaultNotificationColor">#ff00ff00</color>
@@ -246,9 +246,9 @@
 
          Must be overridden in platform specific overlays -->
     <integer-array name="config_autoBrightnessLevels">
-        <item>20</item>
-        <item>100</item>
-        <item>1500</item>
+        <item>15</item>
+        <item>80</item>
+        <item>1100</item>
     </integer-array>
 
     <!-- Array of output values for LCD backlight corresponding to the LUX values
@@ -287,7 +287,7 @@
     <!-- Amount of time it takes for the light sensor to warm up in milliseconds.
          For this time after the screen turns on, the Power Manager
          will not debounce light sensor readings -->
-    <integer name="config_lightSensorWarmupTime">2000</integer>
+    <integer name="config_lightSensorWarmupTime">800</integer>
 
     <!-- Allows the light sensor to be ignored when flashlight is on -->
     <bool name="config_flashlight_affects_lightsensor">true</bool>
@@ -322,7 +322,7 @@
     <bool name="config_bluetooth_sco_off_call">true</bool>
 
     <!-- The default data-use polling period. -->
-    <integer name="config_datause_polling_period_sec">600</integer>
+    <integer name="config_datause_polling_period_sec">300</integer>
 
     <!-- The default data-use threshold in bytes. 0 disables-->
     <integer name="config_datause_threshold_bytes">0</integer>

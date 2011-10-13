@@ -39,7 +39,7 @@
   </array>
   <array name="cpu.speeds">
     <value>800000</value>
-    <value>700000</value>
+    <value>720000</value>
     <value>600000</value>
     <value>550000</value>
     <value>500000</value>
@@ -50,7 +50,7 @@
   <item name="cpu.idle">4</item>
   <!-- Power consumption at different speeds -->
   <array name="cpu.active">
-      <value>280</value>
+      <value>260</value>
       <value>236</value>
       <value>207</value>
       <value>182</value>
