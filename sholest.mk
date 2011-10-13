@@ -29,7 +29,8 @@ $(call inherit-product, device/common/gps/gps_eu_supl.mk)
 ## (1) First, the most specific values, i.e. the aspects that are specific to GSM
 
 PRODUCT_COPY_FILES += \
-    device/motorola/sholest/init.mapphone_umts.rc:root/init.mapphone_umts.rc
+    device/motorola/sholest/init.mapphone_umts.rc:root/init.mapphone_umts.rc \
+    device/motorola/sholest/proprietary/lib/libaudiopolicy.so:out/target/product/sholest/system/lib/libaudiopolicy.so
 
 ## (2) Also get non-open-source GSM-specific aspects if available
 $(call inherit-product-if-exists, vendor/motorola/sholest/sholest-vendor.mk)
@@ -76,8 +77,8 @@ PRODUCT_COPY_FILES += \
     device/motorola/sholest/media_profiles.xml:system/etc/media_profiles.xml
 
 PRODUCT_PACKAGES += \
-    librs_jni \
-    libaudiopolicy
+    librs_jni 
+    #libaudiopolicy
 
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
