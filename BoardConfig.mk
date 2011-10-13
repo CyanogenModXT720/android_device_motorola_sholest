@@ -43,8 +43,10 @@ TARGET_CPU_ABI := armeabi-v7l
 TARGET_CPU_ABI2 := armeabi
 #TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_ARCH_VARIANT := armv7-l-neon
-TARGET_GLOBAL_CFLAGS += -mtune=cortex-a8
-TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a8
+#TARGET_GLOBAL_CFLAGS += -mtune=cortex-a8
+TARGET_GLOBAL_CFLAGS += -mtune=cortex-a8 -mfpu=vfpv3
+#TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a8
+TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a8 -mfpu=vfpv3
 TARGET_OMAP3 := true
 COMMON_GLOBAL_CFLAGS += -DTARGET_OMAP3
 TARGET_BOOTLOADER_BOARD_NAME := sholest
