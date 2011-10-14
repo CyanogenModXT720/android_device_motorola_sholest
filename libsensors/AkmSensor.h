@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-#ifndef ANDROID_KXTF9_SENSOR_H
-#define ANDROID_KXTF9_SENSOR_H
+#ifndef ANDROID_AKM_SENSOR_H
+#define ANDROID_AKM_SENSOR_H
 
 #include <stdint.h>
 #include <errno.h>
@@ -31,11 +31,17 @@
 
 struct input_event;
 
-class SensorKXTF9 : public SensorBase
-{
+class AkmSensor : public SensorBase {
 public:
-    SensorKXTF9();
-    virtual ~SensorKXTF9();
+            AkmSensor();
+    virtual ~AkmSensor();
+
+    enum {
+        MagneticField   = 0,
+        Orientation     = 1,
+        Temperature     = 2,
+        numSensors
+    };
 
     virtual int setDelay(int32_t handle, int64_t ns);
     virtual int enable(int32_t handle, int enabled);
@@ -43,13 +49,14 @@ public:
     void processEvent(int code, int value);
 
 private:
+    int update_delay();
     uint32_t mEnabled;
+    uint32_t mPendingMask;
     InputEventCircularReader mInputReader;
-    sensors_event_t mPendingEvent;
-
-    int isEnabled();
+    sensors_event_t mPendingEvents[numSensors];
+    uint64_t mDelays[numSensors];
 };
 
 /*****************************************************************************/
 
-#endif  // ANDROID_KXTF9_SENSOR_H
+#endif  // ANDROID_AKM_SENSOR_H
