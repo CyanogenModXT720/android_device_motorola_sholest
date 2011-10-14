@@ -98,7 +98,7 @@ TARGET_NEEDS_MOTOROLA_HIJACK := true
 #TARGET NO KERNEL from Quarx advice:
 
 BOARD_NO_RGBX_8888 := true
-OARD_USE_YUV422I_DEFAULT_COLORFORMAT := true 
+BOARD_USE_YUV422I_DEFAULT_COLORFORMAT := true 
 # Prebuilt boot.img
 
 LOCAL_KERNEL := device/motorola/sholest/kernel
