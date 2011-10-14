@@ -19,25 +19,18 @@ PRODUCT_COPY_FILES := \
     device/motorola/sholest/proprietary/lib/liboemcamera.so:obj/lib/liboemcamera.so \
     device/motorola/sholest/proprietary/lib/libaudio.so:obj/lib/libaudio.so \
     device/motorola/sholest/proprietary/lib/libril-moto-umts-1.so:obj/lib/libril-moto-umts-1.so \
-    device/motorola/sholest/proprietary/lib/hw/gralloc.omap3.so:obj/lib/hw/gralloc.omap3.so \
-    device/motorola/sholest/proprietary/lib/hw/lights.sholes.so:obj/lib/hw/lights.sholes.so \
-    device/motorola/sholest/proprietary/lib/hw/sensors.sholes.so:obj/lib/hw/sensors.sholes.so
+    device/motorola/sholest/proprietary/lib/hw/gralloc.omap3.so:obj/lib/hw/gralloc.omap3.so 
+    #device/motorola/sholest/proprietary/lib/hw/lights.sholes.so:obj/lib/hw/lights.sholes.so   # we already have them from source
+    #device/motorola/sholest/proprietary/lib/hw/sensors.sholes.so:obj/lib/hw/sensors.sholes.so # either
 
 # All the blobs necessary 
 PRODUCT_COPY_FILES += \
-    device/motorola/sholest/proprietary/framework/mot-framework-res.apk:/system/framework/mot-framework-res.apk \
-    device/motorola/sholest/proprietary/etc/cameraCalFileDef.bin:/system/etc/cameraCalFileDef.bin \
-    device/motorola/sholest/proprietary/etc/01_Vendor_ti_omx.cfg:/system/etc/01_Vendor_ti_omx.cfg
+    device/motorola/sholest/proprietary/etc/cameraCalFileDef.bin:/system/etc/cameraCalFileDef.bin 
 
 PRODUCT_COPY_FILES += \
-    device/motorola/sholest/proprietary/etc/pvasflocal.cfg:/system/etc/pvasflocal.cfg \
-    device/motorola/sholest/proprietary/etc/gpsconfig.xml:/system/etc/gpsconfig.xml \
-    device/motorola/sholest/proprietary/etc/excluded-input-devices.xml:/system/etc/excluded-input-devices.xml \
-    device/motorola/sholest/proprietary/etc/permissions/motorola_platform.xml:/system/etc/permissions/motorola_platform.xml
+    device/motorola/sholest/proprietary/etc/gpsconfig.xml:/system/etc/gpsconfig.xml 
 
 PRODUCT_COPY_FILES += \
-    device/motorola/sholest/proprietary/etc/motorola/bplogd.conf:/system/etc/motorola/bplogd.conf \
-    device/motorola/sholest/proprietary/etc/motorola/12m/key_code_map.txt:/system/etc/motorola/12m/key_code_map.txt \
     device/motorola/sholest/proprietary/etc/motorola/bp_nvm_default/File_Audio4:/system/etc/motorola/bp_nvm_default/File_Audio4 \
     device/motorola/sholest/proprietary/etc/motorola/bp_nvm_default/File_Audio1_AMR_WB:/system/etc/motorola/bp_nvm_default/File_Audio1_AMR_WB \
     device/motorola/sholest/proprietary/etc/motorola/bp_nvm_default/File_GSM:/system/etc/motorola/bp_nvm_default/File_GSM \
@@ -61,7 +54,7 @@ PRODUCT_COPY_FILES += \
     device/motorola/sholest/proprietary/etc/motorola/comm_drv/plmn_text_table.bin:/system/etc/motorola/comm_drv/plmn_text_table.bin \
     device/motorola/sholest/proprietary/etc/motorola/comm_drv/commdrv_fs.sh:/system/etc/motorola/comm_drv/commdrv_fs.sh \
     device/motorola/sholest/proprietary/etc/motorola/comm_drv/mmins_settings.cfg:/system/etc/motorola/comm_drv/mmins_settings.cfg \
-    device/motorola/sholest/proprietary/etc/motorola/comm_drv/mmins_cust_emergency_number.cfg:/system/etc/motorola/comm_drv/mmins_cust_emergency_number.cfg
+	device/motorola/sholest/proprietary/etc/motorola/comm_drv/mmins_cust_emergency_number.cfg:/system/etc/motorola/comm_drv/mmins_cust_emergency_number.cfg
 
 PRODUCT_COPY_FILES += \
     device/motorola/sholest/proprietary/etc/firmware/wl1271.bin:/system/etc/firmware/wl1271.bin \
@@ -72,49 +65,28 @@ PRODUCT_COPY_FILES += \
     device/motorola/sholest/proprietary/etc/wifi/tiwlan_ap.ini:/system/etc/wifi/tiwlan_ap.ini
 
 PRODUCT_COPY_FILES += \
-    device/motorola/sholest/proprietary/usr/bin/panic_daemon:/system/bin/panic_daemon \
     device/motorola/sholest/proprietary/usr/bin/nvm_daemon:/system/bin/nvm_daemon \
     device/motorola/sholest/proprietary/usr/bin/brcm_guci_drv:/system/bin/brcm_guci_drv \
-    device/motorola/sholest/proprietary/usr/bin/gki_pd_notifier:/system/bin/gki_pd_notifier \
-    device/motorola/sholest/proprietary/usr/bin/bplogd_daemon:/system/bin/bplogd_daemon \
-    device/motorola/sholest/proprietary/usr/bin/clean_dex.sh:/system/bin/clean_dex.sh
 
 PRODUCT_COPY_FILES += \
     device/motorola/sholest/proprietary/bin/init_prep_keypad.sh:/system/bin/init_prep_keypad.sh \
     device/motorola/sholest/proprietary/bin/bootanimation:/system/bin/bootanimation \
     device/motorola/sholest/proprietary/bin/dnsmasq_mot:/system/bin/dnsmasq_mot \
-    device/motorola/sholest/proprietary/bin/tcmd:/system/bin/tcmd \
-    device/motorola/sholest/proprietary/bin/safe_reboot:/system/bin/safe_reboot \
-    device/motorola/sholest/proprietary/bin/logfilter-get:/system/bin/logfilter-get \
     device/motorola/sholest/proprietary/bin/mot_boot_mode:/system/bin/mot_boot_mode \
     device/motorola/sholest/proprietary/bin/battd:/system/bin/battd \
-    device/motorola/sholest/proprietary/bin/gkilogd:/system/bin/gkilogd \
     device/motorola/sholest/proprietary/bin/akmd2:/system/bin/akmd2 \
-    device/motorola/sholest/proprietary/bin/bthelp:/system/bin/bthelp \
     device/motorola/sholest/proprietary/bin/protocol_driver:/system/bin/protocol_driver \
-    device/motorola/sholest/proprietary/bin/secclkd:/system/bin/secclkd \
-    device/motorola/sholest/proprietary/bin/dbvc_atvc_property_set:/system/bin/dbvc_atvc_property_set \
-    device/motorola/sholest/proprietary/bin/logfilter-set:/system/bin/logfilter-set \
-    device/motorola/sholest/proprietary/bin/watchdogd:/system/bin/watchdogd \
-    device/motorola/sholest/proprietary/bin/bttest_mot:/system/bin/bttest_mot \
     device/motorola/sholest/proprietary/bin/ap_gain_france.bin:/system/bin/ap_gain_france.bin \
     device/motorola/sholest/proprietary/bin/gkisystem:/system/bin/gkisystem \
     device/motorola/sholest/proprietary/bin/opprofdaemon:/system/bin/opprofdaemon \
-    device/motorola/sholest/proprietary/bin/rild_tcmd:/system/bin/rild_tcmd \
     device/motorola/sholest/proprietary/bin/ap_gain.bin:/system/bin/ap_gain.bin \
     device/motorola/sholest/proprietary/bin/pvrsrvinit:/system/bin/pvrsrvinit \
-    device/motorola/sholest/proprietary/bin/aplogd:/system/bin/aplogd \
     device/motorola/sholest/proprietary/bin/location:/system/bin/location \
     device/motorola/sholest/proprietary/bin/usbd:/system/bin/usbd \
-    device/motorola/sholest/proprietary/bin/catcommands:/system/bin/catcommands \
-    device/motorola/sholest/proprietary/bin/Hostapd:/system/bin/Hostapd \
-    device/motorola/sholest/proprietary/bin/wlan_cu:/system/bin/wlan_cu \
-    device/motorola/sholest/proprietary/bin/wlan_loader:/system/bin/wlan_loader \
-    device/motorola/sholest/proprietary/bin/charge_only_mode:/system/bin/charge_only_mode
+    device/motorola/sholest/proprietary/bin/charge_only_mode:/system/bin/charge_only_mode   # from sources
 
 PRODUCT_COPY_FILES += \
-    device/motorola/sholest/proprietary/xbin/ssmgrd:/system/xbin/ssmgrd \
-    device/motorola/sholest/proprietary/bin/pppd:/system/xbin/pppd
+    device/motorola/sholest/proprietary/xbin/ssmgrd:/system/xbin/ssmgrd 
 
 PRODUCT_COPY_FILES += \
     device/motorola/sholest/proprietary/usr/keylayout/sholesp1a-keypad.kl:/system/usr/keylayout/sholesp1a-keypad.kl \
@@ -172,7 +144,6 @@ PRODUCT_COPY_FILES += \
     device/motorola/sholest/proprietary/lib/libaudio.so:/system/lib/libaudio.so \
     device/motorola/sholest/proprietary/lib/libgki.so:/system/lib/libgki.so \
     device/motorola/sholest/proprietary/lib/libbattd.so:/system/lib/libbattd.so \
-    device/motorola/sholest/proprietary/lib/libsecclkdlib.so:/system/lib/libsecclkdlib.so \
     device/motorola/sholest/proprietary/lib/libglslcompiler.so:/system/lib/libglslcompiler.so \
     device/motorola/sholest/proprietary/lib/libmsl_interface.so:/system/lib/libmsl_interface.so \
     device/motorola/sholest/proprietary/lib/libmotodbgutils.so:/system/lib/libmotodbgutils.so \
@@ -182,18 +153,7 @@ PRODUCT_COPY_FILES += \
     device/motorola/sholest/proprietary/lib/liboemcamera.so:/system/lib/liboemcamera.so \
     device/motorola/sholest/proprietary/lib/libtpa_core.so:/system/lib/libtpa_core.so \
     device/motorola/sholest/proprietary/lib/libril-moto-umts-1.so:/system/lib/libril-moto-umts-1.so \
-    device/motorola/sholest/proprietary/lib/libpvasfcommon.so:/system/lib/libpvasfcommon.so \
-    device/motorola/sholest/proprietary/lib/libpvasflocalpb.so:/system/lib/libpvasflocalpb.so \
-    device/motorola/sholest/proprietary/lib/libpvasflocalpbreg.so:/system/lib/libpvasflocalpbreg.so \
-    device/motorola/sholest/proprietary/lib/libopencore_motlocal.so:/system/lib/libopencore_motlocal.so \
-    device/motorola/sholest/proprietary/lib/libopencore_motlocalreg.so:/system/lib/libopencore_motlocalreg.so \
-    device/motorola/sholest/proprietary/lib/libopencore_motsktdrm.so:/system/lib/libopencore_motsktdrm.so \
-    device/motorola/sholest/proprietary/lib/libomx_wmadec_sharedlibrary.so:/system/lib/libomx_wmadec_sharedlibrary.so \
-    device/motorola/sholest/proprietary/lib/libomx_wmvdec_sharedlibrary.so:/system/lib/libomx_wmvdec_sharedlibrary.so \
-    device/motorola/sholest/proprietary/lib/libhostapd_client.so:/system/lib/libhostapd_client.so \
-    device/motorola/sholest/proprietary/lib/libMynetNativeJni.so:/system/lib/libMynetNativeJni.so \
-    device/motorola/sholest/proprietary/lib/libWifiAPHardware.so:/system/lib/libWifiAPHardware.so \
-    device/motorola/sholest/proprietary/lib/libWifiAPNativeJni.so:/system/lib/libWifiAPNativeJni.so
+
 
 PRODUCT_COPY_FILES += \
     device/motorola/sholest/proprietary/lib/modules/netmux.ko:/system/lib/modules/netmux.ko \
@@ -227,27 +187,6 @@ PRODUCT_COPY_FILES += \
     device/motorola/sholest/proprietary/lib/dsp/conversions.dll64P:/system/lib/dsp/conversions.dll64P \
     device/motorola/sholest/proprietary/lib/dsp/baseimage.dof:/system/lib/dsp/baseimage.dof
 
-PRODUCT_COPY_FILES += \
-    device/motorola/sholest/proprietary/tts/lang_pico/en-US_lh0_sg.bin:/system/tts/lang_pico/en-US_lh0_sg.bin \
-    device/motorola/sholest/proprietary/tts/lang_pico/fr-FR_nk0_sg.bin:/system/tts/lang_pico/fr-FR_nk0_sg.bin \
-    device/motorola/sholest/proprietary/tts/lang_pico/de-DE_gl0_sg.bin:/system/tts/lang_pico/de-DE_gl0_sg.bin \
-    device/motorola/sholest/proprietary/tts/lang_pico/de-DE_ta.bin:/system/tts/lang_pico/de-DE_ta.bin \
-    device/motorola/sholest/proprietary/tts/lang_pico/en-GB_ta.bin:/system/tts/lang_pico/en-GB_ta.bin \
-    device/motorola/sholest/proprietary/tts/lang_pico/es-ES_ta.bin:/system/tts/lang_pico/es-ES_ta.bin \
-    device/motorola/sholest/proprietary/tts/lang_pico/en-GB_kh0_sg.bin:/system/tts/lang_pico/en-GB_kh0_sg.bin \
-    device/motorola/sholest/proprietary/tts/lang_pico/it-IT_cm0_sg.bin:/system/tts/lang_pico/it-IT_cm0_sg.bin \
-    device/motorola/sholest/proprietary/tts/lang_pico/es-ES_zl0_sg.bin:/system/tts/lang_pico/es-ES_zl0_sg.bin \
-    device/motorola/sholest/proprietary/tts/lang_pico/fr-FR_ta.bin:/system/tts/lang_pico/fr-FR_ta.bin \
-    device/motorola/sholest/proprietary/tts/lang_pico/en-US_ta.bin:/system/tts/lang_pico/en-US_ta.bin \
-    device/motorola/sholest/proprietary/tts/lang_pico/it-IT_ta.bin:/system/tts/lang_pico/it-IT_ta.bin
-
-PRODUCT_COPY_FILES += \
-    device/motorola/sholest/proprietary/app/PhoneConfig.apk:/system/app/PhoneConfig.apk \
-    device/motorola/sholest/proprietary/app/ProgramMenu.apk:/system/app/ProgramMenu.apk \
-    device/motorola/sholest/proprietary/app/ProgramMenuSystem.apk:/system/app/ProgramMenuSystem.apk \
-    device/motorola/sholest/proprietary/app/PersonalPortal.apk:/system/app/PersonalPortal.apk \
-    device/motorola/sholest/proprietary/app/QuickOffice.apk:/system/app/QuickOffice.apk \
-    device/motorola/sholest/proprietary/app/Mynet.apk:/system/app/Mynet.apk
 
 PRODUCT_COPY_FILES += \
     device/motorola/sholest/proprietary/app/FMRadio-fwals.apk:/system/app/FMRadio.apk \
@@ -258,27 +197,12 @@ PRODUCT_COPY_FILES += \
     device/motorola/sholest/proprietary/lib/libfmradio_jni.so:/system/lib/libfmradio_jni.so \
     device/motorola/sholest/proprietary/lib/libfmradiostackservice.so:/system/lib/libfmradiostackservice.so
 
-ifeq ($(SHOLEST_KOREAN_IME),true)
 PRODUCT_COPY_FILES += \
     device/motorola/sholest/proprietary/app/KoreanIME.apk:/system/app/KoreanIME.apk \
     device/motorola/sholest/proprietary/lib/libjni_koreanime.so:/system/lib/libjni_koreanime.so
-endif
 
-ifneq ($(SHOLEST_BUILD_OMX),true)
-PRODUCT_COPY_FILES += \
-    device/motorola/sholest/proprietary/lib/libOMX.TI.AMR.encode.so:/system/lib/libOMX.TI.AMR.encode.so \
-    device/motorola/sholest/proprietary/lib/libOMX.TI.WBAMR.encode.so:/system/lib/libOMX.TI.WBAMR.encode.so \
-    device/motorola/sholest/proprietary/lib/libOMX.TI.AAC.encode.so:/system/lib/libOMX.TI.AAC.encode.so \
-    device/motorola/sholest/proprietary/lib/libOMX.TI.JPEG.Encoder.so:/system/lib/libOMX.TI.JPEG.Encoder.so \
-    device/motorola/sholest/proprietary/lib/libOMX.TI.Video.Decoder.so:/system/lib/libOMX.TI.Video.Decoder.so \
-    device/motorola/sholest/proprietary/lib/libOMX.TI.Video.encoder.so:/system/lib/libOMX.TI.Video.encoder.so \
-    device/motorola/sholest/proprietary/lib/libOMX_Core.so:/system/lib/libOMX_Core.so \
-    device/motorola/sholest/proprietary/lib/libLCML.so:/system/lib/libLCML.so \
-    device/motorola/sholest/proprietary/lib/libVendor_ti_omx.so:/system/lib/libVendor_ti_omx.so \
-    device/motorola/sholest/proprietary/lib/libVendor_ti_omx_config_parser.so:/system/lib/libVendor_ti_omx_config_parser.so
-endif
 
 ifneq ($(SHOLEST_BUILD_USB_APK),true)
 PRODUCT_COPY_FILES += \
-    device/motorola/sholest/proprietary/app/Usb.apk:/system/app/Usb.apk
+    device/motorola/sholest/proprietary/app/Usb.apk:/system/app/Usb.apk  # from sources
 endif
