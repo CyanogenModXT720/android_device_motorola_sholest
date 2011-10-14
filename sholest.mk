@@ -79,8 +79,35 @@ PRODUCT_PACKAGES += \
     librs_jni \
     libaudiopolicy \
     sensors.sholest \
-    lights.sholest 
-
+    lights.sholest \
+    usb \
+    libOMX.TI.AAC.encode \
+    libOMX.TI.AAC.decode \
+    libOMX.TI.AMR.decode \
+    libOMX.TI.AMR.encode \
+    libOMX.TI.WBAMR.encode \
+    libOMX.TI.MP3.decode \
+    libOMX.TI.WBAMR.decode \
+    libOMX.TI.WMA.decode \
+    libOMX.TI.Video.Decoder \
+    libOMX.TI.Video.encoder \
+    libVendor_ti_omx \
+    libLCML \
+    libOMX_Core \
+    tiwlan.ini \
+    dspexec \
+    libbridge \
+    overlay.omap3 \
+    wlan_cu \
+    libtiOsLib \
+    wlan_loader \
+    libCustomWifi \
+    wpa_supplicant.conf \
+    dhcpcd.conf \
+    iwmulticall \
+    hostap \
+    hostapd.conf \
+    libhostapdcli 
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
 
@@ -173,9 +200,6 @@ PRODUCT_COPY_FILES += \
     device/motorola/sholest/prebuilt/etc/rootfs/init.mapphone_umts.rc:/system/etc/rootfs/init.mapphone_umts.rc \
     device/motorola/sholest/prebuilt/etc/rootfs/init.rc:/system/etc/rootfs/init.rc
 
-ifneq ($(SHOLEST_BUILD_USB_APK),true)
-PRODUCT_PACKAGES += Usb
-endif
 
 $(call inherit-product, device/motorola/sholest/sholest-vendor-blobs.mk)
 

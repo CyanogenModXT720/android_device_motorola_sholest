@@ -71,7 +71,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/motorola/sholest/proprietary/bin/init_prep_keypad.sh:/system/bin/init_prep_keypad.sh \
     device/motorola/sholest/proprietary/bin/dnsmasq_mot:/system/bin/dnsmasq_mot \
-    device/motorola/sholest/proprietary/bin/mot_boot_mode:/system/bin/mot_boot_mode \
     device/motorola/sholest/proprietary/bin/battd:/system/bin/battd \
     device/motorola/sholest/proprietary/bin/akmd2:/system/bin/akmd2 \
     device/motorola/sholest/proprietary/bin/protocol_driver:/system/bin/protocol_driver \
@@ -82,7 +81,6 @@ PRODUCT_COPY_FILES += \
     device/motorola/sholest/proprietary/bin/pvrsrvinit:/system/bin/pvrsrvinit \
     device/motorola/sholest/proprietary/bin/location:/system/bin/location \
     device/motorola/sholest/proprietary/bin/usbd:/system/bin/usbd \
-    device/motorola/sholest/proprietary/bin/charge_only_mode:/system/bin/charge_only_mode   # from sources
 
 PRODUCT_COPY_FILES += \
     device/motorola/sholest/proprietary/xbin/ssmgrd:/system/xbin/ssmgrd 
@@ -192,12 +190,5 @@ PRODUCT_COPY_FILES += \
     device/motorola/sholest/proprietary/lib/libfmradio_jni.so:/system/lib/libfmradio_jni.so \
     device/motorola/sholest/proprietary/lib/libfmradiostackservice.so:/system/lib/libfmradiostackservice.so
 
-PRODUCT_COPY_FILES += \
-    device/motorola/sholest/proprietary/app/KoreanIME.apk:/system/app/KoreanIME.apk \
-    device/motorola/sholest/proprietary/lib/libjni_koreanime.so:/system/lib/libjni_koreanime.so
 
 
-ifneq ($(SHOLEST_BUILD_USB_APK),true)
-PRODUCT_COPY_FILES += \
-    device/motorola/sholest/proprietary/app/Usb.apk:/system/app/Usb.apk  # from sources
-endif
