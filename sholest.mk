@@ -78,8 +78,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     librs_jni \
     libaudiopolicy \
-    libsensors \
-    liblights 
+    sensors.sholest \
+    lights.sholest 
 
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise

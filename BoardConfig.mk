@@ -20,10 +20,6 @@
 # definition file).
 #
 
-SHOLEST_BUILD_USB_APK = false
-SHOLEST_BUILD_OMX = false
-SHOLEST_KOREAN_IME = false
-
 # WARNING: This line must come *before* including the proprietary
 # variant, so that it gets overwritten by the parent (which goes
 # against the traditional rules of inheritance).
@@ -98,6 +94,7 @@ TARGET_NEEDS_MOTOROLA_HIJACK := true
 #TARGET NO KERNEL from Quarx advice:
 
 BOARD_NO_RGBX_8888 := true
+OARD_USE_YUV422I_DEFAULT_COLORFORMAT := true 
 # Prebuilt boot.img
 
 LOCAL_KERNEL := device/motorola/sholest/kernel
