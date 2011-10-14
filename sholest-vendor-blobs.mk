@@ -122,9 +122,6 @@ PRODUCT_COPY_FILES += \
     device/motorola/sholest/proprietary/usr/keychars/sholestabletp3skt-keypad.kcm.bin:/system/usr/keychars/sholestabletp3skt-keypad.kcm.bin
 
 PRODUCT_COPY_FILES += \
-    device/motorola/sholest/proprietary/lib/hw/sensors.sholes.so:/system/lib/hw/sensors.sholes.so \
-    device/motorola/sholest/proprietary/lib/hw/lights.sholes.so:/system/lib/hw/lights.sholes.so \
-    device/motorola/sholest/proprietary/lib/hw/overlay.omap3.so:/system/lib/hw/overlay.omap3.so \
     device/motorola/sholest/proprietary/lib/hw/gralloc.omap3.so:/system/lib/hw/gralloc.omap3.so
 
 PRODUCT_COPY_FILES += \
@@ -139,7 +136,6 @@ PRODUCT_COPY_FILES += \
     device/motorola/sholest/proprietary/lib/libssmgr.so:/system/lib/libssmgr.so \
     device/motorola/sholest/proprietary/lib/libsktdrm.so:/system/lib/libsktdrm.so \
     device/motorola/sholest/proprietary/lib/libtpa.so:/system/lib/libtpa.so \
-    device/motorola/sholest/proprietary/lib/libpppd_plugin.so:/system/lib/libpppd_plugin.so \
     device/motorola/sholest/proprietary/lib/libpvr2d.so:/system/lib/libpvr2d.so \
     device/motorola/sholest/proprietary/lib/libcamera.so:/system/lib/libcamera.so \
     device/motorola/sholest/proprietary/lib/libaudio.so:/system/lib/libaudio.so \
