@@ -71,7 +71,6 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_COPY_FILES += \
     device/motorola/sholest/proprietary/bin/init_prep_keypad.sh:/system/bin/init_prep_keypad.sh \
-    device/motorola/sholest/proprietary/bin/bootanimation:/system/bin/bootanimation \
     device/motorola/sholest/proprietary/bin/dnsmasq_mot:/system/bin/dnsmasq_mot \
     device/motorola/sholest/proprietary/bin/mot_boot_mode:/system/bin/mot_boot_mode \
     device/motorola/sholest/proprietary/bin/battd:/system/bin/battd \
