@@ -78,7 +78,27 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PACKAGES += \
     librs_jni \
+    tiwaln.ini \
+    dspexec \
+    libbridge \
+    overlay.omap3 \
+    wlan_loader \
+    dhcpcd.conf \
+    wpa_supplicant.conf \
+    libOMX.TI.AAC.decode \
+    libOMX.TI.AAC.encode \
+    libOMX.TI.AMR.decode \
+    libOMX.TI.AMR.encode \
+    libOMX.TI.WBAMR.decode \
+    libOMX.TI.WBAMR.encode \
+    libOMX.TI.JPEG.Encoder \
+    libLCML \
+    libOMX_Core \
+    libOMX.TI.Video.Decoder \
+    libOMX.TI.Video.encoder \
+    libVendor_ti_omx \
     libaudiopolicy \
+    Usb \
     sensors.sholest \
     lights.sholest 
 
