@@ -107,9 +107,4 @@ PRODUCT_COPY_FILES += \
 # Override cyanogen squisher to customize our update zip package
  TARGET_CUSTOM_RELEASETOOL := ./device/motorola/sholest/releasetools/squisher
 #
-ifndef CYANOGEN_RELEASE
-
-
-
-endif
-
+BOARD_USE_USB_MASS_STORAGE_SWITCH := true
