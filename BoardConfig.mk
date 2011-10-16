@@ -87,7 +87,9 @@ BOARD_NEVER_UMOUNT_SYSTEM := true
 #TARGET_RECOVERY_UI_LIB := librecovery_ui_generic
 #TARGET_RECOVERY_UPDATER_LIBS += librecovery_updater_generic
 
-USE_SHOLES_PROPERTY := true
+BOARD_GPS_LIBRARIES := libgps
+BOARD_USES_GPSSHIM := true
+
 #TARGET_NO_KERNEL := true
 # Jordan need 2nd-init binary from motorola common
 TARGET_NEEDS_MOTOROLA_HIJACK := true

@@ -127,7 +127,6 @@ PRODUCT_COPY_FILES += \
     device/motorola/sholest/prebuilt/etc/init.d/07app2ext:/system/etc/init.d/07app2ext \
     device/motorola/sholest/prebuilt/etc/init.d/07link2sd:/system/etc/init.d/07link2sd \
     device/motorola/sholest/prebuilt/etc/init.d/10overclock:/system/etc/init.d/10overclock \
-    device/motorola/sholest/prebuilt/etc/init.d/61touch:/system/etc/init.d/61touch \
     device/motorola/sholest/prebuilt/etc/wifi/tiwlan.ini:/system/etc/wifi/tiwlan.ini \
     device/motorola/sholest/prebuilt/etc/dhcpcd/dhcpcd.conf:/system/etc/dhcpcd/dhcpcd.conf
 
@@ -195,7 +194,7 @@ PRODUCT_COPY_FILES += \
     device/motorola/sholest/prebuilt/persistent/orbootstrap/reboot:/system/bin/reboot \
     device/motorola/sholest/prebuilt/persistent/orbootstrap/utils/2nd-init:/system/bin/2nd-init \
     device/motorola/sholest/prebuilt/bin/sh_hijack.sh:/system/bin/sh_hijack.sh \
-    device/motorola/sholest/prebuilt/bin/touchroi:/system/bin/touchroi \
+    device/motorola/sholest/prebuilt/bin/launchGallery:/system/bin/launchGallery \
     device/motorola/sholest/prebuilt/etc/rootfs/default.prop:/system/etc/rootfs/default.prop \
     device/motorola/sholest/prebuilt/etc/rootfs/init.mapphone_umts.rc:/system/etc/rootfs/init.mapphone_umts.rc \
     device/motorola/sholest/prebuilt/etc/rootfs/init.rc:/system/etc/rootfs/init.rc
