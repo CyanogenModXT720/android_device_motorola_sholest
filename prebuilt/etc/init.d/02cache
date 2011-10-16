@@ -1,0 +1,8 @@
+#!/system/xbin/busybox sh
+
+    /system/xbin/chown 1000:2001 /cache
+    /system/xbin/chmod 0771 /cache 
+    /system/xbin/mkdir /cache/dalvik-cache
+    /system/xbin/chown 1000:1000 /cache/dalvik-cache
+    /system/xbin/chmod 0771 /cache/dalvik-cache
+
