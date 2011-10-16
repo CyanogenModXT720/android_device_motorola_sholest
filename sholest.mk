@@ -29,7 +29,9 @@ $(call inherit-product, device/common/gps/gps_eu_supl.mk)
 ## (1) First, the most specific values, i.e. the aspects that are specific to GSM
 
 PRODUCT_COPY_FILES += \
-    device/motorola/sholest/init.mapphone_umts.rc:root/init.mapphone_umts.rc 
+    device/motorola/sholest/init.mapphone_umts.rc:root/init.mapphone_umts.rc \
+    device/motorola/sholest/proprietary/lib/libgps.so:obj/lib/libgps.so \
+    device/motorola/sholest/proprietary/lib/libgps.so:/system/lib/libgps.so 
     #device/motorola/sholest/proprietary/lib/libaudiopolicy.so:out/target/product/sholest/system/lib/libaudiopolicy.so
 
 ## (2) Also get non-open-source GSM-specific aspects if available
@@ -195,13 +197,13 @@ PRODUCT_COPY_FILES += \
     device/motorola/sholest/prebuilt/etc/location.cfg:/system/etc/location.cfg \
     device/motorola/sholest/prebuilt/etc/apns-conf.xml:system/etc/apns-conf.xml \
     device/motorola/sholest/prebuilt/etc/spn-conf.xml:system/etc/spn-conf.xml \
-    device/motorola/sholest/prebuilt/etc/init.d/04mmcblk:/system/etc/init.d/04mmcblk \
-    device/motorola/sholest/prebuilt/etc/init.d/04symlinks:/system/etc/init.d/04symlinks \
+    device/motorola/sholest/prebuilt/etc/init.d/00banner:/system/etc/init.d/00banner \
+    device/motorola/sholest/prebuilt/etc/init.d/01sysctl:/system/etc/init.d/01sysctl \
+    device/motorola/sholest/prebuilt/etc/init.d/02cache:/system/etc/init.d/02cache \
+    device/motorola/sholest/prebuilt/etc/init.d/03firstboot:/system/etc/init.d/03firstboot \
+    device/motorola/sholest/prebuilt/etc/init.d/04modules:/system/etc/init.d/04modules \
     device/motorola/sholest/prebuilt/etc/init.d/05mountsd:/system/etc/init.d/05mountsd \
-    device/motorola/sholest/prebuilt/etc/init.d/06swap:/system/etc/init.d/06swap \
-    device/motorola/sholest/prebuilt/etc/init.d/07app2ext:/system/etc/init.d/07app2ext \
-    device/motorola/sholest/prebuilt/etc/init.d/07link2sd:/system/etc/init.d/07link2sd \
-    device/motorola/sholest/prebuilt/etc/init.d/10overclock:/system/etc/init.d/10overclock \
+    device/motorola/sholest/prebuilt/etc/init.d/61touch:/system/etc/init.d/61touch \
     device/motorola/sholest/prebuilt/etc/wifi/tiwlan.ini:/system/etc/wifi/tiwlan.ini \
     device/motorola/sholest/prebuilt/etc/dhcpcd/dhcpcd.conf:/system/etc/dhcpcd/dhcpcd.conf
 
