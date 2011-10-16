@@ -1,4 +1,5 @@
 #!/system/bin/sh
+   echo "msc_adb" > /dev/usb_device_mode
    /system/xbin/mount -o remount,rw rootfs /
    /system/xbin/rmdir /config
    /system/xbin/rmdir /sdcard
