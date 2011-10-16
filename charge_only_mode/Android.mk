@@ -1,5 +1,5 @@
 # Copyright 2005 The Android Open Source Project
-ifeq ($(TARGET_BOOTLOADER_BOARD_NAME),jordan)
+ifeq ($(TARGET_BOOTLOADER_BOARD_NAME),sholest)
 
 LOCAL_PATH:= $(call my-dir)
 include $(CLEAR_VARS)

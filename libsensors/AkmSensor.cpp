@@ -253,7 +253,11 @@ void AkmSensor::processEvent(int code, int value)
 
         case EVENT_TYPE_YAW:
             mPendingMask |= 1<<Orientation;
+<<<<<<< HEAD
             mPendingEvents[Orientation].orientation.azimuth = value * CONVERT_O_Y - 90; //e.g. rotate north 90 degrees cw
+=======
+            mPendingEvents[Orientation].orientation.azimuth = value * CONVERT_O_Y - 90;
+>>>>>>> upstream/master
             break;
         case EVENT_TYPE_PITCH:
             mPendingMask |= 1<<Orientation;
