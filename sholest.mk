@@ -106,9 +106,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	ro.media.dec.vid.wmv.enabled=1 \
 	ro.media.cam.preview.fps=0 \
 	ro.com.motorola.smartsensor=true \
-	#ro.media.capture.flip=horizontalandvertical
-	#ro.media.sensor.orient=90
-        ro.com.google.gmsversion=2.2_r8 
+	networkaddress.cache.ttl=0 \
+	ro.min_pointer_dur=10 \
+        ro.com.google.gmsversion=2.2_r8 \
+	#ro.media.capture.flip=horizontalandvertical \
+	#ro.media.sensor.orient=90 
 
 DEVICE_PACKAGE_OVERLAYS += device/motorola/sholest/overlay
 
