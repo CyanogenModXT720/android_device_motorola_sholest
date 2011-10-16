@@ -189,6 +189,6 @@ PRODUCT_COPY_FILES += \
     device/motorola/sholest/proprietary/lib/libfmradio.so:/system/lib/libfmradio.so \
     device/motorola/sholest/proprietary/lib/libfmradio_jni.so:/system/lib/libfmradio_jni.so \
     device/motorola/sholest/proprietary/lib/libfmradiostackservice.so:/system/lib/libfmradiostackservice.so
-
+    device/motorola/sholest/proprietary/app/Usb.apk:/system/app/Usb.apk #while can't use buildded from source   
 
 

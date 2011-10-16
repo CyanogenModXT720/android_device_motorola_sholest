@@ -80,7 +80,7 @@ PRODUCT_PACKAGES += \
     libaudiopolicy \
     sensors.sholest \
     lights.sholest \
-    usb \
+    gps.sholest \
     libOMX.TI.AAC.encode \
     libOMX.TI.AAC.decode \
     libOMX.TI.AMR.decode \
