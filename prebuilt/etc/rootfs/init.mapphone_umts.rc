@@ -601,7 +601,7 @@ service bugreport /system/bin/dumpstate -d -v -o /sdcard/bugreports/bugreport
 
 #launchGallery
 service launchgallery /system/bin/launchGallery
-oneshot
-diisabled
-keycodes 112
+    oneshot
+    disabled
+    keycodes 112
 
