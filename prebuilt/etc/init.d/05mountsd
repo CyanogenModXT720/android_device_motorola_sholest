@@ -1,32 +1,53 @@
-#!/system/bin/sh
-# mount ext partition from sd card
+#!/system/xbin/busybox sh
 
-BB="logwrapper busybox";
+#make some cache for read_ahesd
+echo 64 > /sys/devices/virtual/bdi/179\:0/read_ahead_kb
+echo 64 > /sys/devices/virtual/bdi/31\:0/read_ahead_kb
+#echo "beenthere" > /cache/logs/aha
+/system/xbin/mount -o remount,noatime /data
+echo 0 > /sys/block/mtdblock7/queue/rotational
+echo 0 > /sys/block/mtdblock9/queue/rotational
+echo 0 > /sys/block/mtdblock10/queue/rotational
 
-sdext=${SD_EXT_DIRECTORY:-/sd-ext}
-mmcblk=/dev/block/mmcblk0p2
-opt=noatime,nodiratime,barrier=1
+echo noop > /sys/block/mmcblk0/queue/scheduler
+echo noop > /sys/block/mtdblock7/queue/scheduler
+echo noop > /sys/block/mtdblock9/queue/scheduler
+echo noop > /sys/block/mtdblock10/queue/scheduler
 
-# Prep mountpoint
-rm -f $sdext # survives iff directory
-install -m 771 -o 1000 -g 1000 -d $sdext
+#mount -o bind /mnt/sdcard/ /sdcard
+#mount -o remount,rw /
+#umount /sdcard
+#rmdir /sdcard
+#ln -s /mnt/sdcard /
+#mount -o remount,ro /
+# enable sd-ext
+if [[ -e /dev/block/mmcblk0p2 ]] ; then
+#disable temporary
+#if [[ -e /dev/block/_disable_mmcblk0p2 ]] ; then
+    #
+    #  Note well: What can each module mount?
+    #             (kousik's trick)
+    #
+    #                  Filesystem
+    #     Module  | ext2  ext3  ext4
+    #    ---------+-------------------
+    #     ext3.ko | no    YES   no?
+    #     ext2.ko | YES   yes   no?
+    #     ext4.ko | yes   yes   NO?!?
+    #
+    /system/bin/insmod /system/lib/modules/jbd.ko
+    /system/bin/insmod /system/lib/modules/ext3.ko
+    #insmod /system/lib/modules/ext2.ko
+    #insmod /system/lib/modules/jbd2.ko
+    #insmod /system/lib/modules/crc16.ko
+    #insmod /system/lib/modules/ext4.ko
+    
+    #make some tmp directory and mount ext partition so journal can be recovered etc...
+    /system/xbin/mkdir /tmp/sdet
+    /system/xbin/mount -o ro /dev/block/mmcblk0p2 /tmp/sdet
+    /system/xbin/umount /tmp/sdet
+    # Do nothing if fsck fails (i.e. not ext2/3, errors)
+    /system/bin/e2fsck -pf /dev/block/mmcblk0p2
 
-[ -b $mmcblk ] || exit 0
-
-log -p i -t mountsd "Checking filesystems...";
-$BB e2fsck -y $mmcblk; exitcode=$?
-setprop cm.e2fsck.errors ${exitcode:=666};
-if [ $exitcode -lt 2 ] ; then
-    $BB mount -o $opt -t auto $mmcblk $sdext
-    install -m 771 -o 1000 -g 1000 -d $sdext
-else
-    log -p i -t mountsd "e2fsck of $sdext failed ($exitcode)";
+    /system/xbin/mount -o noatime,nodiratime /dev/block/mmcblk0p2 /system/sdext
 fi
-
-if grep -q " $sdext " /proc/mounts ; then
-    log -p i -t mountsd "$sdext successfully mounted";
-    exit 0
-else
-    log -p e -t mountsd "Unable to mount filesystem for $sdext!";
-fi
-
