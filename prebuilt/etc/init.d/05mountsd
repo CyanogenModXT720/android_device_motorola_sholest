@@ -1,0 +1,32 @@
+#!/system/bin/sh
+# mount ext partition from sd card
+
+BB="logwrapper busybox";
+
+sdext=${SD_EXT_DIRECTORY:-/sd-ext}
+mmcblk=/dev/block/mmcblk0p2
+opt=noatime,nodiratime,barrier=1
+
+# Prep mountpoint
+rm -f $sdext # survives iff directory
+install -m 771 -o 1000 -g 1000 -d $sdext
+
+[ -b $mmcblk ] || exit 0
+
+log -p i -t mountsd "Checking filesystems...";
+$BB e2fsck -y $mmcblk; exitcode=$?
+setprop cm.e2fsck.errors ${exitcode:=666};
+if [ $exitcode -lt 2 ] ; then
+    $BB mount -o $opt -t auto $mmcblk $sdext
+    install -m 771 -o 1000 -g 1000 -d $sdext
+else
+    log -p i -t mountsd "e2fsck of $sdext failed ($exitcode)";
+fi
+
+if grep -q " $sdext " /proc/mounts ; then
+    log -p i -t mountsd "$sdext successfully mounted";
+    exit 0
+else
+    log -p e -t mountsd "Unable to mount filesystem for $sdext!";
+fi
+

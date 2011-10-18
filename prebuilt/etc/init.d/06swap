@@ -1,0 +1,6 @@
+#!/system/bin/sh
+
+mmcblk=/dev/block/mmcblk0p3
+mkswap $mmcblk && swapon $mmcblk
+echo 100 > /proc/sys/vm/swappiness
+
