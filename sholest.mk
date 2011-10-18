@@ -29,10 +29,7 @@ $(call inherit-product, device/common/gps/gps_eu_supl.mk)
 ## (1) First, the most specific values, i.e. the aspects that are specific to GSM
 
 PRODUCT_COPY_FILES += \
-    device/motorola/sholest/init.mapphone_umts.rc:root/init.mapphone_umts.rc \
-    device/motorola/sholest/proprietary/lib/libgps.so:obj/lib/libgps.so \
-    device/motorola/sholest/proprietary/lib/libgps.so:/system/lib/libgps.so 
-    #device/motorola/sholest/proprietary/lib/libaudiopolicy.so:out/target/product/sholest/system/lib/libaudiopolicy.so
+    device/motorola/sholest/init.mapphone_umts.rc:root/init.mapphone_umts.rc
 
 ## (2) Also get non-open-source GSM-specific aspects if available
 $(call inherit-product-if-exists, vendor/motorola/sholest/sholest-vendor.mk)
@@ -58,61 +55,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	ro.media.dec.jpeg.memcap=20000000 \
 	dalvik.vm.lockprof.threshold=500 \
 	dalvik.vm.dexopt-flags=m=y \
-	dalvik.vm.heapsize=28m \
         ro.product.multi_touch_enabled=true \
         ro.product.max_num_touch=4 \
-	ro.media.enc.hprof.file.format=mp4 \
-	ro.media.enc.hprof.codec.vid=h264 \
-	ro.media.enc.hprof.codec.aud=aac \
-	ro.media.enc.hprof.vid.width=720 \
-	ro.media.enc.hprof.vid.height=480 \
-	ro.media.enc.hprof.vid.fps=25 \
-	ro.media.enc.hprof.vid.bps=3000000 \
-	ro.media.enc.hprof.aud.bps=96000 \
-	ro.media.enc.hprof.aud.hz=16000 \
-	ro.media.enc.hprof.aud.ch=1 \
-	ro.media.enc.hprof.duration=60 \
-	ro.media.enc.lprof.file.format=mp4 \
-	ro.media.enc.lprof.codec.vid=m4v \
-	ro.media.enc.lprof.codec.aud=amrnb \
-	ro.media.enc.lprof.vid.width=320 \
-	ro.media.enc.lprof.vid.height=240 \
-	ro.media.enc.lprof.vid.fps=15 \
-	ro.media.enc.lprof.vid.bps=200000 \
-	ro.media.enc.lprof.aud.bps=12200 \
-	ro.media.enc.lprof.aud.hz=8000 \
-	ro.media.enc.lprof.aud.ch=1 \
-	ro.media.enc.lprof.duration=30 \
-	ro.media.enc.file.format=3gp,mp4 \
-	ro.media.enc.vid.codec=h264,m4v,h263 \
-	ro.media.enc.aud.codec=aac,amrnb \
-	ro.media.enc.vid.h264.width=176,720 \
-	ro.media.enc.vid.h264.height=144,480 \
-	ro.media.enc.vid.h264.bps=64000,8000000 \
-	ro.media.enc.vid.h264.fps=1,30 \
-	ro.media.enc.vid.h263.width=176,720 \
-	ro.media.enc.vid.h263.height=144,480 \
-	ro.media.enc.vid.h263.bps=64000,8000000 \
-	ro.media.enc.vid.h263.fps=1,30 \
-	ro.media.enc.vid.m4v.width=176,1280 \
-	ro.media.enc.vid.m4v.height=144,720 \
-	ro.media.enc.vid.m4v.bps=64000,8000000 \
-	ro.media.enc.vid.m4v.fps=1,30 \
-	ro.media.enc.aud.amrnb.bps=5525,12200 \
-	ro.media.enc.aud.amrnb.hz=8000,8000 \
-	ro.media.enc.aud.amrnb.ch=1,1 \
-	ro.media.enc.aud.aac.bps=8192,96000 \
-	ro.media.enc.aud.aac.hz=16000,16000 \
-	ro.media.enc.aud.aac.ch=1,1 \
-	ro.media.dec.aud.wma.enabled=1 \
-	ro.media.dec.vid.wmv.enabled=1 \
-	ro.media.cam.preview.fps=0 \
-	ro.com.motorola.smartsensor=true \
-	networkaddress.cache.ttl=0 \
-	ro.min_pointer_dur=10 \
         ro.com.google.gmsversion=2.2_r8 
-	#ro.media.capture.flip=horizontalandvertical \
-	#ro.media.sensor.orient=90 
 
 DEVICE_PACKAGE_OVERLAYS += device/motorola/sholest/overlay
 
@@ -134,27 +79,7 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PACKAGES += \
     librs_jni \
-    tiwaln.ini \
-    dspexec \
-    libbridge \
-    overlay.omap3 \
-    wlan_loader \
-    dhcpcd.conf \
-    wpa_supplicant.conf \
-    libOMX.TI.AAC.decode \
-    libOMX.TI.AAC.encode \
-    libOMX.TI.AMR.decode \
-    libOMX.TI.AMR.encode \
-    libOMX.TI.WBAMR.decode \
-    libOMX.TI.WBAMR.encode \
-    libOMX.TI.JPEG.Encoder \
-    libLCML \
-    libOMX_Core \
-    libOMX.TI.Video.Decoder \
-    libOMX.TI.Video.encoder \
-    libVendor_ti_omx \
     libaudiopolicy \
-    Usb \
     sensors.sholest \
     lights.sholest \
     gps.sholest \
@@ -203,7 +128,6 @@ PRODUCT_COPY_FILES += \
     device/motorola/sholest/prebuilt/etc/init.d/03firstboot:/system/etc/init.d/03firstboot \
     device/motorola/sholest/prebuilt/etc/init.d/04modules:/system/etc/init.d/04modules \
     device/motorola/sholest/prebuilt/etc/init.d/05mountsd:/system/etc/init.d/05mountsd \
-    device/motorola/sholest/prebuilt/etc/init.d/61touch:/system/etc/init.d/61touch \
     device/motorola/sholest/prebuilt/etc/wifi/tiwlan.ini:/system/etc/wifi/tiwlan.ini \
     device/motorola/sholest/prebuilt/etc/dhcpcd/dhcpcd.conf:/system/etc/dhcpcd/dhcpcd.conf
 

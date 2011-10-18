@@ -20,6 +20,8 @@ PRODUCT_COPY_FILES := \
     device/motorola/sholest/proprietary/lib/libaudio.so:obj/lib/libaudio.so \
     device/motorola/sholest/proprietary/lib/libril-moto-umts-1.so:obj/lib/libril-moto-umts-1.so \
     device/motorola/sholest/proprietary/lib/hw/gralloc.omap3.so:obj/lib/hw/gralloc.omap3.so 
+    #device/motorola/sholest/proprietary/lib/hw/lights.sholes.so:obj/lib/hw/lights.sholes.so   # we already have them from source
+    #device/motorola/sholest/proprietary/lib/hw/sensors.sholes.so:obj/lib/hw/sensors.sholes.so # either
 
 # All the blobs necessary 
 PRODUCT_COPY_FILES += \

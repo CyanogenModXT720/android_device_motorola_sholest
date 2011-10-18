@@ -34,15 +34,11 @@ TARGET_NO_RADIOIMAGE := true
 TARGET_BOARD_PLATFORM := omap3
 TARGET_OTA_NO_KERNEL := true
 TARGET_OTA_EXTRA_ARGS := -e device/motorola/sholest/install-orbootstrap --no_kernel true --no_recovery true --backup false --override_device sholest
-#TARGET_CPU_ABI := armeabi-v7a
-TARGET_CPU_ABI := armeabi-v7l
+TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
-#TARGET_ARCH_VARIANT := armv7-a-neon
-TARGET_ARCH_VARIANT := armv7-l-neon
-#TARGET_GLOBAL_CFLAGS += -mtune=cortex-a8
-TARGET_GLOBAL_CFLAGS += -mtune=cortex-a8 -mfpu=neon
-#TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a8
-TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a8 -mfpu=neon
+TARGET_ARCH_VARIANT := armv7-a-neon
+TARGET_GLOBAL_CFLAGS += -mtune=cortex-a8
+TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a8
 TARGET_OMAP3 := true
 COMMON_GLOBAL_CFLAGS += -DTARGET_OMAP3
 TARGET_BOOTLOADER_BOARD_NAME := sholest
