@@ -56,9 +56,9 @@ dalvik.vm.dexopt-cache-only=0
 # useful when using a solar power adapter (fluctuating power)
 ro.config.no_action_on_plug=0
 
-##
-
-windowsmgr.max_events_per_sec=60
+## Disable propriretary encoders
+jpeg.libskiahw.encoder.enable=0
+jpeg.libskiahw.decoder.enable=0
 
 # Maximum time (in msec) we allow the CallerInfo query to run,
 # before giving up and falling back to the default ringtone.
