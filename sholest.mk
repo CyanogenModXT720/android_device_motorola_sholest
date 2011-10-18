@@ -110,7 +110,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	ro.com.motorola.smartsensor=true \
 	networkaddress.cache.ttl=0 \
 	ro.min_pointer_dur=10 \
-        ro.com.google.gmsversion=2.2_r8 \
+        ro.com.google.gmsversion=2.2_r8 
 	#ro.media.capture.flip=horizontalandvertical \
 	#ro.media.sensor.orient=90 
 
