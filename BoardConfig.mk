@@ -34,6 +34,19 @@ ARCH_ARM_HAVE_ARMV7A_BUG := true
 ## also have to fix typo in external/v8/Android.mk
 ## https://github.com/CyanogenModXT720/android_device_motorola_sholest/wiki/todos
 
+## CPU SETTINGS
+TARGET_CPU_ABI := armeabi-v7a
+TARGET_CPU_ABI2 := armeabi
+TARGET_ARCH_VARIANT := armv7-a-neon
+### as i have read we have the tls register
+#ARCH_ARM_HAVE_TLS_REGISTER := true
+### will uncomment, when have test enough
+TARGET_GLOBAL_CFLAGS += -mtune=cortex-a8
+TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a8
+TARGET_OMAP3 := true
+COMMON_GLOBAL_CFLAGS += -DTARGET_OMAP3
+
+
 ## CAMERA & AUDIO & BLUETOOTH & GPS OPTIONS
 USE_CAMERA_STUB := false
 BOARD_USES_GENERIC_AUDIO := false
@@ -59,17 +72,6 @@ LOCAL_KERNEL := device/motorola/sholest/kernel
 PRODUCT_COPY_FILES += $(LOCAL_KERNEL):kernel
 TARGET_CUSTOM_RELEASETOOL := ./device/motorola/sholest/releasetools/squisher
 
-## CPU SETTINGS
-TARGET_CPU_ABI := armeabi-v7a
-TARGET_CPU_ABI2 := armeabi
-TARGET_ARCH_VARIANT := armv7-a-neon
-### as i have read we have the tls register
-#ARCH_ARM_HAVE_TLS_REGISTER := true
-### will uncomment, when have test enough
-TARGET_GLOBAL_CFLAGS += -mtune=cortex-a8
-TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a8
-TARGET_OMAP3 := true
-COMMON_GLOBAL_CFLAGS += -DTARGET_OMAP3
 
 
 # Wifi related defines
