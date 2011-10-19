@@ -28,14 +28,11 @@ dalvik.vm.heapsize=32m
 dalvik.vm.dexopt-cache-only=0
 
 #proximit sensor screen off delay
-mot.proximity.delay=450
 
 #proximit sensor disable touch distance 
-mot.proximity.distance=100
 
 persist.sys.one_percent_batt=0
 
-persist.sys.qtouch_num=2
 
 ## Specific properties available only in CM6 for Milestone
 
@@ -64,5 +61,3 @@ jpeg.libskiahw.decoder.enable=0
 # before giving up and falling back to the default ringtone.
 ro.ringtone_query_wait_time=1500
 
-# Logger properties
-persist.service.aplogd.enable=0
