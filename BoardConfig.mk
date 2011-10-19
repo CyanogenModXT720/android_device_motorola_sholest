@@ -28,6 +28,11 @@
 
 TARGET_BOOTLOADER_BOARD_NAME := sholest
 
+## fix crash on 2.6.29 kernels on ARMv7A on several devices
+ARCH_ARM_HAVE_ARMV7A_BUG := true
+
+## also have to fix typo in external/v8/Android.mk
+## https://github.com/CyanogenModXT720/android_device_motorola_sholest/wiki/todos
 
 ## CAMERA & AUDIO & BLUETOOTH & GPS OPTIONS
 USE_CAMERA_STUB := false
