@@ -214,3 +214,4 @@ $(call inherit-product, build/target/product/full.mk)
 
 PRODUCT_NAME := sholest
 PRODUCT_DEVICE := sholest
+#WEBCORE_ACCELERATED_SCROLLING := true

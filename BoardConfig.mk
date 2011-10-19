@@ -27,6 +27,7 @@ USE_CAMERA_STUB := false
 
 # inherit from the proprietary version
 
+ARCH_ARM_HAVE_ARMV7A_BUG := true
 BOARD_USES_GENERIC_AUDIO := false
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_KERNEL := true
@@ -37,6 +38,7 @@ TARGET_OTA_EXTRA_ARGS := -e device/motorola/sholest/install-orbootstrap --no_ker
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_ARCH_VARIANT := armv7-a-neon
+ARCH_ARM_HAVE_TLS_REGISTER := true
 TARGET_GLOBAL_CFLAGS += -mtune=cortex-a8
 TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a8
 TARGET_OMAP3 := true
