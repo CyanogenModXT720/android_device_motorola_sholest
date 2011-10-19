@@ -63,6 +63,9 @@ TARGET_CUSTOM_RELEASETOOL := ./device/motorola/sholest/releasetools/squisher
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_ARCH_VARIANT := armv7-a-neon
+### as i have read we have the tls register
+#ARCH_ARM_HAVE_TLS_REGISTER := true
+### will uncomment, when have test enough
 TARGET_GLOBAL_CFLAGS += -mtune=cortex-a8
 TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a8
 TARGET_OMAP3 := true
