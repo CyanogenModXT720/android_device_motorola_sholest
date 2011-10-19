@@ -47,6 +47,18 @@ TARGET_OMAP3 := true
 COMMON_GLOBAL_CFLAGS += -DTARGET_OMAP3
 
 
+## BUILD OPTIONS:
+TARGET_NO_BOOTLOADER := true
+TARGET_NO_RADIOIMAGE := true
+TARGET_BOARD_PLATFORM := omap3
+TARGET_OTA_NO_KERNEL := true
+TARGET_OTA_EXTRA_ARGS := -e device/motorola/sholest/install-orbootstrap --no_kernel true --no_recovery true --backup false --override_device sholest
+TARGET_NEEDS_MOTOROLA_HIJACK := true
+LOCAL_KERNEL := device/motorola/sholest/kernel
+PRODUCT_COPY_FILES += $(LOCAL_KERNEL):kernel
+TARGET_CUSTOM_RELEASETOOL := ./device/motorola/sholest/releasetools/squisher
+
+
 ## CAMERA & AUDIO & BLUETOOTH & GPS OPTIONS
 USE_CAMERA_STUB := false
 BOARD_USES_GENERIC_AUDIO := false
@@ -61,16 +73,6 @@ BOARD_USE_YUV422I_DEFAULT_COLORFORMAT := true
 BOARD_EGL_CFG := device/motorola/sholest/egl.cfg
 BOARD_GPS_LIBRARIES := libgps
 BOARD_USES_GPSSHIM := true
-## BUILD OPTIONS:
-TARGET_NO_BOOTLOADER := true
-TARGET_NO_RADIOIMAGE := true
-TARGET_BOARD_PLATFORM := omap3
-TARGET_OTA_NO_KERNEL := true
-TARGET_OTA_EXTRA_ARGS := -e device/motorola/sholest/install-orbootstrap --no_kernel true --no_recovery true --backup false --override_device sholest
-TARGET_NEEDS_MOTOROLA_HIJACK := true
-LOCAL_KERNEL := device/motorola/sholest/kernel
-PRODUCT_COPY_FILES += $(LOCAL_KERNEL):kernel
-TARGET_CUSTOM_RELEASETOOL := ./device/motorola/sholest/releasetools/squisher
 
 
 
