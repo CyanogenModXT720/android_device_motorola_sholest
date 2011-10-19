@@ -107,7 +107,8 @@ PRODUCT_PACKAGES += \
     iwmulticall \
     hostap \
     hostapd.conf \
-    libhostapdcli 
+    libhostapdcli  \
+    Usb
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
 
