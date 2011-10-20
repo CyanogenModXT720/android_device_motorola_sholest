@@ -44,8 +44,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	ro.setupwizard.enable_bypass=1 \
 	ro.media.dec.jpeg.memcap=20000000 \
 	dalvik.vm.lockprof.threshold=500 \
-	dalvik.vm.dexopt-flags=m=y \
-        ro.product.multi_touch_enabled=true
+	dalvik.vm.dexopt-flags=m=y 
 
 DEVICE_PACKAGE_OVERLAYS += device/motorola/sholest/overlay
 
@@ -145,9 +144,7 @@ PRODUCT_COPY_FILES += \
     device/motorola/sholest/prebuilt/lib/modules/tiap_drv.ko:/system/lib/modules/tiap_drv.ko \
     device/motorola/sholest/prebuilt/lib/modules/tiwlan_drv.ko:/system/lib/modules/tiwlan_drv.ko \
     device/motorola/sholest/prebuilt/lib/modules/twofish_common.ko:/system/lib/modules/twofish_common.ko \
-    device/motorola/sholest/prebuilt/lib/modules/twofish.ko:/system/lib/modules/twofish.ko \
-    device/motorola/sholest/prebuilt/lib/modules/wl127x_test.ko:/system/lib/modules/wl127x_test.ko \
-    device/motorola/sholest/prebuilt/lib/modules/wl127x-test.ko:/system/lib/modules/wl127x-test.ko
+    device/motorola/sholest/prebuilt/lib/modules/twofish.ko:/system/lib/modules/twofish.ko 
 
 PRODUCT_COPY_FILES += \
     device/motorola/sholest/prebuilt/persistent/orbootstrap/sh:/system/persistent/orbootstrap/sh \
