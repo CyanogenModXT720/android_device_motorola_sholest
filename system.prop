@@ -54,4 +54,6 @@ jpeg.libskiahw.decoder.enable=0
 # Maximum time (in msec) we allow the CallerInfo query to run,
 # before giving up and falling back to the default ringtone.
 ro.ringtone_query_wait_time=1500
+#battd
+persist.sys.one_percent_batt=0
 
