@@ -34,16 +34,10 @@ $(call inherit-product-if-exists, vendor/motorola/sholest/sholest-vendor.mk)
 
 ## (3)  Finally, the least specific parts, i.e. the non-GSM-specific aspects
 PRODUCT_PROPERTY_OVERRIDES += \
-	qemu.sf.lcd_density=240 \
-	ro.com.android.wifi-watchlist=GoogleGuest \
-	ro.error.receiver.system.apps=com.google.android.feedback \
 	ro.setupwizard.enterprise_mode=1 \
         ro.com.google.clientid=android-motorola \
 	ro.com.google.clientidbase=android-motorola \
 	ro.com.google.locationfeatures=1 \
-	ro.url.legal=http://www.google.com/intl/%s/mobile/android/basic/phone-legal.html \
-	ro.url.legal.android_privacy=http://www.google.com/intl/%s/mobile/android/basic/privacy.html \
-	ro.config.vc_call_vol_steps=7 \
 	ro.telephony.call_ring.multiple=false \
 	ro.telephony.call_ring.delay=3000 \
 	ro.url.safetylegal=http://www.motorola.com/staticfiles/Support/legal/?model=MilestoneXT720 \
@@ -51,9 +45,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	ro.media.dec.jpeg.memcap=20000000 \
 	dalvik.vm.lockprof.threshold=500 \
 	dalvik.vm.dexopt-flags=m=y \
-        ro.product.multi_touch_enabled=true \
-        ro.product.max_num_touch=4 \
-        ro.com.google.gmsversion=2.2_r8 
+        ro.product.multi_touch_enabled=true
 
 DEVICE_PACKAGE_OVERLAYS += device/motorola/sholest/overlay
 
@@ -89,8 +81,6 @@ PRODUCT_PACKAGES += \
     libOMX.TI.WMA.decode \
     libOMX.TI.Video.Decoder \
     libOMX.TI.Video.encoder \
-    libOMX.TI.JPEG.Encoder \
-    libVendor_ti_omx \
     libLCML \
     libOMX_Core \
     tiwlan.ini \
