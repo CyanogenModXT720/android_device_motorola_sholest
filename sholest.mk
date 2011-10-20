@@ -24,15 +24,10 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 # The gps config appropriate for this device
 $(call inherit-product, device/common/gps/gps_eu_supl.mk)
 
-## (1) First, the most specific values, i.e. the aspects that are specific to GSM
-
-PRODUCT_COPY_FILES += \
-    device/motorola/sholest/init.mapphone_umts.rc:root/init.mapphone_umts.rc
-
-## (2) Also get non-open-source GSM-specific aspects if available
+## (1) Also get non-open-source GSM-specific aspects if available
 $(call inherit-product-if-exists, vendor/motorola/sholest/sholest-vendor.mk)
 
-## (3)  Finally, the least specific parts, i.e. the non-GSM-specific aspects
+## (2)  Finally, the least specific parts, i.e. the non-GSM-specific aspects
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.setupwizard.enterprise_mode=1 \
         ro.com.google.clientid=android-motorola \

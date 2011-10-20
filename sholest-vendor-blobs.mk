@@ -14,6 +14,7 @@
 
 # Prebuilt libraries that are needed to build open-source libraries
 PRODUCT_COPY_FILES := \
+device/motorola/sholest/proprietary/lib/libgps.so:obj/lib/libgps.so \
     device/motorola/sholest/proprietary/lib/libcamera.so:obj/lib/libcamera.so \
     device/motorola/sholest/proprietary/lib/libaudio.so:obj/lib/libaudio.so 
 
