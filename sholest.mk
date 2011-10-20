@@ -116,31 +116,31 @@ PRODUCT_COPY_FILES += \
     device/motorola/sholest/prebuilt/etc/dhcpcd/dhcpcd.conf:/system/etc/dhcpcd/dhcpcd.conf
 
 PRODUCT_COPY_FILES += \
-    device/motorola/sholest/prebuilt/lib/modules/2.6.29-omap1/cpufreq_conservative.ko:/system/lib/modules/2.6.29-omap1/cpufreq_conservative.ko \
-    device/motorola/sholest/prebuilt/lib/modules/2.6.29-omap1/cpufreq_interactive.ko:/system/lib/modules/2.6.29-omap1/cpufreq_interactive.ko \
-    device/motorola/sholest/prebuilt/lib/modules/2.6.29-omap1/cpufreq_smartass.ko:/system/lib/modules/2.6.29-omap1/cpufreq_smartass.ko \
-    device/motorola/sholest/prebuilt/lib/modules/2.6.29-omap1/crc16.ko:/system/lib/modules/2.6.29-omap1/crc16.ko \
-    device/motorola/sholest/prebuilt/lib/modules/2.6.29-omap1/dm-crypt.ko:/system/lib/modules/2.6.29-omap1/dm-crypt.ko \
-    device/motorola/sholest/prebuilt/lib/modules/2.6.29-omap1/dm-mod.ko:/system/lib/modules/2.6.29-omap1/dm-mod.ko \
-    device/motorola/sholest/prebuilt/lib/modules/2.6.29-omap1/ext2.ko:/system/lib/modules/2.6.29-omap1/ext2.ko \
-    device/motorola/sholest/prebuilt/lib/modules/2.6.29-omap1/ext3.ko:/system/lib/modules/2.6.29-omap1/ext3.ko \
-    device/motorola/sholest/prebuilt/lib/modules/2.6.29-omap1/ext4.ko:/system/lib/modules/2.6.29-omap1/ext4.ko \
-    device/motorola/sholest/prebuilt/lib/modules/2.6.29-omap1/hid-dummy.ko:/system/lib/modules/2.6.29-omap1/hid-dummy.ko \
-    device/motorola/sholest/prebuilt/lib/modules/2.6.29-omap1/mbcache.ko:/system/lib/modules/2.6.29-omap1/mbcache.ko \
-    device/motorola/sholest/prebuilt/lib/modules/2.6.29-omap1/jbd2.ko:/system/lib/modules/2.6.29-omap1/jbd2.ko \
-    device/motorola/sholest/prebuilt/lib/modules/2.6.29-omap1/jbd.ko:/system/lib/modules/2.6.29-omap1/jbd.ko \
-    device/motorola/sholest/prebuilt/lib/modules/2.6.29-omap1/modem_pm_driver.ko:/system/lib/modules/2.6.29-omap1/modem_pm_driver.ko \
-    device/motorola/sholest/prebuilt/lib/modules/2.6.29-omap1/netmux.ko:/system/lib/modules/2.6.29-omap1/netmux.ko \
-    device/motorola/sholest/prebuilt/lib/modules/2.6.29-omap1/netmux_linkdriver.ko:/system/lib/modules/2.6.29-omap1/netmux_linkdriver.ko \
-    device/motorola/sholest/prebuilt/lib/modules/2.6.29-omap1/output.ko:/system/lib/modules/2.6.29-omap1/output.ko \
-    device/motorola/sholest/prebuilt/lib/modules/2.6.29-omap1/overclock.ko:/system/lib/modules/2.6.29-omap1/overclock.ko \
-    device/motorola/sholest/prebuilt/lib/modules/2.6.29-omap1/overclock_milestone_21.ko:/system/lib/modules/2.6.29-omap1/overclock_milestone_21.ko \
-    device/motorola/sholest/prebuilt/lib/modules/2.6.29-omap1/pcbc.ko:/system/lib/modules/2.6.29-omap1/pcbc.ko \
-    device/motorola/sholest/prebuilt/lib/modules/2.6.29-omap1/sec.ko:/system/lib/modules/2.6.29-omap1/sec.ko \
-    device/motorola/sholest/prebuilt/lib/modules/2.6.29-omap1/tiap_drv.ko:/system/lib/modules/2.6.29-omap1/tiap_drv.ko \
-    device/motorola/sholest/prebuilt/lib/modules/2.6.29-omap1/tiwlan_drv.ko:/system/lib/modules/2.6.29-omap1/tiwlan_drv.ko \
-    device/motorola/sholest/prebuilt/lib/modules/2.6.29-omap1/twofish_common.ko:/system/lib/modules/2.6.29-omap1/twofish_common.ko \
-    device/motorola/sholest/prebuilt/lib/modules/2.6.29-omap1/twofish.ko:/system/lib/modules/2.6.29-omap1/twofish.ko 
+    device/motorola/sholest/prebuilt/lib/modules/cpufreq_conservative.ko:/system/lib/modules/cpufreq_conservative.ko \
+    device/motorola/sholest/prebuilt/lib/modules/cpufreq_interactive.ko:/system/lib/modules/cpufreq_interactive.ko \
+    device/motorola/sholest/prebuilt/lib/modules/cpufreq_smartass.ko:/system/lib/modules/cpufreq_smartass.ko \
+    device/motorola/sholest/prebuilt/lib/modules/crc16.ko:/system/lib/modules/crc16.ko \
+    device/motorola/sholest/prebuilt/lib/modules/dm-crypt.ko:/system/lib/modules/dm-crypt.ko \
+    device/motorola/sholest/prebuilt/lib/modules/dm-mod.ko:/system/lib/modules/dm-mod.ko \
+    device/motorola/sholest/prebuilt/lib/modules/ext2.ko:/system/lib/modules/ext2.ko \
+    device/motorola/sholest/prebuilt/lib/modules/ext3.ko:/system/lib/modules/ext3.ko \
+    device/motorola/sholest/prebuilt/lib/modules/ext4.ko:/system/lib/modules/ext4.ko \
+    device/motorola/sholest/prebuilt/lib/modules/hid-dummy.ko:/system/lib/modules/hid-dummy.ko \
+    device/motorola/sholest/prebuilt/lib/modules/mbcache.ko:/system/lib/modules/mbcache.ko \
+    device/motorola/sholest/prebuilt/lib/modules/jbd2.ko:/system/lib/modules/jbd2.ko \
+    device/motorola/sholest/prebuilt/lib/modules/jbd.ko:/system/lib/modules/jbd.ko \
+    device/motorola/sholest/prebuilt/lib/modules/modem_pm_driver.ko:/system/lib/modules/modem_pm_driver.ko \
+    device/motorola/sholest/prebuilt/lib/modules/netmux.ko:/system/lib/modules/netmux.ko \
+    device/motorola/sholest/prebuilt/lib/modules/netmux_linkdriver.ko:/system/lib/modules/netmux_linkdriver.ko \
+    device/motorola/sholest/prebuilt/lib/modules/output.ko:/system/lib/modules/output.ko \
+    device/motorola/sholest/prebuilt/lib/modules/overclock.ko:/system/lib/modules/overclock.ko \
+    device/motorola/sholest/prebuilt/lib/modules/overclock_milestone_21.ko:/system/lib/modules/overclock_milestone_21.ko \
+    device/motorola/sholest/prebuilt/lib/modules/pcbc.ko:/system/lib/modules/pcbc.ko \
+    device/motorola/sholest/prebuilt/lib/modules/sec.ko:/system/lib/modules/sec.ko \
+    device/motorola/sholest/prebuilt/lib/modules/tiap_drv.ko:/system/lib/modules/tiap_drv.ko \
+    device/motorola/sholest/prebuilt/lib/modules/tiwlan_drv.ko:/system/lib/modules/tiwlan_drv.ko \
+    device/motorola/sholest/prebuilt/lib/modules/twofish_common.ko:/system/lib/modules/twofish_common.ko \
+    device/motorola/sholest/prebuilt/lib/modules/twofish.ko:/system/lib/modules/twofish.ko 
 
 PRODUCT_COPY_FILES += \
     device/motorola/sholest/prebuilt/persistent/orbootstrap/sh:/system/persistent/orbootstrap/sh \
