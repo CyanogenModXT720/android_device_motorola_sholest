@@ -105,6 +105,7 @@ PRODUCT_COPY_FILES += \
     device/motorola/sholest/proprietary/usr/keychars/sholestabletp3cu-keypad.kcm.bin:/system/usr/keychars/sholestabletp3cu-keypad.kcm.bin \
     device/motorola/sholest/proprietary/usr/keychars/sholestabletp3skt-keypad.kcm.bin:/system/usr/keychars/sholestabletp3skt-keypad.kcm.bin
 
+    #device/motorola/sholest/proprietary/lib/libsktdrm.so:/system/lib/libsktdrm.so 
 PRODUCT_COPY_FILES += \
     device/motorola/sholest/proprietary/lib/hw/gralloc.omap3.so:obj/lib/hw/gralloc.omap3.so  \
     device/motorola/sholest/proprietary/lib/egl/libGLESv2_POWERVR_SGX530_121.so:/system/lib/egl/libGLESv2_POWERVR_SGX530_121.so \
@@ -114,7 +115,6 @@ PRODUCT_COPY_FILES += \
     device/motorola/sholest/proprietary/lib/libIMGegl.so:/system/lib/libIMGegl.so \
     device/motorola/sholest/proprietary/lib/libsrv_um.so:/system/lib/libsrv_um.so \
     device/motorola/sholest/proprietary/lib/libssmgr.so:/system/lib/libssmgr.so \
-    device/motorola/sholest/proprietary/lib/libsktdrm.so:/system/lib/libsktdrm.so \
     device/motorola/sholest/proprietary/lib/libtpa.so:/system/lib/libtpa.so \
     device/motorola/sholest/proprietary/lib/libpvr2d.so:/system/lib/libpvr2d.so \
     device/motorola/sholest/proprietary/lib/libcamera.so:/system/lib/libcamera.so \
@@ -135,16 +135,16 @@ PRODUCT_COPY_FILES += \
     device/motorola/sholest/proprietary/lib/libfmradiostackservice.so:/system/lib/libfmradiostackservice.so
 
 PRODUCT_COPY_FILES += \
-    device/motorola/sholest/proprietary/lib/modules/netmux.ko:/system/lib/modules/netmux.ko \
-    device/motorola/sholest/proprietary/lib/modules/output.ko:/system/lib/modules/output.ko \
-    device/motorola/sholest/proprietary/lib/modules/pcbc.ko:/system/lib/modules/pcbc.ko \
-    device/motorola/sholest/proprietary/lib/modules/wl127x-test.ko:/system/lib/modules/wl127x-test.ko \
-    device/motorola/sholest/proprietary/lib/modules/sec.ko:/system/lib/modules/sec.ko \
-    device/motorola/sholest/proprietary/lib/modules/modem_pm_driver.ko:/system/lib/modules/modem_pm_driver.ko \
-    device/motorola/sholest/proprietary/lib/modules/tiwlan_drv.ko:/system/lib/modules/tiwlan_drv.ko \
-    device/motorola/sholest/proprietary/lib/modules/tiap_drv.ko:/system/lib/modules/tiap_drv.ko \
-    device/motorola/sholest/proprietary/lib/modules/hid-dummy.ko:/system/lib/modules/hid-dummy.ko \
-    device/motorola/sholest/proprietary/lib/modules/netmux_linkdriver.ko:/system/lib/modules/netmux_linkdriver.ko
+    device/motorola/sholest/proprietary/lib/modules/2.6.29-omap/netmux.ko:/system/lib/modules/2.6.29-omap/netmux.ko \
+    device/motorola/sholest/proprietary/lib/modules/2.6.29-omap/output.ko:/system/lib/modules/2.6.29-omap/output.ko \
+    device/motorola/sholest/proprietary/lib/modules/2.6.29-omap/pcbc.ko:/system/lib/modules/2.6.29-omap/pcbc.ko \
+    device/motorola/sholest/proprietary/lib/modules/2.6.29-omap/wl127x-test.ko:/system/lib/modules/2.6.29-omap/wl127x-test.ko \
+    device/motorola/sholest/proprietary/lib/modules/2.6.29-omap/sec.ko:/system/lib/modules/2.6.29-omap/sec.ko \
+    device/motorola/sholest/proprietary/lib/modules/2.6.29-omap/modem_pm_driver.ko:/system/lib/modules/2.6.29-omap/modem_pm_driver.ko \
+    device/motorola/sholest/proprietary/lib/modules/2.6.29-omap/tiwlan_drv.ko:/system/lib/modules/2.6.29-omap/tiwlan_drv.ko \
+    device/motorola/sholest/proprietary/lib/modules/2.6.29-omap/tiap_drv.ko:/system/lib/modules/2.6.29-omap/tiap_drv.ko \
+    device/motorola/sholest/proprietary/lib/modules/2.6.29-omap/hid-dummy.ko:/system/lib/modules/2.6.29-omap/hid-dummy.ko \
+    device/motorola/sholest/proprietary/lib/modules/2.6.29-omap/netmux_linkdriver.ko:/system/lib/modules/2.6.29-omap/netmux_linkdriver.ko
 
 
 PRODUCT_COPY_FILES += \
