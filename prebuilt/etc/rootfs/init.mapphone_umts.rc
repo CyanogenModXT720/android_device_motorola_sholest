@@ -24,6 +24,7 @@ on init
     # Reset system time
     write /sys/class/rtc/rtc0/unsecured_rtc on
 
+
 # Power Management
     write /sys/power/sleep_while_idle 1
     write /sys/power/enable_off_mode 1
@@ -49,6 +50,16 @@ on init
 
 # enable usb adb mode
     write /dev/usb_device_mode msc_adb
+
+# battery start
+on property:persist.sys.one_percent_batt=0
+    stop batt2d
+    start battd
+
+on property:persist.sys.one_percent_batt=1
+    stop batt2d
+    start battd
+
 
 # usb permissions
 chmod 0660 /dev/mtp

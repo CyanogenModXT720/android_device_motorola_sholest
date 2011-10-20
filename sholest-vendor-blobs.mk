@@ -14,7 +14,7 @@
 
 # Prebuilt libraries that are needed to build open-source libraries
 PRODUCT_COPY_FILES := \
-device/motorola/sholest/proprietary/lib/libgps.so:obj/lib/libgps.so \
+    device/motorola/sholest/proprietary/lib/libgps.so:obj/lib/libgps.so \
     device/motorola/sholest/proprietary/lib/libcamera.so:obj/lib/libcamera.so \
     device/motorola/sholest/proprietary/lib/libaudio.so:obj/lib/libaudio.so 
 
@@ -43,7 +43,7 @@ PRODUCT_COPY_FILES += \
     device/motorola/sholest/proprietary/etc/motorola/comm_drv/plmn_text_table.bin:/system/etc/motorola/comm_drv/plmn_text_table.bin \
     device/motorola/sholest/proprietary/etc/motorola/comm_drv/commdrv_fs.sh:/system/etc/motorola/comm_drv/commdrv_fs.sh \
     device/motorola/sholest/proprietary/etc/motorola/comm_drv/mmins_settings.cfg:/system/etc/motorola/comm_drv/mmins_settings.cfg \
-	device/motorola/sholest/proprietary/etc/motorola/comm_drv/mmins_cust_emergency_number.cfg:/system/etc/motorola/comm_drv/mmins_cust_emergency_number.cfg \
+    device/motorola/sholest/proprietary/etc/motorola/comm_drv/mmins_cust_emergency_number.cfg:/system/etc/motorola/comm_drv/mmins_cust_emergency_number.cfg \
     device/motorola/sholest/proprietary/etc/firmware/wl1271.bin:/system/etc/firmware/wl1271.bin \
     device/motorola/sholest/proprietary/etc/wifi/wpa_supplicant.conf:/system/etc/wifi/wpa_supplicant.conf \
     device/motorola/sholest/proprietary/etc/wifi/hostapd.conf.templet:/system/etc/wifi/hostapd.conf.templet \
@@ -107,7 +107,7 @@ PRODUCT_COPY_FILES += \
 
     #device/motorola/sholest/proprietary/lib/libsktdrm.so:/system/lib/libsktdrm.so 
 PRODUCT_COPY_FILES += \
-    device/motorola/sholest/proprietary/lib/hw/gralloc.omap3.so:obj/lib/hw/gralloc.omap3.so  \
+    device/motorola/sholest/proprietary/lib/hw/gralloc.omap3.so:system/lib/hw/gralloc.omap3.so  \
     device/motorola/sholest/proprietary/lib/egl/libGLESv2_POWERVR_SGX530_121.so:/system/lib/egl/libGLESv2_POWERVR_SGX530_121.so \
     device/motorola/sholest/proprietary/lib/egl/libGLESv1_CM_POWERVR_SGX530_121.so:/system/lib/egl/libGLESv1_CM_POWERVR_SGX530_121.so \
     device/motorola/sholest/proprietary/lib/egl/libEGL_POWERVR_SGX530_121.so:/system/lib/egl/libEGL_POWERVR_SGX530_121.so \
@@ -129,7 +129,7 @@ PRODUCT_COPY_FILES += \
     device/motorola/sholest/proprietary/lib/libHPImgApi.so:/system/lib/libHPImgApi.so \
     device/motorola/sholest/proprietary/lib/liboemcamera.so:/system/lib/liboemcamera.so \
     device/motorola/sholest/proprietary/lib/libtpa_core.so:/system/lib/libtpa_core.so \
-    device/motorola/sholest/proprietary/lib/libril-moto-umts-1.so:obj/lib/libril-moto-umts-1.so \
+    device/motorola/sholest/proprietary/lib/libril-moto-umts-1.so:system/lib/libril-moto-umts-1.so \
     device/motorola/sholest/proprietary/lib/libfmradio.so:/system/lib/libfmradio.so \
     device/motorola/sholest/proprietary/lib/libfmradio_jni.so:/system/lib/libfmradio_jni.so \
     device/motorola/sholest/proprietary/lib/libfmradiostackservice.so:/system/lib/libfmradiostackservice.so
@@ -172,6 +172,6 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_COPY_FILES += \
     device/motorola/sholest/proprietary/app/FMRadio-fwals.apk:/system/app/FMRadio.apk 
-##    device/motorola/sholest/proprietary/app/Usb.apk:/system/app/Usb.apk #while can't use buildded from source   
+    device/motorola/sholest/proprietary/app/Usb.apk:/system/app/Usb.apk #while can't use buildded from source  
 
 
