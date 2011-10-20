@@ -1,0 +1,2 @@
+#!/bin/sh
+head -n 0 /dev/qts_dev
