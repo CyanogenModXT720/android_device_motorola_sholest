@@ -19,8 +19,6 @@
 # not specialized for any geography.
 #
 
-SHOLEST_CM6_RELEASE=7.1.0
-
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
 # The gps config appropriate for this device
@@ -91,6 +89,7 @@ PRODUCT_PACKAGES += \
     libOMX.TI.WMA.decode \
     libOMX.TI.Video.Decoder \
     libOMX.TI.Video.encoder \
+    libOMX.TI.JPEG.Encoder \
     libVendor_ti_omx \
     libLCML \
     libOMX_Core \
