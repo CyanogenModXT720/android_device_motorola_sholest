@@ -46,8 +46,9 @@ char const*const LCD_FILE
 char const*const ALS_FILE
         = "/sys/class/leds/lcd-backlight/als";
 
-char const*const KEYBOARD_FILE
-        = "/sys/class/leds/keyboard-backlight/brightness";
+// XT720 DON"T HAVE KEYBOARD!
+//char const*const KEYBOARD_FILE
+//        = "/sys/class/leds/keyboard-backlight/brightness";
 char const*const BUTTON_FILE
         = "/sys/class/leds/button-backlight/brightness";
 
@@ -136,7 +137,10 @@ set_light_backlight(struct light_device_t* dev,
     return err;
 }
 
-static int
+/* Well, we don't have keyboard, so we don't need that.
+ *
+ *
+ * static int
 set_light_keyboard(struct light_device_t* dev,
         struct light_state_t const* state)
 {
@@ -148,7 +152,7 @@ set_light_keyboard(struct light_device_t* dev,
     pthread_mutex_unlock(&g_lock);
 
     return err;
-}
+}*/
 
 static int
 set_light_buttons(struct light_device_t* dev,
@@ -173,7 +177,7 @@ set_light_battery(struct light_device_t* dev,
 
     /**
      * there is a charging LED on the droid, but not sure how it gets set
-     *
+     * on xt720 we don't have charging led, no we don't need it.
 
     int red, green, blue;
     unsigned int colorRGB;
@@ -238,7 +242,7 @@ set_light_locked(unsigned int color, int blink)
     }
     return err;
 }
-
+// XT720 -> do we need it? 
 static int
 set_light_notification(struct light_device_t* dev,
         struct light_state_t const* state)
@@ -319,9 +323,10 @@ static int open_lights(const struct hw_module_t* module, char const* name,
     if (0 == strcmp(LIGHT_ID_BACKLIGHT, name)) {
         set_light = set_light_backlight;
     }
-    else if (0 == strcmp(LIGHT_ID_KEYBOARD, name)) {
-        set_light = set_light_keyboard;
-    }
+  // No keyboard, so ignore that.
+  // else if (0 == strcmp(LIGHT_ID_KEYBOARD, name)) {
+     //   set_light = set_light_keyboard;
+   // }
     else if (0 == strcmp(LIGHT_ID_BUTTONS, name)) {
         set_light = set_light_buttons;
     }
@@ -363,7 +368,7 @@ const struct hw_module_t HAL_MODULE_INFO_SYM = {
     .version_major = 1,
     .version_minor = 0,
     .id = LIGHTS_HARDWARE_MODULE_ID,
-    .name = "TI OMAP lights Module",
+    .name = "sholest lights Module",
     .author = "Google, Inc.",
     .methods = &lights_module_methods,
 };

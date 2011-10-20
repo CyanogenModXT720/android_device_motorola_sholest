@@ -11,6 +11,8 @@ ro.usb.use_custom_service=1
 # 3 -> GSM/WCDMA (auto mode, according to PRL)
 ro.telephony.default_network=3
 
+#Wifi interface
+
 wifi.interface = tiwlan0
 # Time between scans in seconds. Keep it high to minimize battery drain.
 # This only affects the case in which there are remembered access points,
@@ -28,17 +30,10 @@ dalvik.vm.heapsize=28m
 # (dexopt-cache-only overrides dexopt-data-only, so use it with care) 
 dalvik.vm.dexopt-cache-only=0
 
-#proximit sensor screen off delay
-mot.proximity.delay=450
 
-#proximit sensor disable touch distance 
-mot.proximity.distance=100
+#One procent battery mode
 
 persist.sys.one_percent_batt=0
-
-persist.sys.qtouch_num=2
-
-## Specific properties available only in CM6 for Milestone
 
 # set to 0 if you don't use a dock but a case with a magentic closure
 ro.config.dockobserver=1
@@ -57,9 +52,9 @@ dalvik.vm.dexopt-cache-only=0
 # useful when using a solar power adapter (fluctuating power)
 ro.config.no_action_on_plug=0
 
-##
-
-windowsmgr.max_events_per_sec=60
+## Disable propriretary encoders
+jpeg.libskiahw.encoder.enable=0
+jpeg.libskiahw.decoder.enable=0
 
 # Maximum time (in msec) we allow the CallerInfo query to run,
 # before giving up and falling back to the default ringtone.
