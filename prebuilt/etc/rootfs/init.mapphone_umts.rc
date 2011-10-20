@@ -295,6 +295,21 @@ on property:persist.sys.qtouch_num=4
 on property:persist.sys.qtouch_num=5
     write /proc/qtouch/num_touch 5
 
+# Power up to normal
+on property:tcmd.suspend=0
+    class_start pre-zygote_services
+    class_start zygote_services
+    class_start post-zygote_services
+
+# Power up to suspend 
+on property:tcmd.suspend=1
+    class_start pre-zygote_services
+    class_start post-zygote_services
+
+# Normal to suspend 
+on property:tcmd.suspend=2
+    class_stop zygote_services
+
 on property:init.svc.wpa_supplicant=stopped
     stop dhcpcd
 
