@@ -107,7 +107,7 @@ PRODUCT_COPY_FILES += \
 
     #device/motorola/sholest/proprietary/lib/libsktdrm.so:/system/lib/libsktdrm.so 
 PRODUCT_COPY_FILES += \
-    device/motorola/sholest/proprietary/lib/hw/gralloc.omap3.so:system/lib/hw/gralloc.omap3.so  \
+    device/motorola/sholest/proprietary/lib/hw/gralloc.omap3.so:/system/lib/hw/gralloc.omap3.so  \
     device/motorola/sholest/proprietary/lib/egl/libGLESv2_POWERVR_SGX530_121.so:/system/lib/egl/libGLESv2_POWERVR_SGX530_121.so \
     device/motorola/sholest/proprietary/lib/egl/libGLESv1_CM_POWERVR_SGX530_121.so:/system/lib/egl/libGLESv1_CM_POWERVR_SGX530_121.so \
     device/motorola/sholest/proprietary/lib/egl/libEGL_POWERVR_SGX530_121.so:/system/lib/egl/libEGL_POWERVR_SGX530_121.so \
@@ -129,7 +129,7 @@ PRODUCT_COPY_FILES += \
     device/motorola/sholest/proprietary/lib/libHPImgApi.so:/system/lib/libHPImgApi.so \
     device/motorola/sholest/proprietary/lib/liboemcamera.so:/system/lib/liboemcamera.so \
     device/motorola/sholest/proprietary/lib/libtpa_core.so:/system/lib/libtpa_core.so \
-    device/motorola/sholest/proprietary/lib/libril-moto-umts-1.so:system/lib/libril-moto-umts-1.so \
+    device/motorola/sholest/proprietary/lib/libril-moto-umts-1.so:/system/lib/libril-moto-umts-1.so \
     device/motorola/sholest/proprietary/lib/libfmradio.so:/system/lib/libfmradio.so \
     device/motorola/sholest/proprietary/lib/libfmradio_jni.so:/system/lib/libfmradio_jni.so \
     device/motorola/sholest/proprietary/lib/libfmradiostackservice.so:/system/lib/libfmradiostackservice.so
