@@ -29,6 +29,7 @@ $(call inherit-product-if-exists, vendor/motorola/sholest/sholest-vendor.mk)
 
 ## (2)  Finally, the least specific parts, i.e. the non-GSM-specific aspects
 PRODUCT_PROPERTY_OVERRIDES += \
+	qemu.sf.lcd_density=240 \
 	ro.setupwizard.enterprise_mode=1 \
         ro.com.google.clientid=android-motorola \
 	ro.com.google.clientidbase=android-motorola \
