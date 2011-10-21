@@ -90,7 +90,13 @@ chown mot_usb mot_usb /proc/mtpctl
     insmod /system/lib/modules/mbcache.ko
     insmod /system/lib/modules/jbd2.ko
     insmod /system/lib/modules/ext4.ko
+
+    insmod /system/lib/modules/symsearch.ko
+    insmod /system/lib/modules/cpufreq_stats.ko
     insmod /system/lib/modules/cpufreq_conservative.ko
+    insmod /system/lib/modules/cpufreq_interactive.ko
+    insmod /system/lib/modules/cpufreq_smartass.ko
+    insmod /system/lib/modules/overclock.ko
     
     chmod 0666 /dev/DspBridge
     class_start media_early_init
