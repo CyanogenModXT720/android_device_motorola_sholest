@@ -36,6 +36,8 @@ ro.config.dockobserver=1
 # swap volume keys in landscape mode
 ro.config.volume_keys_rotation=1
 
+ro.config.vc_call_vol_steps=7
+
 # By default, the dalvik-cache of apps in /system is stored in /cache,
 # of apps in /data and sdcard in /data. When set to 1, dalvik-cache of
 # all apps will be stored in /cache.
