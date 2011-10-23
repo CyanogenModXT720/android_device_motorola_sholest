@@ -16,20 +16,9 @@
 PRODUCT_COPY_FILES := \
     device/motorola/sholest/proprietary/lib/libgps.so:obj/lib/libgps.so \
     device/motorola/sholest/proprietary/lib/libcamera.so:obj/lib/libcamera.so \
-    device/motorola/sholest/proprietary/lib/liboemcamera.so:obj/lib/liboemcamera.so \
-    device/motorola/sholest/proprietary/lib/libaudio.so:obj/lib/libaudio.so \
-    device/motorola/sholest/proprietary/lib/libril-moto-umts-1.so:obj/lib/libril-moto-umts-1.so \
-    device/motorola/sholest/proprietary/lib/hw/gralloc.omap3.so:obj/lib/hw/gralloc.omap3.so 
-    #device/motorola/sholest/proprietary/lib/hw/lights.sholes.so:obj/lib/hw/lights.sholes.so   # we already have them from source
-    #device/motorola/sholest/proprietary/lib/hw/sensors.sholes.so:obj/lib/hw/sensors.sholes.so # either
+    device/motorola/sholest/proprietary/lib/libaudio.so:obj/lib/libaudio.so 
 
 # All the blobs necessary 
-PRODUCT_COPY_FILES += \
-    device/motorola/sholest/proprietary/etc/cameraCalFileDef.bin:/system/etc/cameraCalFileDef.bin 
-
-PRODUCT_COPY_FILES += \
-    device/motorola/sholest/proprietary/etc/gpsconfig.xml:/system/etc/gpsconfig.xml 
-
 PRODUCT_COPY_FILES += \
     device/motorola/sholest/proprietary/etc/motorola/bp_nvm_default/File_Audio4:/system/etc/motorola/bp_nvm_default/File_Audio4 \
     device/motorola/sholest/proprietary/etc/motorola/bp_nvm_default/File_Audio1_AMR_WB:/system/etc/motorola/bp_nvm_default/File_Audio1_AMR_WB \
@@ -54,21 +43,21 @@ PRODUCT_COPY_FILES += \
     device/motorola/sholest/proprietary/etc/motorola/comm_drv/plmn_text_table.bin:/system/etc/motorola/comm_drv/plmn_text_table.bin \
     device/motorola/sholest/proprietary/etc/motorola/comm_drv/commdrv_fs.sh:/system/etc/motorola/comm_drv/commdrv_fs.sh \
     device/motorola/sholest/proprietary/etc/motorola/comm_drv/mmins_settings.cfg:/system/etc/motorola/comm_drv/mmins_settings.cfg \
-	device/motorola/sholest/proprietary/etc/motorola/comm_drv/mmins_cust_emergency_number.cfg:/system/etc/motorola/comm_drv/mmins_cust_emergency_number.cfg
-
-PRODUCT_COPY_FILES += \
+    device/motorola/sholest/proprietary/etc/motorola/comm_drv/mmins_cust_emergency_number.cfg:/system/etc/motorola/comm_drv/mmins_cust_emergency_number.cfg \
     device/motorola/sholest/proprietary/etc/firmware/wl1271.bin:/system/etc/firmware/wl1271.bin \
     device/motorola/sholest/proprietary/etc/wifi/wpa_supplicant.conf:/system/etc/wifi/wpa_supplicant.conf \
     device/motorola/sholest/proprietary/etc/wifi/hostapd.conf.templet:/system/etc/wifi/hostapd.conf.templet \
     device/motorola/sholest/proprietary/etc/wifi/fw_wlan1271.bin:/system/etc/wifi/fw_wlan1271.bin \
     device/motorola/sholest/proprietary/etc/wifi/fw_tiwlan_ap.bin:/system/etc/wifi/fw_tiwlan_ap.bin \
-    device/motorola/sholest/proprietary/etc/wifi/tiwlan_ap.ini:/system/etc/wifi/tiwlan_ap.ini
+    device/motorola/sholest/proprietary/etc/wifi/tiwlan_ap.ini:/system/etc/wifi/tiwlan_ap.ini \
+    device/motorola/sholest/proprietary/etc/fm_rx_init_1273.2.bts:/system/etc/fm_rx_init_1273.2.bts \
+    device/motorola/sholest/proprietary/etc/fmc_init_1273.2.bts:/system/etc/fmc_init_1273.2.bts \
+    device/motorola/sholest/proprietary/etc/gpsconfig.xml:/system/etc/gpsconfig.xml \
+    device/motorola/sholest/proprietary/etc/cameraCalFileDef.bin:/system/etc/cameraCalFileDef.bin 
 
 PRODUCT_COPY_FILES += \
-    device/motorola/sholest/proprietary/usr/bin/nvm_daemon:/system/bin/nvm_daemon \
-    device/motorola/sholest/proprietary/usr/bin/brcm_guci_drv:/system/bin/brcm_guci_drv \
-
-PRODUCT_COPY_FILES += \
+    device/motorola/sholest/proprietary/bin/nvm_daemon:/system/bin/nvm_daemon \
+    device/motorola/sholest/proprietary/bin/brcm_guci_drv:/system/bin/brcm_guci_drv \
     device/motorola/sholest/proprietary/bin/init_prep_keypad.sh:/system/bin/init_prep_keypad.sh \
     device/motorola/sholest/proprietary/bin/dnsmasq_mot:/system/bin/dnsmasq_mot \
     device/motorola/sholest/proprietary/bin/battd:/system/bin/battd \
@@ -81,9 +70,8 @@ PRODUCT_COPY_FILES += \
     device/motorola/sholest/proprietary/bin/pvrsrvinit:/system/bin/pvrsrvinit \
     device/motorola/sholest/proprietary/bin/location:/system/bin/location \
     device/motorola/sholest/proprietary/bin/usbd:/system/bin/usbd \
-
-PRODUCT_COPY_FILES += \
-    device/motorola/sholest/proprietary/xbin/ssmgrd:/system/xbin/ssmgrd 
+    device/motorola/sholest/proprietary/bin/fmradioserver:/system/bin/fmradioserver \
+    device/motorola/sholest/proprietary/bin/ssmgrd:/system/bin/ssmgrd 
 
 PRODUCT_COPY_FILES += \
     device/motorola/sholest/proprietary/usr/keylayout/sholesp1a-keypad.kl:/system/usr/keylayout/sholesp1a-keypad.kl \
@@ -117,20 +105,16 @@ PRODUCT_COPY_FILES += \
     device/motorola/sholest/proprietary/usr/keychars/sholestabletp3cu-keypad.kcm.bin:/system/usr/keychars/sholestabletp3cu-keypad.kcm.bin \
     device/motorola/sholest/proprietary/usr/keychars/sholestabletp3skt-keypad.kcm.bin:/system/usr/keychars/sholestabletp3skt-keypad.kcm.bin
 
+    #device/motorola/sholest/proprietary/lib/libsktdrm.so:/system/lib/libsktdrm.so 
 PRODUCT_COPY_FILES += \
-    device/motorola/sholest/proprietary/lib/hw/gralloc.omap3.so:/system/lib/hw/gralloc.omap3.so
-
-PRODUCT_COPY_FILES += \
+    device/motorola/sholest/proprietary/lib/hw/gralloc.omap3.so:/system/lib/hw/gralloc.omap3.so  \
     device/motorola/sholest/proprietary/lib/egl/libGLESv2_POWERVR_SGX530_121.so:/system/lib/egl/libGLESv2_POWERVR_SGX530_121.so \
     device/motorola/sholest/proprietary/lib/egl/libGLESv1_CM_POWERVR_SGX530_121.so:/system/lib/egl/libGLESv1_CM_POWERVR_SGX530_121.so \
     device/motorola/sholest/proprietary/lib/egl/libEGL_POWERVR_SGX530_121.so:/system/lib/egl/libEGL_POWERVR_SGX530_121.so \
-    device/motorola/sholest/proprietary/lib/libpvrANDROID_WSEGL.so:/system/lib/libpvrANDROID_WSEGL.so
-
-PRODUCT_COPY_FILES += \
+    device/motorola/sholest/proprietary/lib/libpvrANDROID_WSEGL.so:/system/lib/libpvrANDROID_WSEGL.so \
     device/motorola/sholest/proprietary/lib/libIMGegl.so:/system/lib/libIMGegl.so \
     device/motorola/sholest/proprietary/lib/libsrv_um.so:/system/lib/libsrv_um.so \
     device/motorola/sholest/proprietary/lib/libssmgr.so:/system/lib/libssmgr.so \
-    device/motorola/sholest/proprietary/lib/libsktdrm.so:/system/lib/libsktdrm.so \
     device/motorola/sholest/proprietary/lib/libtpa.so:/system/lib/libtpa.so \
     device/motorola/sholest/proprietary/lib/libpvr2d.so:/system/lib/libpvr2d.so \
     device/motorola/sholest/proprietary/lib/libcamera.so:/system/lib/libcamera.so \
@@ -146,19 +130,21 @@ PRODUCT_COPY_FILES += \
     device/motorola/sholest/proprietary/lib/liboemcamera.so:/system/lib/liboemcamera.so \
     device/motorola/sholest/proprietary/lib/libtpa_core.so:/system/lib/libtpa_core.so \
     device/motorola/sholest/proprietary/lib/libril-moto-umts-1.so:/system/lib/libril-moto-umts-1.so \
-
+    device/motorola/sholest/proprietary/lib/libfmradio.so:/system/lib/libfmradio.so \
+    device/motorola/sholest/proprietary/lib/libfmradio_jni.so:/system/lib/libfmradio_jni.so \
+    device/motorola/sholest/proprietary/lib/libfmradiostackservice.so:/system/lib/libfmradiostackservice.so
 
 PRODUCT_COPY_FILES += \
     device/motorola/sholest/proprietary/lib/modules/netmux.ko:/system/lib/modules/netmux.ko \
     device/motorola/sholest/proprietary/lib/modules/output.ko:/system/lib/modules/output.ko \
     device/motorola/sholest/proprietary/lib/modules/pcbc.ko:/system/lib/modules/pcbc.ko \
-    device/motorola/sholest/proprietary/lib/modules/wl127x-test.ko:/system/lib/modules/wl127x-test.ko \
     device/motorola/sholest/proprietary/lib/modules/sec.ko:/system/lib/modules/sec.ko \
     device/motorola/sholest/proprietary/lib/modules/modem_pm_driver.ko:/system/lib/modules/modem_pm_driver.ko \
     device/motorola/sholest/proprietary/lib/modules/tiwlan_drv.ko:/system/lib/modules/tiwlan_drv.ko \
     device/motorola/sholest/proprietary/lib/modules/tiap_drv.ko:/system/lib/modules/tiap_drv.ko \
     device/motorola/sholest/proprietary/lib/modules/hid-dummy.ko:/system/lib/modules/hid-dummy.ko \
     device/motorola/sholest/proprietary/lib/modules/netmux_linkdriver.ko:/system/lib/modules/netmux_linkdriver.ko
+
 
 PRODUCT_COPY_FILES += \
     device/motorola/sholest/proprietary/lib/dsp/wmadec_sn.dll64P:/system/lib/dsp/wmadec_sn.dll64P \
@@ -180,15 +166,12 @@ PRODUCT_COPY_FILES += \
     device/motorola/sholest/proprietary/lib/dsp/conversions.dll64P:/system/lib/dsp/conversions.dll64P \
     device/motorola/sholest/proprietary/lib/dsp/baseimage.dof:/system/lib/dsp/baseimage.dof
 
+#location proxy
+PRODUCT_COPY_FILES += \
+	device/motorola/sholest/proprietary/framework/com.motorola.android.location.jar:system/framework/com.motorola.android.location.jar
 
 PRODUCT_COPY_FILES += \
-    device/motorola/sholest/proprietary/app/FMRadio-fwals.apk:/system/app/FMRadio.apk \
-    device/motorola/sholest/proprietary/bin/fmradioserver:/system/bin/fmradioserver \
-    device/motorola/sholest/proprietary/etc/fm_rx_init_1273.2.bts:/system/etc/fm_rx_init_1273.2.bts \
-    device/motorola/sholest/proprietary/etc/fmc_init_1273.2.bts:/system/etc/fmc_init_1273.2.bts \
-    device/motorola/sholest/proprietary/lib/libfmradio.so:/system/lib/libfmradio.so \
-    device/motorola/sholest/proprietary/lib/libfmradio_jni.so:/system/lib/libfmradio_jni.so \
-    device/motorola/sholest/proprietary/lib/libfmradiostackservice.so:/system/lib/libfmradiostackservice.so
-    device/motorola/sholest/proprietary/app/Usb.apk:/system/app/Usb.apk #while can't use buildded from source   
+    device/motorola/sholest/proprietary/app/FMRadio-fwals.apk:/system/app/FMRadio.apk 
+    device/motorola/sholest/proprietary/app/Usb.apk:/system/app/Usb.apk #while can't use buildded from source  
 
 

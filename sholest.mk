@@ -19,22 +19,15 @@
 # not specialized for any geography.
 #
 
-SHOLEST_CM6_RELEASE=7.1.0
-
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
 # The gps config appropriate for this device
 $(call inherit-product, device/common/gps/gps_eu_supl.mk)
 
-## (1) First, the most specific values, i.e. the aspects that are specific to GSM
-
-PRODUCT_COPY_FILES += \
-    device/motorola/sholest/init.mapphone_umts.rc:root/init.mapphone_umts.rc
-
-## (2) Also get non-open-source GSM-specific aspects if available
+## (1) Also get non-open-source GSM-specific aspects if available
 $(call inherit-product-if-exists, vendor/motorola/sholest/sholest-vendor.mk)
 
-## (3)  Finally, the least specific parts, i.e. the non-GSM-specific aspects
+## (2)  Finally, the least specific parts, i.e. the non-GSM-specific aspects
 PRODUCT_PROPERTY_OVERRIDES += \
 	qemu.sf.lcd_density=190 \
 	ro.sf.lcd_density=190 \
@@ -45,19 +38,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
         ro.com.google.clientid=android-motorola \
 	ro.com.google.clientidbase=android-motorola \
 	ro.com.google.locationfeatures=1 \
-	ro.url.legal=http://www.google.com/intl/%s/mobile/android/basic/phone-legal.html \
-	ro.url.legal.android_privacy=http://www.google.com/intl/%s/mobile/android/basic/privacy.html \
-	ro.config.vc_call_vol_steps=7 \
 	ro.telephony.call_ring.multiple=false \
 	ro.telephony.call_ring.delay=3000 \
 	ro.url.safetylegal=http://www.motorola.com/staticfiles/Support/legal/?model=MilestoneXT720 \
 	ro.setupwizard.enable_bypass=1 \
 	ro.media.dec.jpeg.memcap=20000000 \
 	dalvik.vm.lockprof.threshold=500 \
-	dalvik.vm.dexopt-flags=m=y \
-        ro.product.multi_touch_enabled=true \
-        ro.product.max_num_touch=4 \
-        ro.com.google.gmsversion=2.2_r8 
+	dalvik.vm.dexopt-flags=m=y 
 
 DEVICE_PACKAGE_OVERLAYS += device/motorola/sholest/overlay
 
@@ -93,7 +80,6 @@ PRODUCT_PACKAGES += \
     libOMX.TI.WMA.decode \
     libOMX.TI.Video.Decoder \
     libOMX.TI.Video.encoder \
-    libVendor_ti_omx \
     libLCML \
     libOMX_Core \
     tiwlan.ini \
@@ -109,8 +95,7 @@ PRODUCT_PACKAGES += \
     iwmulticall \
     hostap \
     hostapd.conf \
-    libhostapdcli  \
-    Usb
+    libhostapdcli  
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
 
@@ -133,9 +118,11 @@ PRODUCT_COPY_FILES += \
     device/motorola/sholest/prebuilt/etc/dhcpcd/dhcpcd.conf:/system/etc/dhcpcd/dhcpcd.conf
 
 PRODUCT_COPY_FILES += \
+    device/motorola/sholest/prebuilt/lib/modules/symsearch.ko:/system/lib/modules/symsearch.ko \
     device/motorola/sholest/prebuilt/lib/modules/cpufreq_conservative.ko:/system/lib/modules/cpufreq_conservative.ko \
     device/motorola/sholest/prebuilt/lib/modules/cpufreq_interactive.ko:/system/lib/modules/cpufreq_interactive.ko \
     device/motorola/sholest/prebuilt/lib/modules/cpufreq_smartass.ko:/system/lib/modules/cpufreq_smartass.ko \
+    device/motorola/sholest/prebuilt/lib/modules/cpufreq_stats.ko:/system/lib/modules/cpufreq_stats.ko \
     device/motorola/sholest/prebuilt/lib/modules/crc16.ko:/system/lib/modules/crc16.ko \
     device/motorola/sholest/prebuilt/lib/modules/dm-crypt.ko:/system/lib/modules/dm-crypt.ko \
     device/motorola/sholest/prebuilt/lib/modules/dm-mod.ko:/system/lib/modules/dm-mod.ko \
@@ -151,15 +138,12 @@ PRODUCT_COPY_FILES += \
     device/motorola/sholest/prebuilt/lib/modules/netmux_linkdriver.ko:/system/lib/modules/netmux_linkdriver.ko \
     device/motorola/sholest/prebuilt/lib/modules/output.ko:/system/lib/modules/output.ko \
     device/motorola/sholest/prebuilt/lib/modules/overclock.ko:/system/lib/modules/overclock.ko \
-    device/motorola/sholest/prebuilt/lib/modules/overclock_milestone_21.ko:/system/lib/modules/overclock_milestone_21.ko \
     device/motorola/sholest/prebuilt/lib/modules/pcbc.ko:/system/lib/modules/pcbc.ko \
     device/motorola/sholest/prebuilt/lib/modules/sec.ko:/system/lib/modules/sec.ko \
     device/motorola/sholest/prebuilt/lib/modules/tiap_drv.ko:/system/lib/modules/tiap_drv.ko \
     device/motorola/sholest/prebuilt/lib/modules/tiwlan_drv.ko:/system/lib/modules/tiwlan_drv.ko \
     device/motorola/sholest/prebuilt/lib/modules/twofish_common.ko:/system/lib/modules/twofish_common.ko \
-    device/motorola/sholest/prebuilt/lib/modules/twofish.ko:/system/lib/modules/twofish.ko \
-    device/motorola/sholest/prebuilt/lib/modules/wl127x_test.ko:/system/lib/modules/wl127x_test.ko \
-    device/motorola/sholest/prebuilt/lib/modules/wl127x-test.ko:/system/lib/modules/wl127x-test.ko
+    device/motorola/sholest/prebuilt/lib/modules/twofish.ko:/system/lib/modules/twofish.ko 
 
 PRODUCT_COPY_FILES += \
     device/motorola/sholest/prebuilt/persistent/orbootstrap/sh:/system/persistent/orbootstrap/sh \
@@ -197,6 +181,7 @@ PRODUCT_COPY_FILES += \
     device/motorola/sholest/prebuilt/persistent/orbootstrap/utils/2nd-init:/system/bin/2nd-init \
     device/motorola/sholest/prebuilt/bin/sh_hijack.sh:/system/bin/sh_hijack.sh \
     device/motorola/sholest/prebuilt/bin/launchGallery:/system/bin/launchGallery \
+    device/motorola/sholest/prebuilt/bin/touchroi:/system/bin/touchroi \
     device/motorola/sholest/prebuilt/etc/rootfs/default.prop:/system/etc/rootfs/default.prop \
     device/motorola/sholest/prebuilt/etc/rootfs/init.mapphone_umts.rc:/system/etc/rootfs/init.mapphone_umts.rc \
     device/motorola/sholest/prebuilt/etc/rootfs/init.rc:/system/etc/rootfs/init.rc

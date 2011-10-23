@@ -29,7 +29,7 @@
     <!-- Flag indicating whether the surface flinger is inefficient
          at performing a blur.  Used by parts of the UI to turn off
          the blur effect where it isn't worth the performance hit. -->
-    <bool name="config_sf_slowBlur">true</bool>
+    <bool name="config_sf_slowBlur">false</bool>
     
     <!-- The duration (in milliseconds) of a short animation. -->
     <integer name="config_shortAnimTime">50</integer>
@@ -104,7 +104,7 @@
          TETHER_DUN_APN.  Value is a comma separated series of strings:
          "name,apn,proxy,port,username,password,server,mmsc,mmsproxy,mmsport,mcc,mnc,auth,type"
          note that empty fields can be ommitted: "name,apn,,,,,,,,,310,260,,DUN" -->
-    <string translatable="false" name="config_tether_apndata">SK telecom,web.sktelecom.com,,,,,,,,,0,0,,DUN</string>
+    <string translatable="false" name="config_tether_apndata"></string>
 
 
     <!-- Flag indicating whether the keyguard should be bypassed when
@@ -336,5 +336,9 @@
     <!-- The default reduced-datarate notification mask -->
     <!-- 2 means give warning -->
     <integer name="config_datause_notification_type">2</integer>
+
+    <string-array name="config_vendorServices">
+        <item>/system/framework/com.motorola.android.location.jar:com.android.server.LocationProxyService</item>
+    </string-array>
 
 </resources>

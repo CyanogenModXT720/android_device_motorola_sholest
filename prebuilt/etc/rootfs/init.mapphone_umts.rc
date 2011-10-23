@@ -24,6 +24,7 @@ on init
     # Reset system time
     write /sys/class/rtc/rtc0/unsecured_rtc on
 
+
 # Power Management
     write /sys/power/sleep_while_idle 1
     write /sys/power/enable_off_mode 1
@@ -50,6 +51,7 @@ on init
 # enable usb adb mode
     write /dev/usb_device_mode msc_adb
 
+
 # usb permissions
 chmod 0660 /dev/mtp
 chmod 0660 /dev/ttyGS0
@@ -59,19 +61,6 @@ chown mot_usb mot_usb /dev/mtp
 chown mot_usb mot_usb /dev/ttyGS0
 chown mot_usb mot_usb /dev/usb_device_mode
 chown mot_usb mot_usb /proc/mtpctl
-
-#moto debug properties
-setprop ro.sys.atvc_allow_gki_log 0
-setprop ro.sys.atvc_allow_bp_log 0
-setprop ro.sys.atvc_allow_ap_mot_log 1
-setprop ro.sys.atvc_allow_netmon_usb 0
-setprop ro.sys.atvc_allow_netmon_ih 0
-setprop ro.sys.atvc_allow_res_core 0
-setprop ro.sys.atvc_allow_res_panic 0
-setprop ro.sys.atvc_allow_all_adb 0
-setprop ro.sys.atvc_allow_all_core 0
-setprop ro.sys.atvc_allow_efem 0
-
 
 # Install kernel modules
     insmod /system/lib/modules/twofish_common.ko
@@ -92,7 +81,13 @@ setprop ro.sys.atvc_allow_efem 0
     insmod /system/lib/modules/mbcache.ko
     insmod /system/lib/modules/jbd2.ko
     insmod /system/lib/modules/ext4.ko
+
+    insmod /system/lib/modules/symsearch.ko
+    insmod /system/lib/modules/cpufreq_stats.ko
     insmod /system/lib/modules/cpufreq_conservative.ko
+    insmod /system/lib/modules/cpufreq_interactive.ko
+    insmod /system/lib/modules/cpufreq_smartass.ko
+    insmod /system/lib/modules/overclock.ko
     
     chmod 0666 /dev/DspBridge
     class_start media_early_init
@@ -289,16 +284,6 @@ mount rootfs rootfs / ro remount
 # Set core max size (2G)
     setrlimit 4 2147483648 2147483648
 
-# The properties introduced by moto
-
-on property:persist.sys.one_percent_batt=0
-    stop batt2d
-    start battd
-
-on property:persist.sys.one_percent_batt=1
-    stop batt2d
-    start battd
-
 on property:sys.chargeonly.mode=1
     start console
     exec /system/bin/charge_only_mode
@@ -329,59 +314,21 @@ on property:tcmd.suspend=1
     class_start pre-zygote_services
     class_start post-zygote_services
 
+# battery start
+on property:persist.sys.one_percent_batt=0
+    stop batt2d
+    start battd
+
+on property:persist.sys.one_percent_batt=1
+    stop batt2d
+    start battd
+
 # Normal to suspend 
 on property:tcmd.suspend=2
     class_stop zygote_services
 
-# aplogd on at boot in emulator
-on property:ro.kernel.qemu=1
-    start aplogd
-
-on property:persist.service.aplogd.enable=1
-    start aplogd
-
-on property:persist.service.aplogd.enable=0
-    stop aplogd
-
-on property:ro.sys.atvc_allow_gki_log=1
-    start gkilogd
-
-on property:ro.sys.atvc_allow_gki_log=0
-    stop gkilogd
-
-# Moto safe power down
-on property:sys.reboot=1
-    stop ssmgrd
-    exec /system/bin/sleep 10
-    exec /system/bin/reboot
-
-on property:sys.shutdown=1
-    stop ssmgrd
-    exec /system/bin/sleep 10
-    exec /system/bin/reboot -p
-
 on property:init.svc.wpa_supplicant=stopped
     stop dhcpcd
-
-# The following services are added by moto
-
-# Set property strings for ATVC logging
-# This conditionally sets :
-# ro.sys.atvc_allow_bp_log
-# ro.sys.atvc_allow_gki_log
-# ro.sys.atvc_allow_ap_mot_log
-# ro.sys.atvc_allow_all_core
-# ro.sys.atvc_allow_res_core
-# ro.sys.atvc_allow_res_panic
-# ro.sys.atvc_allow_efem
-# ro.sys.atvc_allow_netmon_usb
-# ro.sys.atvc_allow_netmon_ih
-# ro.sys.atvc_allow_all_adb
-service atvc /system/bin/dbvc_atvc_property_set
-    class pre-zygote_services
-    user system
-    group system
-    oneshot
 
 service keypadinit /system/bin/sh /system/bin/init_prep_keypad.sh
     class pre-zygote_services
@@ -416,7 +363,6 @@ service gkisystem /system/bin/gkisystem
     socket location_shim stream 660 radio system
     socket gpshal_socket stream 660 radio system
     socket opprofdaemon  stream 660 radio system
-    socket gkilog_sock   stream 660 radio radio
     group radio system mot_accy
     onrestart exec /system/bin/gki_pd_notifier
 
@@ -424,89 +370,16 @@ service fmradio /system/bin/fmradioserver
     class post-zygote_services
     group bluetooth net_raw net_bt net_bt_admin
 
-service rild_tcmd /system/bin/rild_tcmd
-    class pre-zygote_services
-    socket rild_tcmd stream 660 radio radio
-    user radio
-    group radio
-
 service battd /system/bin/battd
     socket battdsock stream 0660 mot_accy mot_accy
     user root
     group mot_accy mot_pwric
     oneshot
 
-#service batt2d /system/bin/batt2d
-#    socket battdsock stream 0660 mot_accy mot_accy
-#    user root
-#    group mot_accy mot_pwric
-#    oneshot
-
-#service catcommands /system/bin/catcommands
-#    class pre-zygote_services
-#    group radio 
-
-#service bplogd_daemon /system/bin/bplogd_daemon
-#    class pre-zygote_services
-#    socket dlog_cmds stream 660 radio log
-#    socket bp_pd_status stream 660 radio log
-#    socket bp_aol_cmd stream 666 radio log
-#    user radio
-#    group radio inet log sdcard_rw
-#    oneshot
-
-service clean_dex /system/bin/sh /system/bin/clean_dex.sh
-    class pre-zygote_services
-    oneshot
-    user system
-    group system 
-
-service ssmgrd /system/xbin/ssmgrd
+service ssmgrd /system/bin/ssmgrd
     class post-zygote_services
     group radio input mot_pwric
     oneshot
-
-#service tcmd /system/bin/tcmd
-#    class post-zygote_services
-#    group mot_tcmd radio mot_pwric input system log camera graphics mot_accy sdcard_rw audio inet bluetooth wifi
-#    socket local_tcmd stream 0660 mot_tcmd mot_tcmd
-#    socket batch_socket stream 0600 mot_tcmd mot_tcmd
-#    oneshot
-
-# turn on wifi for tcmd step one
-on property:tcmd.load_wlan=1
-    insmod /system/lib/modules/tiwlan_drv.ko
-
-# turn on wifi for tcmd step two
-on property:tcmd.load_wlan=2
-    start wlan_loader
-
-# turn on wifi for tcmd step three
-on property:tcmd.load_wlan=3
-    exec /system/bin/ifconfig tiwlan0 up
-
-# turn off wifi for tcmd step one
-on property:tcmd.unload_wlan=1
-    exec /system/bin/ifconfig tiwlan0 down
-
-# turn off wifi for tcmd step two
-on property:tcmd.unload_wlan=2
-    exec /system/bin/rmmod tiwlan_drv
-
-# turn on bluetooth for tcmd
-on property:tcmd.bt_mod=1
-    insmod /system/lib/modules/wl127x-test.ko
-
-#turn off bluetooth for tcmd
-on property:tcmd.bt_mod=0
-    exec /system/bin/rmmod wl127x_test
-
-service panic_daemon /system/bin/panic_daemon
-    class post-zygote_services
-    user radio
-    group radio system graphics
-    socket panic_daemon stream 660 radio radio
-    onrestart exec /system/bin/reboot
 
 # Ecompass daemon
 service akmd2 /system/bin/akmd2
@@ -524,10 +397,6 @@ service wlan_loader /system/bin/wlan_loader \
 service wpa_supplicant /system/bin/wpa_supplicant \
     -Dtiwlan0 -itiwlan0 -c/data/misc/wifi/wpa_supplicant.conf
     class post-zygote_services
-#   we will start as root and wpa_supplicant will switch to user wifi
-#   after setting up the capabilities required for WEXT
-#   user wifi
-#   group wifi inet keystore
     socket wpa_tiwlan0 dgram 660 wifi wifi
     disabled
     oneshot
@@ -558,46 +427,10 @@ service pvrsrv /system/bin/pvrsrvinit
     user root
     oneshot
 
-service pppd /system/xbin/pppd silent ipparam dun plugin /system/lib/libpppd_plugin.so
-    class post-zygote_services
-    user root
-    disabled
-    oneshot
-
 service locDrv /system/bin/brcm_guci_drv -config /system/etc/gpsconfig.xml
     class post-zygote_services
     user radio
     group radio inet sdcard_rw
-
-service pm_init /system/bin/sh /system/bin/pm_init.sh
-    class post-zygote_services
-    oneshot
-
-# aplogd is controlled by the persist.service.aplogd.enable system property
-service aplogd /system/bin/aplogd
-    class post-zygote_services
-    socket ap_aol_cmd  stream 666 system system
-    user log
-    group log system sdcard_rw
-    oneshot
-
-service gkilogd /system/bin/gkilogd
-    class post-zygote_services
-    socket gki_aol_cmd stream 660 radio log
-    user radio
-    group radio log sdcard_rw
-   
-service secclkd /system/bin/secclkd
-    class post-zygote_services
-    user system
-    group system radio
-    oneshot 
-
-# bugreport is triggered by the KEY_LEFTSHIFT and KEY_MENU keycodes
-service bugreport /system/bin/dumpstate -d -v -o /sdcard/bugreports/bugreport
-    disabled
-    oneshot
-    keycodes 42 139
 
 #launchGallery
 service launchgallery /system/bin/launchGallery

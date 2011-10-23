@@ -1,6 +1,5 @@
 ro.keyboard.type=euro_qwerty
 persist.sys.timezone=Asia/Taipei
-ro.fota.enable=0
 sms.convert.char.for.latam=0
 net.dns1=8.8.8.8
 net.dns2=8.8.4.4

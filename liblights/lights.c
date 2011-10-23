@@ -57,13 +57,13 @@ char const*const AF_LED_FILE
 
 /*RGB file descriptors */
 char const*const RED_LED_FILE
-        = "/sys/class/leds/red/brightness";
+        = "/sys/class/leds/red/brightness"; //aka 'play' on three media button (one to the volume rockers)
 char const*const RED_BLINK_FILE
         = "/sys/class/leds/red/blink";
 char const*const GREEN_LED_FILE
-        = "/sys/class/leds/green/brightness";
+        = "/sys/class/leds/green/brightness"; //aka 'camera' on three media button (one in the middle)
 char const*const BLUE_LED_FILE
-        = "/sys/class/leds/blue/brightness";
+        = "/sys/class/leds/blue/brightness"; // aka 'camcoder'
 
 static unsigned int colorstate = 0;
 static int blinkstate = 0;
