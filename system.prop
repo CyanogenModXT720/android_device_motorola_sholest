@@ -115,3 +115,8 @@ ro.com.motorola.smartsensor=true
 networkaddress.cache.ttl=0 
 ro.min_pointer_dur=10 
 
+
+persist.sys.gmaps_hack=1        
+                          
+sys.keep_app_1=        
+sys.keep_app_2=
