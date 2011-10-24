@@ -116,6 +116,7 @@ PRODUCT_COPY_FILES += \
     device/motorola/sholest/prebuilt/etc/init.d/03firstboot:/system/etc/init.d/03firstboot \
     device/motorola/sholest/prebuilt/etc/init.d/04modules:/system/etc/init.d/04modules \
     device/motorola/sholest/prebuilt/etc/init.d/05mountsd:/system/etc/init.d/05mountsd \
+    device/motorola/sholest/prebuilt/etc/init.d/99touch:/system/etc/init.d/99touch \
     device/motorola/sholest/prebuilt/etc/wifi/tiwlan.ini:/system/etc/wifi/tiwlan.ini \
     device/motorola/sholest/prebuilt/etc/dhcpcd/dhcpcd.conf:/system/etc/dhcpcd/dhcpcd.conf
 
