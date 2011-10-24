@@ -35,10 +35,11 @@ TARGET_NO_RADIOIMAGE := true
 
 ## fix crash on 2.6.29 kernels on ARMv7A on several devices
 ARCH_ARM_HAVE_ARMV7A_BUG := true
-## we have fm radio
-HAVE_FM_RADIO := true
 ## also have to fix typo in external/v8/Android.mk
 ## https://github.com/CyanogenModXT720/android_device_motorola_sholest/wiki/todos
+
+## we have fm radio, but we try to manage it native, not via bluetooth
+#BOARD_HAVE_FM_RADIO := true
 
 ## CPU SETTINGS
 TARGET_BOARD_PLATFORM := omap3
