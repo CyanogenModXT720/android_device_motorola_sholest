@@ -44,6 +44,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	ro.setupwizard.enable_bypass=1 \
 	ro.media.dec.jpeg.memcap=20000000 \
 	dalvik.vm.lockprof.threshold=500 \
+	ro.product.locale.language=en \
+	ro.product.locale.region=GB \
 	dalvik.vm.dexopt-flags=m=y 
 
 DEVICE_PACKAGE_OVERLAYS += device/motorola/sholest/overlay

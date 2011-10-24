@@ -120,3 +120,7 @@ persist.sys.gmaps_hack=1
                           
 sys.keep_app_1=        
 sys.keep_app_2=
+
+
+ro.product.locale.language=en
+ro.product.locale.region=GB
