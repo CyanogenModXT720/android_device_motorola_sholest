@@ -11,6 +11,6 @@ rm -f $REPACK/ota/system/xbin/irssi
 cp -f $ANDROID_BUILD_TOP/device/motorola/sholest/updater-script $REPACK/ota/META-INF/com/google/android/updater-script
 
 # Save build manifest into update
-#repo manifest -r -o $REPACK/ota/system/repo-default.xml
-#gzip $REPACK/ota/system/repo-default.xml
+repo manifest -r -o $REPACK/ota/system/repo-default.xml
+gzip $REPACK/ota/system/repo-default.xml
 

@@ -1,14 +1,5 @@
 #!/system/bin/sh
 
-## Insert overclock module
-insmod /system/lib/modules/overclock_milestone_21.ko
-
-## Set the correct omap2_clk_init_cpufreq_table_addr and cpufreq_stats_update_addr address
-adr=`grep -m 1 cpufreq_stats_update /proc/kallsyms | cut -f1 -d" "`
-echo 0x$adr > /proc/overclock/cpufreq_stats_update_addr
-adr=`grep -m 1 omap2_clk_init_cpufreq_table /proc/kallsyms | cut -f1 -d" "`
-echo 0x$adr > /proc/overclock/omap2_clk_init_cpufreq_table_addr
-
 ## Exit if module not loaded
 [ -d /proc/overclock ] || exit
 

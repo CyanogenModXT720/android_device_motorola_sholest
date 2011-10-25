@@ -29,6 +29,7 @@ $(call inherit-product-if-exists, vendor/motorola/sholest/sholest-vendor.mk)
 
 ## (2)  Finally, the least specific parts, i.e. the non-GSM-specific aspects
 PRODUCT_PROPERTY_OVERRIDES += \
+	qemu.sf.lcd_density=240 \
 	ro.setupwizard.enterprise_mode=1 \
         ro.com.google.clientid=android-motorola \
 	ro.com.google.clientidbase=android-motorola \
@@ -114,9 +115,11 @@ PRODUCT_COPY_FILES += \
     device/motorola/sholest/prebuilt/etc/dhcpcd/dhcpcd.conf:/system/etc/dhcpcd/dhcpcd.conf
 
 PRODUCT_COPY_FILES += \
+    device/motorola/sholest/prebuilt/lib/modules/symsearch.ko:/system/lib/modules/symsearch.ko \
     device/motorola/sholest/prebuilt/lib/modules/cpufreq_conservative.ko:/system/lib/modules/cpufreq_conservative.ko \
     device/motorola/sholest/prebuilt/lib/modules/cpufreq_interactive.ko:/system/lib/modules/cpufreq_interactive.ko \
     device/motorola/sholest/prebuilt/lib/modules/cpufreq_smartass.ko:/system/lib/modules/cpufreq_smartass.ko \
+    device/motorola/sholest/prebuilt/lib/modules/cpufreq_stats.ko:/system/lib/modules/cpufreq_stats.ko \
     device/motorola/sholest/prebuilt/lib/modules/crc16.ko:/system/lib/modules/crc16.ko \
     device/motorola/sholest/prebuilt/lib/modules/dm-crypt.ko:/system/lib/modules/dm-crypt.ko \
     device/motorola/sholest/prebuilt/lib/modules/dm-mod.ko:/system/lib/modules/dm-mod.ko \
@@ -132,7 +135,6 @@ PRODUCT_COPY_FILES += \
     device/motorola/sholest/prebuilt/lib/modules/netmux_linkdriver.ko:/system/lib/modules/netmux_linkdriver.ko \
     device/motorola/sholest/prebuilt/lib/modules/output.ko:/system/lib/modules/output.ko \
     device/motorola/sholest/prebuilt/lib/modules/overclock.ko:/system/lib/modules/overclock.ko \
-    device/motorola/sholest/prebuilt/lib/modules/overclock_milestone_21.ko:/system/lib/modules/overclock_milestone_21.ko \
     device/motorola/sholest/prebuilt/lib/modules/pcbc.ko:/system/lib/modules/pcbc.ko \
     device/motorola/sholest/prebuilt/lib/modules/sec.ko:/system/lib/modules/sec.ko \
     device/motorola/sholest/prebuilt/lib/modules/tiap_drv.ko:/system/lib/modules/tiap_drv.ko \
