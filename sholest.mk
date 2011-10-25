@@ -83,9 +83,11 @@ PRODUCT_PACKAGES += \
     libOMX.TI.Video.Decoder \
     libOMX.TI.Video.encoder \
     libOMX.TI.JPEG.Encoder \
+    libLCML \
     libOMX_Core \
     tiwlan.ini \
     dspexec \
+    libbridge \
     overlay.omap3 \
     wlan_cu \
     libtiOsLib \
