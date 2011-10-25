@@ -83,7 +83,6 @@ chown mot_usb mot_usb /proc/mtpctl
     insmod /system/lib/modules/ext4.ko
 
     insmod /system/lib/modules/symsearch.ko
-    insmod /system/lib/modules/cpufreq_stats.ko
     insmod /system/lib/modules/cpufreq_conservative.ko
     insmod /system/lib/modules/cpufreq_interactive.ko
     insmod /system/lib/modules/cpufreq_smartass.ko
