@@ -82,11 +82,10 @@ PRODUCT_PACKAGES += \
     libOMX.TI.WMA.decode \
     libOMX.TI.Video.Decoder \
     libOMX.TI.Video.encoder \
-    libLCML \
+    libOMX.TI.JPEG.Encoder \
     libOMX_Core \
     tiwlan.ini \
     dspexec \
-    libbridge \
     overlay.omap3 \
     wlan_cu \
     libtiOsLib \
@@ -114,7 +113,6 @@ PRODUCT_COPY_FILES += \
     device/motorola/sholest/prebuilt/etc/init.d/01sysctl:/system/etc/init.d/01sysctl \
     device/motorola/sholest/prebuilt/etc/init.d/02cache:/system/etc/init.d/02cache \
     device/motorola/sholest/prebuilt/etc/init.d/03firstboot:/system/etc/init.d/03firstboot \
-    device/motorola/sholest/prebuilt/etc/init.d/04modules:/system/etc/init.d/04modules \
     device/motorola/sholest/prebuilt/etc/init.d/05mountsd:/system/etc/init.d/05mountsd \
     device/motorola/sholest/prebuilt/etc/init.d/99touch:/system/etc/init.d/99touch \
     device/motorola/sholest/prebuilt/etc/wifi/tiwlan.ini:/system/etc/wifi/tiwlan.ini \

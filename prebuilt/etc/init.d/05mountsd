@@ -35,8 +35,8 @@ if [[ -e /dev/block/mmcblk0p2 ]] ; then
     #     ext2.ko | YES   yes   no?
     #     ext4.ko | yes   yes   NO?!?
     #
-    /system/bin/insmod /system/lib/modules/jbd.ko
-    /system/bin/insmod /system/lib/modules/ext3.ko
+    #/system/bin/insmod /system/lib/modules/jbd.ko
+    #/system/bin/insmod /system/lib/modules/ext3.ko
     #insmod /system/lib/modules/ext2.ko
     #insmod /system/lib/modules/jbd2.ko
     #insmod /system/lib/modules/crc16.ko
