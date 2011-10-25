@@ -112,6 +112,8 @@ PRODUCT_COPY_FILES += \
     device/motorola/sholest/proprietary/lib/egl/libGLESv1_CM_POWERVR_SGX530_121.so:/system/lib/egl/libGLESv1_CM_POWERVR_SGX530_121.so \
     device/motorola/sholest/proprietary/lib/egl/libEGL_POWERVR_SGX530_121.so:/system/lib/egl/libEGL_POWERVR_SGX530_121.so \
     device/motorola/sholest/proprietary/lib/libpvrANDROID_WSEGL.so:/system/lib/libpvrANDROID_WSEGL.so \
+    device/motorola/sholest/proprietary/lib/libLCML.so:/system/lib/libLCML.so \
+    device/motorola/sholest/proprietary/lib/libbridge.so:/system/lib/libbridge.so  \
     device/motorola/sholest/proprietary/lib/libIMGegl.so:/system/lib/libIMGegl.so \
     device/motorola/sholest/proprietary/lib/libsrv_um.so:/system/lib/libsrv_um.so \
     device/motorola/sholest/proprietary/lib/libssmgr.so:/system/lib/libssmgr.so \
