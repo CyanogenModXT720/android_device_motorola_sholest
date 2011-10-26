@@ -15,7 +15,7 @@
 #
 
 #
-# This is the product configuration for a generic GSM passion,
+# This is the product configuration for a generic GSM sholest,
 # not specialized for any geography.
 #
 
@@ -96,94 +96,14 @@ PRODUCT_PACKAGES += \
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
 
-# Passion uses high-density artwork where available
+# sholest uses high-density artwork where available
 PRODUCT_LOCALES += hdpi
 
-PRODUCT_COPY_FILES += \
-    device/motorola/sholest/vold.fstab:system/etc/vold.fstab \
-    device/motorola/sholest/prebuilt/default.prop:system/default.prop \
-    device/motorola/sholest/prebuilt/etc/location.cfg:/system/etc/location.cfg \
-    device/motorola/sholest/prebuilt/etc/apns-conf.xml:system/etc/apns-conf.xml \
-    device/motorola/sholest/prebuilt/etc/spn-conf.xml:system/etc/spn-conf.xml \
-    device/motorola/sholest/prebuilt/etc/init.d/04mmcblk:/system/etc/init.d/04mmcblk \
-    device/motorola/sholest/prebuilt/etc/init.d/04symlinks:/system/etc/init.d/04symlinks \
-    device/motorola/sholest/prebuilt/etc/init.d/05mountsd:/system/etc/init.d/05mountsd \
-    device/motorola/sholest/prebuilt/etc/init.d/06swap:/system/etc/init.d/06swap \
-    device/motorola/sholest/prebuilt/etc/init.d/07app2ext:/system/etc/init.d/07app2ext \
-    device/motorola/sholest/prebuilt/etc/init.d/07link2sd:/system/etc/init.d/07link2sd \
-    device/motorola/sholest/prebuilt/etc/init.d/10overclock:/system/etc/init.d/10overclock \
-    device/motorola/sholest/prebuilt/etc/init.d/99touch:/system/etc/init.d/99touch \
-    device/motorola/sholest/prebuilt/etc/wifi/tiwlan.ini:/system/etc/wifi/tiwlan.ini \
-    device/motorola/sholest/prebuilt/etc/dhcpcd/dhcpcd.conf:/system/etc/dhcpcd/dhcpcd.conf
-
-PRODUCT_COPY_FILES += \
-    device/motorola/sholest/prebuilt/lib/modules/symsearch.ko:/system/lib/modules/symsearch.ko \
-    device/motorola/sholest/prebuilt/lib/modules/cpufreq_conservative.ko:/system/lib/modules/cpufreq_conservative.ko \
-    device/motorola/sholest/prebuilt/lib/modules/cpufreq_interactive.ko:/system/lib/modules/cpufreq_interactive.ko \
-    device/motorola/sholest/prebuilt/lib/modules/cpufreq_smartass.ko:/system/lib/modules/cpufreq_smartass.ko \
-    device/motorola/sholest/prebuilt/lib/modules/crc16.ko:/system/lib/modules/crc16.ko \
-    device/motorola/sholest/prebuilt/lib/modules/dm-crypt.ko:/system/lib/modules/dm-crypt.ko \
-    device/motorola/sholest/prebuilt/lib/modules/dm-mod.ko:/system/lib/modules/dm-mod.ko \
-    device/motorola/sholest/prebuilt/lib/modules/ext2.ko:/system/lib/modules/ext2.ko \
-    device/motorola/sholest/prebuilt/lib/modules/ext3.ko:/system/lib/modules/ext3.ko \
-    device/motorola/sholest/prebuilt/lib/modules/ext4.ko:/system/lib/modules/ext4.ko \
-    device/motorola/sholest/prebuilt/lib/modules/hid-dummy.ko:/system/lib/modules/hid-dummy.ko \
-    device/motorola/sholest/prebuilt/lib/modules/mbcache.ko:/system/lib/modules/mbcache.ko \
-    device/motorola/sholest/prebuilt/lib/modules/jbd2.ko:/system/lib/modules/jbd2.ko \
-    device/motorola/sholest/prebuilt/lib/modules/jbd.ko:/system/lib/modules/jbd.ko \
-    device/motorola/sholest/prebuilt/lib/modules/modem_pm_driver.ko:/system/lib/modules/modem_pm_driver.ko \
-    device/motorola/sholest/prebuilt/lib/modules/netmux.ko:/system/lib/modules/netmux.ko \
-    device/motorola/sholest/prebuilt/lib/modules/netmux_linkdriver.ko:/system/lib/modules/netmux_linkdriver.ko \
-    device/motorola/sholest/prebuilt/lib/modules/output.ko:/system/lib/modules/output.ko \
-    device/motorola/sholest/prebuilt/lib/modules/overclock.ko:/system/lib/modules/overclock.ko \
-    device/motorola/sholest/prebuilt/lib/modules/pcbc.ko:/system/lib/modules/pcbc.ko \
-    device/motorola/sholest/prebuilt/lib/modules/sec.ko:/system/lib/modules/sec.ko \
-    device/motorola/sholest/prebuilt/lib/modules/tiap_drv.ko:/system/lib/modules/tiap_drv.ko \
-    device/motorola/sholest/prebuilt/lib/modules/tiwlan_drv.ko:/system/lib/modules/tiwlan_drv.ko \
-    device/motorola/sholest/prebuilt/lib/modules/twofish_common.ko:/system/lib/modules/twofish_common.ko \
-    device/motorola/sholest/prebuilt/lib/modules/twofish.ko:/system/lib/modules/twofish.ko 
-
-PRODUCT_COPY_FILES += \
-    device/motorola/sholest/prebuilt/persistent/orbootstrap/sh:/system/persistent/orbootstrap/sh \
-    device/motorola/sholest/prebuilt/persistent/orbootstrap/default.prop:/system/persistent/orbootstrap/default.prop \
-    device/motorola/sholest/prebuilt/persistent/orbootstrap/install.sh:/system/persistent/orbootstrap/install.sh \
-    device/motorola/sholest/prebuilt/persistent/orbootstrap/reboot:/system/persistent/orbootstrap/reboot \
-    device/motorola/sholest/prebuilt/persistent/orbootstrap/utils/install.mapphone_umts.btsh:/system/persistent/orbootstrap/utils/install.mapphone_umts.btsh \
-    device/motorola/sholest/prebuilt/persistent/orbootstrap/utils/2nd-init:/system/persistent/orbootstrap/utils/2nd-init \
-    device/motorola/sholest/prebuilt/persistent/orbootstrap/utils/bootstrapbox:/system/persistent/orbootstrap/utils/bootstrapbox \
-    device/motorola/sholest/prebuilt/persistent/orbootstrap/res/images/progress_bar_left_round.png:/system/persistent/orbootstrap/res/images/progress_bar_left_round.png \
-    device/motorola/sholest/prebuilt/persistent/orbootstrap/res/images/progress_bar_right_round.png:/system/persistent/orbootstrap/res/images/progress_bar_right_round.png \
-    device/motorola/sholest/prebuilt/persistent/orbootstrap/res/images/progress_bar_fill.png:/system/persistent/orbootstrap/res/images/progress_bar_fill.png \
-    device/motorola/sholest/prebuilt/persistent/orbootstrap/res/images/indeterminate1.png:/system/persistent/orbootstrap/res/images/indeterminate1.png \
-    device/motorola/sholest/prebuilt/persistent/orbootstrap/res/images/progress_bar_empty.png:/system/persistent/orbootstrap/res/images/progress_bar_empty.png \
-    device/motorola/sholest/prebuilt/persistent/orbootstrap/res/images/icon_error.png:/system/persistent/orbootstrap/res/images/icon_error.png \
-    device/motorola/sholest/prebuilt/persistent/orbootstrap/res/images/indeterminate5.png:/system/persistent/orbootstrap/res/images/indeterminate5.png \
-    device/motorola/sholest/prebuilt/persistent/orbootstrap/res/images/indeterminate2.png:/system/persistent/orbootstrap/res/images/indeterminate2.png \
-    device/motorola/sholest/prebuilt/persistent/orbootstrap/res/images/indeterminate3.png:/system/persistent/orbootstrap/res/images/indeterminate3.png \
-    device/motorola/sholest/prebuilt/persistent/orbootstrap/res/images/progress_bar_empty_left_round.png:/system/persistent/orbootstrap/res/images/progress_bar_empty_left_round.png \
-    device/motorola/sholest/prebuilt/persistent/orbootstrap/res/images/icon_installing.png:/system/persistent/orbootstrap/res/images/icon_installing.png \
-    device/motorola/sholest/prebuilt/persistent/orbootstrap/res/images/progress_bar_empty_right_round.png:/system/persistent/orbootstrap/res/images/progress_bar_empty_right_round.png \
-    device/motorola/sholest/prebuilt/persistent/orbootstrap/res/images/icon_firmware_error.png:/system/persistent/orbootstrap/res/images/icon_firmware_error.png \
-    device/motorola/sholest/prebuilt/persistent/orbootstrap/res/images/icon_firmware_install.png:/system/persistent/orbootstrap/res/images/icon_firmware_install.png \
-    device/motorola/sholest/prebuilt/persistent/orbootstrap/res/images/indeterminate6.png:/system/persistent/orbootstrap/res/images/indeterminate6.png \
-    device/motorola/sholest/prebuilt/persistent/orbootstrap/res/images/indeterminate4.png:/system/persistent/orbootstrap/res/images/indeterminate4.png \
-    device/motorola/sholest/prebuilt/persistent/orbootstrap/res/ui.prop:/system/persistent/orbootstrap/res/ui.prop \
-    device/motorola/sholest/prebuilt/persistent/orbootstrap/init.rc:/system/persistent/orbootstrap/init.rc \
-    device/motorola/sholest/prebuilt/persistent/orbootstrap/menu/init.menu:/system/persistent/orbootstrap/menu/init.menu \
-    device/motorola/sholest/prebuilt/persistent/orbootstrap/sbin/updater:/system/persistent/orbootstrap/sbin/updater \
-    device/motorola/sholest/prebuilt/persistent/orbootstrap/sbin/recovery:/system/persistent/orbootstrap/sbin/recovery
-
-PRODUCT_COPY_FILES += \
-    device/motorola/sholest/prebuilt/persistent/orbootstrap/sh:/system/bin/sh \
-    device/motorola/sholest/prebuilt/persistent/orbootstrap/reboot:/system/bin/reboot \
-    device/motorola/sholest/prebuilt/persistent/orbootstrap/utils/2nd-init:/system/bin/2nd-init \
-    device/motorola/sholest/prebuilt/bin/sh_hijack.sh:/system/bin/sh_hijack.sh \
-    device/motorola/sholest/prebuilt/bin/launchGallery:/system/bin/launchGallery \
-    device/motorola/sholest/prebuilt/bin/touchroi:/system/bin/touchroi \
-    device/motorola/sholest/prebuilt/etc/rootfs/default.prop:/system/etc/rootfs/default.prop \
-    device/motorola/sholest/prebuilt/etc/rootfs/init.mapphone_umts.rc:/system/etc/rootfs/init.mapphone_umts.rc \
-    device/motorola/sholest/prebuilt/etc/rootfs/init.rc:/system/etc/rootfs/init.rc
-
+# copy all files under the "prebuilt" directory to system
+PRODUCT_COPY_FILES += $(shell \
+    find device/motorola/sholest/prebuilt/ -type f \
+    | sed -r 's/^(device\/motorola\/sholest\/prebuilt)(.*)$$/\1\2:\/system\2/' \
+    | tr '\n' ' ')
 
 $(call inherit-product, device/motorola/sholest/sholest-vendor-blobs.mk)
 
@@ -195,6 +115,5 @@ $(call inherit-product, device/motorola/sholest/sholest-vendor-blobs.mk)
 
 $(call inherit-product, build/target/product/full.mk)
 
-
-PRODUCT_NAME := sholest
+PRODUCT_NAME := generic_sholest
 PRODUCT_DEVICE := sholest
