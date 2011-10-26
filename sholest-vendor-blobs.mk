@@ -173,7 +173,6 @@ PRODUCT_COPY_FILES += \
 	device/motorola/sholest/proprietary/framework/com.motorola.android.location.jar:system/framework/com.motorola.android.location.jar
 
 PRODUCT_COPY_FILES += \
-    device/motorola/sholest/proprietary/app/FMRadio-fwals.apk:/system/app/FMRadio.apk \
-    device/motorola/sholest/proprietary/app/Usb.apk:/system/app/Usb.apk #while can't use buildded from source  
+    device/motorola/sholest/proprietary/app/FMRadio-fwals.apk:/system/app/FMRadio.apk 
 
 
