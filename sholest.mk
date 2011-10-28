@@ -68,16 +68,18 @@ PRODUCT_PACKAGES += \
     gps.sholest \
     libOMX.TI.AAC.encode \
     libOMX.TI.AAC.decode \
+    libOMX.TI.AAC.encode \
     libOMX.TI.AMR.decode \
     libOMX.TI.AMR.encode \
-    libOMX.TI.WBAMR.encode \
+    libOMX.TI.JPEG.Encoder \
     libOMX.TI.MP3.decode \
-    libOMX.TI.WBAMR.decode \
-    libOMX.TI.WMA.decode \
     libOMX.TI.Video.Decoder \
     libOMX.TI.Video.encoder \
-    libOMX.TI.JPEG.Encoder \
+    libOMX.TI.WBAMR.decode \
+    libOMX.TI.WBAMR.encode \
+    libOMX.TI.WMA.decode \
     libOMX_Core \
+    libVendor_ti_omx \
     tiwlan.ini \
     dspexec \
     overlay.omap3 \
