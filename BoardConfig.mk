@@ -38,8 +38,6 @@ TARGET_CPU_ABI2 := armeabi
 TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_GLOBAL_CFLAGS += -mtune=cortex-a8
 TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a8
-TARGET_OMAP3 := true
-COMMON_GLOBAL_CFLAGS += -DTARGET_OMAP3
 
 ## fix crash on 2.6.29 kernels on ARMv7A on several devices
 ARCH_ARM_HAVE_ARMV7A_BUG := true
@@ -57,18 +55,16 @@ LOCAL_KERNEL := device/motorola/sholest/kernel
 PRODUCT_COPY_FILES += $(LOCAL_KERNEL):kernel
 
 # Wifi related defines
-BOARD_WLAN_DEVICE           := wl1271
-WPA_SUPPLICANT_VERSION      := VER_0_6_X
 BOARD_WPA_SUPPLICANT_DRIVER := CUSTOM
+BOARD_WPA_SUPPLICANT_PRIVATE_LIB := libCustomWifi
+WPA_SUPPLICANT_VERSION      := VER_0_6_X
+BOARD_WLAN_DEVICE           := tiwlan0
+# BOARD_SOFTAP_DEVICE         := tiwlan0
 WIFI_DRIVER_MODULE_PATH     := "/system/lib/modules/tiwlan_drv.ko"
-WIFI_DRIVER_MODULE_NAME     := tiwlan_drv
-WIFI_DRIVER_FW_STA_PATH     := "/system/etc/wifi/fw_wlan1271.bin"
-WIFI_FIRMWARE_LOADER        := wlan_loader
-PRODUCT_WIRELESS_TOOLS      := true
-BOARD_SOFTAP_DEVICE         := wl1271
-AP_CONFIG_DRIVER_WILINK     := true
-WIFI_DRIVER_FW_AP_PATH      := "/system/etc/wifi/fw_tiwlan_ap.bin"
-WPA_SUPPL_APPROX_USE_RSSI   := true
+BOARD_WLAN_TI_STA_DK_ROOT   := system/wlan/ti/wilink_6_1
+WIFI_DRIVER_MODULE_ARG      := ""
+WIFI_DRIVER_MODULE_NAME     := "tiwlan_drv"
+WIFI_FIRMWARE_LOADER        := "wlan_loader"
 
 BOARD_USE_YUV422I_DEFAULT_COLORFORMAT := true
 BOARD_EGL_CFG := device/motorola/sholest/egl.cfg
