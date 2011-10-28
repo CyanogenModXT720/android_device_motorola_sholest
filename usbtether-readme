@@ -1,0 +1,4 @@
+pkill usbd && echo "eth_adb" > /dev/usb_device_mode
+
+
+the above is ok to provide both adb and usb0
