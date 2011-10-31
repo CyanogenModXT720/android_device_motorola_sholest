@@ -29,8 +29,8 @@ $(call inherit-product-if-exists, vendor/motorola/sholest/sholest-vendor.mk)
 
 ## (2)  Finally, the least specific parts, i.e. the non-GSM-specific aspects
 PRODUCT_PROPERTY_OVERRIDES += \
-	qemu.sf.lcd_density=190 \
-	ro.sf.lcd_density=190 \
+	qemu.sf.lcd_density=160 \
+	ro.sf.lcd_density=160 \
 	ro.product.device=sholest
 	ro.com.android.wifi-watchlist=GoogleGuest \
 	ro.error.receiver.system.apps=com.google.android.feedback \
@@ -45,7 +45,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	ro.media.dec.jpeg.memcap=20000000 \
 	dalvik.vm.lockprof.threshold=500 \
 	ro.product.locale.language=en \
-	ro.product.locale.region=GB \
+	ro.product.locale.region=US \
 	dalvik.vm.dexopt-flags=m=y 
 
 DEVICE_PACKAGE_OVERLAYS += device/motorola/sholest/overlay
@@ -104,7 +104,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_TAGS += dalvik.gc.type-precise
 
 # Passion uses high-density artwork where available
-PRODUCT_LOCALES += hdpi
 
 PRODUCT_COPY_FILES += \
     device/motorola/sholest/vold.fstab:system/etc/vold.fstab \
@@ -201,6 +200,7 @@ $(call inherit-product, device/motorola/sholest/sholest-vendor-blobs.mk)
 
 $(call inherit-product, build/target/product/full.mk)
 
+PRODUCT_LOCALES += hdpi
 
 PRODUCT_NAME := sholest
 PRODUCT_DEVICE := sholest

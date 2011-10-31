@@ -114,5 +114,8 @@ BOARD_NEVER_UMOUNT_SYSTEM := true
 # Vibrator
 BOARD_HAS_VIBRATOR_IMPLEMENTATION := ../../device/motorola/sholest/vibrator.c
 
+#odex
+WITH_DEXPREOPT := true
+
 TARGET_RECOVERY_PRE_COMMAND := "echo 1 > /cache/.boot_to_or; sync;"
 TARGET_RECOVERY_PRE_COMMAND_CLEAR_REASON := true
