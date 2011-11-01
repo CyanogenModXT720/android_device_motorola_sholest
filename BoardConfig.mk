@@ -27,26 +27,21 @@
 USE_CAMERA_STUB := false
 BOARD_USES_GENERIC_AUDIO := false
 
-## BOARD NAME
-
-TARGET_BOOTLOADER_BOARD_NAME := sholest
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_RADIOIMAGE := true
+TARGET_BOOTLOADER_BOARD_NAME := sholest
 
-## fix crash on 2.6.29 kernels on ARMv7A on several devices
-ARCH_ARM_HAVE_ARMV7A_BUG := true
-
-## also have to fix typo in external/v8/Android.mk, fixed already
-
-## CPU SETTINGS
+# Board properties
 TARGET_BOARD_PLATFORM := omap3
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_GLOBAL_CFLAGS += -mtune=cortex-a8
 TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a8
-TARGET_OMAP3 := true
-COMMON_GLOBAL_CFLAGS += -DTARGET_OMAP3
+
+## fix crash on 2.6.29 kernels on ARMv7A on several devices
+ARCH_ARM_HAVE_ARMV7A_BUG := true
+## also have to fix typo in external/v8/Android.mk, fixed already
 
 ### as i have read we have the tls register
 ## Quarx said that option get bootloop on defy
@@ -56,52 +51,43 @@ COMMON_GLOBAL_CFLAGS += -DTARGET_OMAP3
 ## BUILD OPTIONS:
 TARGET_OTA_NO_KERNEL := true
 TARGET_OTA_EXTRA_ARGS := -e device/motorola/sholest/install-orbootstrap --no_kernel true --no_recovery true --backup false --override_device sholest
-TARGET_NEEDS_MOTOROLA_HIJACK := true
 LOCAL_KERNEL := device/motorola/sholest/kernel
 PRODUCT_COPY_FILES += $(LOCAL_KERNEL):kernel
-TARGET_CUSTOM_RELEASETOOL := ./device/motorola/sholest/releasetools/squisher
-
-
-## CAMERA & AUDIO & BLUETOOTH & GPS OPTIONS
-
-BOARD_USES_ECLAIR_LIBAUDIO := true
-BOARD_USE_FROYO_LIBCAMERA := true
-
-HARDWARE_OMX := true
-BUILD_WITH_TI_AUDIO := 1
-BUILD_PV_VIDEO_ENCODERS := 1
-
-BOARD_HAVE_BLUETOOTH := true
-
-BOARD_USE_YUV422I_DEFAULT_COLORFORMAT := true 
-BOARD_EGL_CFG := device/motorola/sholest/egl.cfg
-
-BOARD_GPS_LIBRARIES := libgps
-BOARD_USES_GPSSHIM := true
-
-BOARD_NO_RGBX_8888 := true
-BOARD_USE_USB_MASS_STORAGE_SWITCH := true
 
 # Wifi related defines
-BOARD_WLAN_DEVICE           := wl1271
-WPA_SUPPLICANT_VERSION      := VER_0_6_X
 BOARD_WPA_SUPPLICANT_DRIVER := CUSTOM
+BOARD_WPA_SUPPLICANT_PRIVATE_LIB := libCustomWifi
+WPA_SUPPLICANT_VERSION      := VER_0_6_X
+BOARD_WLAN_DEVICE           := tiwlan0
+# BOARD_SOFTAP_DEVICE         := tiwlan0
 WIFI_DRIVER_MODULE_PATH     := "/system/lib/modules/tiwlan_drv.ko"
-WIFI_DRIVER_MODULE_NAME     := tiwlan_drv
-WIFI_DRIVER_FW_STA_PATH     := "/system/etc/wifi/fw_wlan1271.bin"
-WIFI_FIRMWARE_LOADER        := wlan_loader
-PRODUCT_WIRELESS_TOOLS      := true
-BOARD_SOFTAP_DEVICE         := wl1271
-AP_CONFIG_DRIVER_WILINK     := true
-WIFI_DRIVER_FW_AP_PATH      := "/system/etc/wifi/fw_tiwlan_ap.bin"
-WPA_SUPPL_APPROX_USE_RSSI   := true
+BOARD_WLAN_TI_STA_DK_ROOT   := system/wlan/ti/wilink_6_1
+WIFI_DRIVER_MODULE_ARG      := ""
+WIFI_DRIVER_MODULE_NAME     := "tiwlan_drv"
+WIFI_FIRMWARE_LOADER        := "wlan_loader"
 
-## Size options
+BOARD_USE_YUV422I_DEFAULT_COLORFORMAT := true
+BOARD_EGL_CFG := device/motorola/sholest/egl.cfg
+
+BOARD_HAVE_BLUETOOTH := true
+BOARD_USES_ECLAIR_LIBAUDIO := true
+BOARD_USE_FROYO_LIBCAMERA := true
+BOARD_GPS_LIBRARIES := libgps
+BOARD_USES_GPSSHIM := true
+BOARD_HAS_VIBRATOR_IMPLEMENTATION := ../../device/motorola/sholest/vibrator.c
+
 BOARD_BOOTIMAGE_MAX_SIZE := $(call image-size-from-data-size,0x00380000)
 BOARD_RECOVERYIMAGE_MAX_SIZE := $(call image-size-from-data-size,0x00500000)
 BOARD_SYSTEMIMAGE_MAX_SIZE := $(call image-size-from-data-size,0x0afa0000)
 BOARD_USERDATAIMAGE_MAX_SIZE := $(call image-size-from-data-size,0x0cac0000)
 BOARD_FLASH_BLOCK_SIZE := 131072
+
+HARDWARE_OMX := true
+BUILD_WITH_TI_AUDIO := 1
+BUILD_PV_VIDEO_ENCODERS := 1
+
+BOARD_USE_USB_MASS_STORAGE_SWITCH := true
+BOARD_NO_RGBX_8888 := true
 
 # Recovery
 BOARD_HAS_NO_MISC_PARTITION := true
@@ -109,13 +95,16 @@ BOARD_RECOVERY_IGNORE_BOOTABLES := true
 BOARD_HAS_SMALL_RECOVERY := true
 BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_HAS_NO_SELECT_BUTTON := true
-BOARD_NEVER_UMOUNT_SYSTEM := true
-
-# Vibrator
-BOARD_HAS_VIBRATOR_IMPLEMENTATION := ../../device/motorola/sholest/vibrator.c
 
 #odex
 WITH_DEXPREOPT := true
 
+BOARD_NEVER_UMOUNT_SYSTEM := true
 TARGET_RECOVERY_PRE_COMMAND := "echo 1 > /cache/.boot_to_or; sync;"
 TARGET_RECOVERY_PRE_COMMAND_CLEAR_REASON := true
+
+# Override cyanogen squisher to customize our update zip package
+TARGET_CUSTOM_RELEASETOOL := ./device/motorola/sholest/releasetools/squisher
+
+# sholest need 2nd-init binary from motorola common
+TARGET_NEEDS_MOTOROLA_HIJACK := true
