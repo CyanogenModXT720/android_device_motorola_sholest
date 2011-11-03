@@ -60,7 +60,7 @@ symlink("busybox", "/system/xbin/[", "/system/xbin/[[",
         "/system/xbin/watch", "/system/xbin/wc", "/system/xbin/wget",
         "/system/xbin/which", "/system/xbin/whoami", "/system/xbin/xargs",
         "/system/xbin/yes",
-        "/system/xbin/zcat");
+        "/system/xbin/zcat", "/system/xbin/busybox_16");
 symlink("toolbox", "/system/bin/cat", "/system/bin/cmp",
         "/system/bin/date", "/system/bin/dd", "/system/bin/dmesg",
         "/system/bin/getevent", "/system/bin/getprop", "/system/bin/hd",
