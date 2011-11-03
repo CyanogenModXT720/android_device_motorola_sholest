@@ -107,6 +107,9 @@ PRODUCT_COPY_FILES += $(shell \
     | sed -r 's/^(device\/motorola\/sholest\/prebuilt)(.*)$$/\1\2:\/system\2/' \
     | tr '\n' ' ')
 
+PRODUCT_COPY_FILES += \
+    vendor/cyanogen/prebuilt/common/etc/apns-conf.xml:system/etc/apns-conf.xml
+
 $(call inherit-product, device/motorola/sholest/sholest-vendor-blobs.mk)
 
 # media profiles and capabilities spec
