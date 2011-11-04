@@ -29,7 +29,7 @@
     <!-- Flag indicating whether the surface flinger is inefficient
          at performing a blur.  Used by parts of the UI to turn off
          the blur effect where it isn't worth the performance hit. -->
-    <bool name="config_sf_slowBlur">false</bool>
+    <bool name="config_sf_slowBlur">true</bool>
     
     <!-- The duration (in milliseconds) of a short animation. -->
     <integer name="config_shortAnimTime">150</integer>
@@ -56,7 +56,7 @@
         <item>"wifi,1,1,1"</item>
         <item>"mobile,0,0,0"</item>
         <item>"mobile_mms,2,0,2"</item>
-	<item>"mobile_supl,3,0,2"</item>
+        <item>"mobile_supl,3,0,2"</item>
         <item>"mobile_dun,4,0,4"</item>
         <item>"mobile_hipri,5,0,3"</item>
     </string-array>
