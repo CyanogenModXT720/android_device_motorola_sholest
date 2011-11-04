@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
     <!-- If the currently active USB state should be written to a file, put file name here -->
+    <string name="current_usb_state_file_name" translatable="false">/tmp/usbd-state</string>
    <string-array name="usb_mode_entries" translatable="false">
         <item>@string/usb_mode_ngp</item>
         <item>@string/usb_mode_rndis</item>
@@ -21,15 +22,15 @@
 - usb_mode_override_modes contains the mode strings
 - usb_mode_override_adb_modes contains the mode strings for ADB mode -->
     <integer-array name="usb_mode_override_values">
-        <item>5</item>
+       <!-- <item>5</item> -->
     </integer-array>
 
     <string-array name="usb_mode_override_modes">
-        <item>usb_mode_ngp</item>
+       <!-- <item>usb_mode_msc</item> -->
     </string-array>
 
     <string-array name="usb_mode_override_adb_modes">
-        <item>usb_mode_ngp_adb</item>
+       <!--  <item>usb_mode_msc_adb</item> -->
     </string-array>
 
     <!-- Default mode USB if nothing was configured by the user yet -->

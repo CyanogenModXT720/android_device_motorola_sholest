@@ -84,6 +84,7 @@ PRODUCT_WIRELESS_TOOLS := true
 
 BOARD_USE_YUV422I_DEFAULT_COLORFORMAT := true
 BOARD_EGL_CFG := device/motorola/sholest/egl.cfg
+BOARD_CUSTOM_USB_CONTROLLER := ../../device/motorola/sholest/UsbController.cpp
 
 BOARD_HAVE_BLUETOOTH := true
 BOARD_USES_ECLAIR_LIBAUDIO := true
