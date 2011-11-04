@@ -83,7 +83,7 @@
          should be empty.  An example would be "softap.*" -->
     <string-array translatable="false" name="config_tether_wifi_regexs">
     	<!-- <item>tiwlan0</item> -->
-    	<item>tiapp\\d</item> <!-- not sure if such interface will bring up -->
+    	<item>tiap\\d</item> <!-- not sure if such interface will bring up -->
     </string-array>
 
     <!-- Dhcp range (min, max) to use for tethering purposes -->
