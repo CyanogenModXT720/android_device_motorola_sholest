@@ -268,9 +268,9 @@ mount rootfs rootfs / ro remount
     # Wakelock debug
     #write /sys/module/wakelock/parameters/debug_mask 7
 
-    #write /sys/power/sr_vdd1_autocomp 1
-    #write /sys/power/sr_vdd2_autocomp 1
-    #write /sys/power/enable_abb_mode 1 
+    write /sys/power/sr_vdd1_autocomp 1
+    write /sys/power/sr_vdd2_autocomp 1
+    write /sys/power/enable_abb_mode 1 
 
 # Enable panic on softlockup
     write /proc/sys/kernel/softlockup_panic 1
