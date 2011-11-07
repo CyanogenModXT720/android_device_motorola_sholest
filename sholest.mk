@@ -19,7 +19,7 @@
 # not specialized for any geography.
 #
 
-SHOLEST_CM6_RELEASE=6.3.0-RC4
+SHOLEST_CM6_RELEASE=6.3.5.1
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 

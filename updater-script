@@ -1,4 +1,4 @@
-ui_print("Welcome to CyanogenMod-6.3.0-RC3-MilestoneXT720!");
+ui_print("Welcome to CyanogenMod-6.3.5.1-MilestoneXT720!");
 assert(getprop("ro.product.device") == "sholest" || getprop("ro.build.product") == "sholest" || getprop("ro.product.board") == "sholest");
 show_progress(0.500000, 0);
 format("MTD", "system");
