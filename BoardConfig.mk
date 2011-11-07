@@ -106,3 +106,6 @@ TARGET_CUSTOM_RELEASETOOL := ./device/motorola/sholest/releasetools/squisher
 
 # sholest need 2nd-init binary from motorola common
 TARGET_NEEDS_MOTOROLA_HIJACK := true
+
+#add google apps
+CYANOGEN_WITH_GOOGLE := true
