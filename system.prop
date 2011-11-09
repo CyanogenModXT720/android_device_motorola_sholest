@@ -121,6 +121,8 @@ persist.sys.gmaps_hack=1
 sys.keep_app_1=        
 sys.keep_app_2=
 
+# to spare some RAM
+persist.sys.purgeable_assets=1
 
 ro.product.locale.language=en
 ro.product.locale.region=US
