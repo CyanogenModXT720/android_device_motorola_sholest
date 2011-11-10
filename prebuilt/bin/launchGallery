@@ -1,2 +1,22 @@
 #!/system/bin/sh
-am start -a android.intent.action.MAIN -n com.cooliris.media/.Gallery
+
+flag=/tmp/media-state
+touch $flag
+
+case "$(cat $flag)" in
+  gallery)
+		echo camera > $flag
+		am start -a android.media.action.STILL_IMAGE_CAMERA
+		break
+		;;
+	camera)
+		echo camcorder > $flag
+		am start -a android.media.action.VIDEO_CAMERA
+		break
+		;;
+	*)
+		echo gallery > $flag
+		am start -a android.intent.action.MAIN -n com.cooliris.media/.Gallery
+		break
+		;;
+esac
