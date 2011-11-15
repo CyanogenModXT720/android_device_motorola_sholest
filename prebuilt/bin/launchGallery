@@ -3,26 +3,34 @@
 flag=/tmp/media-state
 touch $flag
 
-case "$(cat $flag)" in
+if [ $(cat /sys/class/leds/lcd-backlight/brightness) -eq 0 ] ; then
+    if [ $(cat /sys/class/leds/af-led/brightness) -eq 0 ] ; then
+	echo 255 > /sys/class/leds/af-led/brightness	
+    else
+	echo 0 > /sys/class/leds/af-led/brightness
+    fi
+else
+    case "$(cat $flag)" in
 	gallery)
-		echo camera > $flag
-		echo 1 > /sys/class/leds/red/brightness
-		am start -a android.media.action.STILL_IMAGE_CAMERA
-		break
-		;;
+	    echo camera > $flag
+	    echo 1 > /sys/class/leds/green/brightness
+	    am start -a android.media.action.STILL_IMAGE_CAMERA
+	    break
+	    ;;
 	camera)
-		echo camcorder > $flag
-		echo 1 > /sys/class/leds/green/brightness
-		am start -a android.media.action.VIDEO_CAMERA
-		break
-		;;
+	    echo camcorder > $flag
+	    echo 1 > /sys/class/leds/blue/brightness
+	    am start -a android.media.action.VIDEO_CAMERA
+	    break
+	    ;;
 	*)
-		echo gallery > $flag
-		echo 1 > /sys/class/leds/blue/brightness
-		am start -a android.intent.action.MAIN -n com.cooliris.media/.Gallery
-		break
-		;;
-esac
-echo 0 > /sys/class/leds/red/brightness
-echo 0 > /sys/class/leds/green/brightness
-echo 0 > /sys/class/leds/blue/brightness
+	    echo gallery > $flag
+	    echo 1 > /sys/class/leds/red/brightness
+	    am start -a android.intent.action.MAIN -n com.cooliris.media/.Gallery
+	    break
+	    ;;
+    esac
+    echo 0 > /sys/class/leds/red/brightness
+    echo 0 > /sys/class/leds/green/brightness
+    echo 0 > /sys/class/leds/blue/brightness
+fi
