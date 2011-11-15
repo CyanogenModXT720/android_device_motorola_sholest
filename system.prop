@@ -43,7 +43,7 @@ ro.config.vc_call_vol_steps=7
 # all apps will be stored in /cache.
 # Use with caution, a lot of free space in /data and almost full /cache
 # is not a good thing...
-dalvik.vm.dexopt-cache-only=0
+dalvik.vm.dexopt-data-only=1
 
 # set to 1 if you don't want the screen to turn on when the phone is plugged
 # useful when using a solar power adapter (fluctuating power)

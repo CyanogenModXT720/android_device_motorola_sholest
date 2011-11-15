@@ -1,8 +1,4 @@
-TOP := $(ANDROID_BUILD_TOP)
-ifeq (${TOP},)
-  TOP := ../../../..
-endif
-
+TOP := ../../../..
 PRODUCT := jordan
 
 all: exe

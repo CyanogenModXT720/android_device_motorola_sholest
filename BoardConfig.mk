@@ -38,6 +38,7 @@ TARGET_CPU_ABI2 := armeabi
 TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_GLOBAL_CFLAGS += -mtune=cortex-a8
 TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a8
+COMMON_GLOBAL_CFLAGS += -DTARGET_OMAP3 -DOMAP_COMPAT
 
 ## fix crash on 2.6.29 kernels on ARMv7A on several devices
 ARCH_ARM_HAVE_ARMV7A_BUG := true
@@ -134,3 +135,4 @@ TARGET_CUSTOM_RELEASETOOL := ./device/motorola/sholest/releasetools/squisher
 
 # sholest need 2nd-init binary from motorola common
 TARGET_NEEDS_MOTOROLA_HIJACK := true
+
