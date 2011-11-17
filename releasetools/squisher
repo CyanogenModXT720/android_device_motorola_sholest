@@ -146,7 +146,7 @@ rm -rf $REPACK/ota/recovery
 if [ -z "$CYANOGEN_NIGHTLY" ]; then
 	MODVERSION=`sed -n -e'/ro\.modversion/s/^.*CyanogenMod-//p' $REPACK/ota/system/build.prop`
 	: ${MODVERSION:=nightly}
-	OUTFILE=$OUT/update-cm-$MODVERSION-signed.zip
+	OUTFILE=$OUT/CyanogenMod-$MODVERSION-signed.zip
 else
 	OUTFILE=$OUT/update-squished.zip
 fi
