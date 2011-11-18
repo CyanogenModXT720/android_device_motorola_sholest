@@ -79,6 +79,7 @@
     <!-- Each camcorder profile defines a set of predefined configuration parameters -->
     <CamcorderProfiles>
 
+    <!-- Commenting hd profile, while it don't work
         <EncoderProfile quality="hd" fileFormat="3gp" duration="60">
             <Video codec="m4v"
                    bitRate="8000000"
@@ -90,10 +91,10 @@
                    bitRate="96000"
                    sampleRate="16000"
                    channels="1" />
-         </EncoderProfile>
+         </EncoderProfile> --> 
 
         <EncoderProfile quality="high" fileFormat="mp4" duration="60">
-            <Video codec="h264"
+            <Video codec="m4v"
                    bitRate="4000000"
                    width="720"
                    height="480"
@@ -106,7 +107,7 @@
         </EncoderProfile>
 
         <EncoderProfile quality="wide" fileFormat="mp4" duration="60">
-            <Video codec="h264"
+            <Video codec="m4v"
                    bitRate="4000000"
                    width="720"
                    height="400"
@@ -125,7 +126,7 @@
                    height="240"
                    frameRate="15" />
 
-            <Audio codec="amrnb"
+            <Audio codec="aac"
                    bitRate="12200"
                    sampleRate="8000"
                    channels="1" />
