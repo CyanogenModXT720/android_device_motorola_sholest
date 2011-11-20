@@ -77,6 +77,7 @@ void init_globals(void)
 static int
 write_int(char const* path, int value)
 {
+    LOGE("liblights write_int value %d\n", value); 
     int fd;
     static int already_warned = 0;
 
@@ -319,7 +320,7 @@ static int open_lights(const struct hw_module_t* module, char const* name,
 {
     int (*set_light)(struct light_device_t* dev,
             struct light_state_t const* state);
-
+    LOGE("open lights %s\n", name);
     if (0 == strcmp(LIGHT_ID_BACKLIGHT, name)) {
         set_light = set_light_backlight;
     }
