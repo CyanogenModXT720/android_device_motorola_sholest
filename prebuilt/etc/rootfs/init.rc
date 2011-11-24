@@ -327,7 +327,7 @@ on boot
     setprop net.tcp.buffersize.gprs    4092,8760,11680,4096,8760,11680
 
 # Include extra init file
-   # import /system/etc/init.local.rc
+    import /system/etc/init.local.rc
    # it just about compcache
 
 # Run sysinit
