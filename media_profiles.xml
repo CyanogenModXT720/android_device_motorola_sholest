@@ -81,15 +81,15 @@
 
         <EncoderProfile quality="hd" fileFormat="3gp" duration="60">
             <Video codec="m4v"
-                   bitRate="8000000"
+                   bitRate="10000000"
                    width="1280"
                    height="720"
-                   frameRate="25" />
+                   frameRate="30" />
 
             <Audio codec="aac"
                    bitRate="96000"
-                   sampleRate="16000"
-                   channels="1" />
+                   sampleRate="44100"
+                   channels="2" />
          </EncoderProfile>
 
         <EncoderProfile quality="high" fileFormat="mp4" duration="60">
@@ -163,7 +163,7 @@
         minFrameRate="1" maxFrameRate="30" />
 
     <VideoEncoderCap name="m4v" enabled="true"
-        minBitRate="64000" maxBitRate="8000000"
+        minBitRate="64000" maxBitRate="10000000"
         minFrameWidth="176" maxFrameWidth="1280"
         minFrameHeight="144" maxFrameHeight="720"
         minFrameRate="1" maxFrameRate="30" />

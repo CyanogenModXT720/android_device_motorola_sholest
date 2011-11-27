@@ -109,6 +109,12 @@ ro.media.enc.aud.aac.ch=1,1
 ro.media.dec.aud.wma.enabled=1
 ro.media.dec.vid.wmv.enabled=1
 ro.media.cam.preview.fps=0
+ro.media.camcorder.720p=3gp,m4v,30,10000000,aac,96000,44100,2 
+ro.media.camcorder.d1NTSC=3gp,h264,30,6000000,aac,96000,44100,2 
+ro.media.camcorder.vga=3gp,h264,30,4000000,aac,96000,44100,2 
+ro.media.camcorder.cif=3gp,h264,30,1500000,aac,96000,44100,2 
+ro.media.camcorder.qvga=3gp,h264,15,500000,aac,32000,16000,2 
+ro.media.camcorder.mms=3gp,h264,15,128000,amrnb,12200,8000,1 
 
 #varoius
 ro.com.motorola.smartsensor=true 
