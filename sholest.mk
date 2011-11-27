@@ -68,6 +68,7 @@ PRODUCT_COPY_FILES += \
     hardware/ti/omap3-compat/omx/core_plugin/01_Vendor_ti_omx.cfg:system/etc/01_Vendor_ti_omx.cfg
 
 PRODUCT_PACKAGES += \
+    xt720Parts \
     librs_jni \
     libaudiopolicy \
     sensors.sholest \

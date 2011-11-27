@@ -36,6 +36,8 @@ TARGET_BOARD_PLATFORM := omap3
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_ARCH_VARIANT := armv7-a-neon
+TARGET_ARCH_VARIANT_CPU := cortex-a8
+TARGET_ARCH_VARIANT_FPU := neon
 TARGET_GLOBAL_CFLAGS += -mtune=cortex-a8
 TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a8
 TARGET_OMAP3 := true
@@ -89,6 +91,7 @@ BOARD_EGL_CFG := device/motorola/sholest/egl.cfg
 BOARD_CUSTOM_USB_CONTROLLER := ../../device/motorola/sholest/UsbController.cpp
 
 BOARD_HAVE_BLUETOOTH := true
+BOARD_HAVE_BLUETOOTH_BCM := true
 BOARD_USES_ECLAIR_LIBAUDIO := true
 BOARD_USE_FROYO_LIBCAMERA := true
 BOARD_GPS_LIBRARIES := libgps
