@@ -74,6 +74,16 @@ loglevel 3
     write /proc/sys/kernel/sched_compat_yield 1
     write /proc/sys/kernel/sched_child_runs_first 0
 
+# peshovec tweaks
+write /proc/sys/kernel/sem 500, 512000, 64, 2048
+write /proc/sys/kernel/sched_latency_ns 600000  
+write /proc/sys/kernel/sched_min_granularity_ns 400000
+write /proc/sys/kernel/sched_wakeup_granularity_ns 400000
+write /proc/sys/kernel/sched_shares_ratelimit 256000
+write /proc/sys/kernel/hung_task_timeout_secs 0
+write /proc/sys/kernel/threads-max 5000
+write /proc/sys/vm/min_free_kbytes 6144
+
 # Create cgroup mount points for process groups
     mkdir /dev/cpuctl
     mount cgroup none /dev/cpuctl cpu
