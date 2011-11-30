@@ -56,7 +56,6 @@ int LightSensor::setInitialState() {
 }
 
 int LightSensor::enable(int32_t, int en) {
-	LOGE("LightSensor:enable en: %d\n", en);
     if(en) {
         setInitialState();
     }
@@ -69,7 +68,6 @@ bool LightSensor::hasPendingEvents() const {
 
 int LightSensor::readEvents(sensors_event_t* data, int count)
 {
-LOGE("LightSensor::readEvents count: %d\n", count);
     if (count < 1)
         return -EINVAL;
 
@@ -89,7 +87,6 @@ LOGE("LightSensor::readEvents count: %d\n", count);
 
     while (count && mInputReader.readEvent(&event)) {
         int type = event->type;
-LOGE("LightSensor::readEvents type: %d\n", type);
         if (type == EV_LED) { // light sensor 1
             if (event->code == EVENT_TYPE_LIGHT) {
                 mPendingEvent.light = event->value;
