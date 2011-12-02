@@ -34,7 +34,6 @@ on init
     # We chown/chmod /pds again so because mount is run as root + defaults
     symlink /pds /config
     mount yaffs2 mtd@pds /pds nosuid nodev
-    mount yaffs2 mtd@cust /system/etc/motorola noexec ro
     chown system system /pds
     chmod 0775 /pds
     mkdir /pds/comm_drv
