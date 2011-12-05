@@ -26,4 +26,6 @@
 	<!-- Autofocus parameters -->
 	<string name="touchFocusParameter">mot-areas-to-focus</string>
 	<bool name="touchFocusNeedsRect">true</bool>
+	<add-resource type="bool" name="enableTouchAEC"></add-resource>
+	<bool name="enableTouchAEC">true</bool>
 </resources>
