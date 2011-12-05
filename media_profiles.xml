@@ -96,7 +96,7 @@
             <Video codec="h264"
                    bitRate="4000000"
                    width="720"
-                   height="480"
+                   height="576"
                    frameRate="25" />
 
             <Audio codec="aac"
@@ -109,7 +109,7 @@
             <Video codec="h264"
                    bitRate="4000000"
                    width="720"
-                   height="400"
+                   height="480"
                    frameRate="25" />
 
             <Audio codec="aac"
@@ -153,7 +153,7 @@
     <VideoEncoderCap name="h264" enabled="true"
         minBitRate="64000" maxBitRate="8000000"
         minFrameWidth="176" maxFrameWidth="720"
-        minFrameHeight="144" maxFrameHeight="480"
+        minFrameHeight="144" maxFrameHeight="576"
         minFrameRate="1" maxFrameRate="30" />
 
     <VideoEncoderCap name="h263" enabled="true"
