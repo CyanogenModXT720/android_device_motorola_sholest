@@ -64,8 +64,8 @@ PRODUCT_COPY_FILES += \
 
 # media config xml file
 PRODUCT_COPY_FILES += \
-    device/motorola/sholest/media_profiles.xml:system/etc/media_profiles.xml \
-    hardware/ti/omap3-compat/omx/core_plugin/01_Vendor_ti_omx.cfg:system/etc/01_Vendor_ti_omx.cfg
+    device/motorola/sholest/media_profiles.xml:system/etc/media_profiles.xml #\
+#    hardware/ti/omap3-compat/omx/core_plugin/01_Vendor_ti_omx.cfg:system/etc/01_Vendor_ti_omx.cfg
 
 PRODUCT_PACKAGES += \
     xt720Parts \
