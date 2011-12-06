@@ -7,7 +7,9 @@ $BUSYBOX mkdir /system/persistent/orbootstrap/etc
 #sh
 
 $BUSYBOX rm /system/bin/sh
+$BUSYBOX rm /system/bin/2nd-init
 $BUSYBOX cp /system/persistent/orbootstrap/sh /system/bin/sh
+$BUSYBOX cp /system/persistent/orbootstrap/utils/2nd-init /system/bin/2nd-init
 
 #tag
 $BUSYBOX touch /system/persistent/.persistent_sh
@@ -15,7 +17,9 @@ $BUSYBOX touch /system/persistent/.persistent_sh
 #permissions
 
 $BUSYBOX chown 0:2000 /system/bin/sh
+$BUSYBOX chown 0:2000 /system/bin/2nd-init
 $BUSYBOX chmod 755 /system/bin/sh
+$BUSYBOX chmod 755 /system/bin/2nd-init
 
 $BUSYBOX chown -R 0:0 /system/persistent/orbootstrap/
 
