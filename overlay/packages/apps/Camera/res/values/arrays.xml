@@ -69,7 +69,7 @@
          driver -->
     <string-array name="pref_camera_picturesize_entryvalues" translatable="false">
         <item>3264x2448</item>
-        <item>3264x11840</item>
+        <item>3264x1840</item>
         <item>2592x1936</item>
         <item>2048x1536</item>
         <item>1600x1200</item>
