@@ -20,7 +20,6 @@
 # definition file).
 #
 
-SHOLEST_BUILD_USB_APK = false
 SHOLEST_BUILD_OMX = false
 SHOLEST_KOREAN_IME = false
 

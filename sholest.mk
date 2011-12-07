@@ -76,7 +76,8 @@ PRODUCT_COPY_FILES += \
     device/motorola/sholest/media_profiles.xml:system/etc/media_profiles.xml
 
 PRODUCT_PACKAGES += \
-    librs_jni
+    librs_jni \
+	Usb
 
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
@@ -94,10 +95,6 @@ PRODUCT_COPY_FILES += \
 	device/motorola/sholest/vold.fstab:system/etc/vold.fstab \
     vendor/cyanogen/prebuilt/common/etc/apns-conf.xml:system/etc/apns-conf.xml \
     vendor/cyanogen/prebuilt/common/etc/spn-conf.xml:system/etc/spn-conf.xml
-
-ifneq ($(SHOLEST_BUILD_USB_APK),true)
-PRODUCT_PACKAGES += Usb
-endif
 
 # media profiles and capabilities spec
 # $(call inherit-product, device/motorola/sholes/media_a1026.mk)

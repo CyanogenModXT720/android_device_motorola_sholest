@@ -34,6 +34,8 @@ mot.proximity.delay=450
 #proximit sensor disable touch distance 
 mot.proximity.distance=100
 
+ro.usb.use_custom_service=1
+
 persist.sys.one_percent_batt=0
 
 persist.sys.qtouch_num=2
