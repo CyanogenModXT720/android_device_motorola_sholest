@@ -91,6 +91,7 @@ PRODUCT_COPY_FILES += $(shell \
     | tr '\n' ' ')
 
 PRODUCT_COPY_FILES += \
+	device/motorola/sholest/vold.fstab:system/etc/vold.fstab \
     vendor/cyanogen/prebuilt/common/etc/apns-conf.xml:system/etc/apns-conf.xml \
     vendor/cyanogen/prebuilt/common/etc/spn-conf.xml:system/etc/spn-conf.xml
 
