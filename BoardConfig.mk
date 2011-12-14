@@ -95,3 +95,5 @@ USE_SHOLES_PROPERTY := true
 
 # Override cyanogen squisher to customize our update zip package
 TARGET_CUSTOM_RELEASETOOL := ./device/motorola/sholest/releasetools/squisher
+
+WITH_DEXPREOPT := true
