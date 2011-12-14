@@ -3,8 +3,11 @@
 
 # Delete unwanted apps
 rm -f $REPACK/ota/system/app/CMStats.apk
+rm -f $REPACK/ota/system/app/CMStats.odex
 rm -f $REPACK/ota/system/app/CMUpdateNotify.apk
+rm -f $REPACK/ota/system/app/CMUpdateNotify.odex
 rm -f $REPACK/ota/system/app/RomManager.apk
+rm -f $REPACK/ota/system/app/RomManager.odex
 rm -f $REPACK/ota/system/xbin/irssi
     
 # Location Proxy injection
