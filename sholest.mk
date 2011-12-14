@@ -88,13 +88,11 @@ PRODUCT_LOCALES += hdpi
 # copy all files under the "prebuilt" directory to system
 PRODUCT_COPY_FILES += $(shell \
     find device/motorola/sholest/prebuilt/ -type f \
-    | sed -r 's/^(device\/motorola\/sholest\/prebuilt)(.*)$$/\1\2:\/system\2/' \
+    | sed -r 's/^(device\/motorola\/sholest\/prebuilt)(.*)$$/\1\2:system\2/' \
     | tr '\n' ' ')
 
 PRODUCT_COPY_FILES += \
-	device/motorola/sholest/vold.fstab:system/etc/vold.fstab \
-    vendor/cyanogen/prebuilt/common/etc/apns-conf.xml:system/etc/apns-conf.xml \
-    vendor/cyanogen/prebuilt/common/etc/spn-conf.xml:system/etc/spn-conf.xml
+	device/motorola/sholest/vold.fstab:system/etc/vold.fstab
 
 # media profiles and capabilities spec
 # $(call inherit-product, device/motorola/sholes/media_a1026.mk)
