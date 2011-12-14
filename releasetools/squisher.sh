@@ -50,7 +50,9 @@ echo
 
 # prebuilt boot, devtree, logo & updater-script
 #cp -f $ANDROID_BUILD_TOP/vendor/motorola/sholest/proprietary/boot.img $REPACK/ota/
-cp -f $ANDROID_BUILD_TOP/device/motorola/sholest/updater-script $REPACK/ota/META-INF/com/google/android/updater-script
+
+MODVERSION=`sed -n -e'/ro\.modversion/s/^.*CyanogenMod-/CyanogenMod-/p' $REPACK/ota/system/build.prop`
+sed -e "s/MODVERSION/$MODVERSION/g" $ANDROID_BUILD_TOP/device/motorola/sholest/updater-script > $REPACK/ota/META-INF/com/google/android/updater-script
 
 # Save build manifest into update
 repo manifest -r -o $REPACK/ota/system/repo-default.xml
