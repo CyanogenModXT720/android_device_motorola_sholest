@@ -61,10 +61,20 @@ loglevel 3
     write /proc/sys/kernel/panic_on_oops 1
     write /proc/sys/kernel/hung_task_timeout_secs 0
     write /proc/cpu/alignment 4
-    write /proc/sys/kernel/sched_latency_ns 10000000
-    write /proc/sys/kernel/sched_wakeup_granularity_ns 2000000
+#    write /proc/sys/kernel/sched_latency_ns 10000000
+#    write /proc/sys/kernel/sched_wakeup_granularity_ns 2000000
     write /proc/sys/kernel/sched_compat_yield 1
     write /proc/sys/kernel/sched_child_runs_first 0
+
+    # peshovec tweaks
+    write /proc/sys/kernel/sem 500, 512000, 64, 2048
+    write /proc/sys/kernel/sched_latency_ns 600000  
+    write /proc/sys/kernel/sched_min_granularity_ns 400000
+    write /proc/sys/kernel/sched_wakeup_granularity_ns 400000
+    write /proc/sys/kernel/sched_shares_ratelimit 256000
+    write /proc/sys/kernel/hung_task_timeout_secs 0
+    write /proc/sys/kernel/threads-max 5000
+    write /proc/sys/vm/min_free_kbytes 6144
 
 # Create cgroup mount points for process groups
     mkdir /dev/cpuctl
@@ -182,6 +192,14 @@ loglevel 3
     # allow net_raw to have access to /dev/socket directory
     chown root net_raw /dev/socket
     chmod 0775 /dev/socket
+
+    # allow system to modify cpufreq control files
+    chown root system /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+    chmod 0664 /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+    chown root system /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
+    chmod 0664 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
+    chown root system /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
+    chmod 0664 /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
 
 on boot
 # basic network init
