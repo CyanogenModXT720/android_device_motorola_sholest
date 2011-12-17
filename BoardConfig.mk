@@ -20,8 +20,6 @@
 # definition file).
 #
 
-SHOLEST_BUILD_OMX = false
-SHOLEST_KOREAN_IME = false
 
 # WARNING: This line must come *before* including the proprietary
 # variant, so that it gets overwritten by the parent (which goes
@@ -38,8 +36,6 @@ TARGET_NO_RADIOIMAGE := true
 
 TARGET_BOARD_PLATFORM := omap3
 
-TARGET_OTA_NO_KERNEL := true
-TARGET_OTA_EXTRA_ARGS := -e device/motorola/sholest/install-orbootstrap --no_kernel true --no_recovery true --backup false --override_device sholest
 
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
@@ -48,6 +44,9 @@ TARGET_GLOBAL_CFLAGS += -mtune=cortex-a8
 TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a8
 
 TARGET_BOOTLOADER_BOARD_NAME := sholes
+
+TARGET_OTA_NO_KERNEL := true
+TARGET_OTA_EXTRA_ARGS := -e device/motorola/sholest/install-orbootstrap --no_kernel true --no_recovery true --backup false --override_device sholest
 
 # Wifi related defines
 BOARD_WPA_SUPPLICANT_DRIVER := CUSTOM
@@ -65,6 +64,8 @@ BOARD_USES_GENERIC_AUDIO := false
 #BOARD_USES_ECLAIR_LIBCAMERA := true
 BOARD_USES_ECLAIR_LIBAUDIO := true
 #BOARD_HAVE_BAD_FMRADIO := true
+
+BOARD_HAS_VIBRATOR_IMPLEMENTATION := ../../device/motorola/sholest/vibrator.c
 
 ifneq ($(SHOLEST_BUILD_OMX),true)
 HARDWARE_OMX := true

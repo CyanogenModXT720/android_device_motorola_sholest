@@ -15,47 +15,32 @@
 #
 
 #
-# This is the product configuration for a generic GSM passion,
+# This is the product configuration for a generic GSM sholest,
 # not specialized for any geography.
 #
-
-SHOLEST_CM6_RELEASE=6.3.5.1
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
 # The gps config appropriate for this device
 $(call inherit-product, device/common/gps/gps_eu_supl.mk)
 
-## (1) First, the most specific values, i.e. the aspects that are specific to GSM
-
-PRODUCT_COPY_FILES += \
-    device/motorola/sholest/init.mapphone_umts.rc:root/init.mapphone_umts.rc
-
-## (2) Also get non-open-source GSM-specific aspects if available
+## (1) Also get non-open-source GSM-specific aspects if available
 $(call inherit-product-if-exists, vendor/motorola/sholest/sholest-vendor.mk)
 
-## (3)  Finally, the least specific parts, i.e. the non-GSM-specific aspects
+## (2)  Finally, the least specific parts, i.e. the non-GSM-specific aspects
 PRODUCT_PROPERTY_OVERRIDES += \
 	qemu.sf.lcd_density=240 \
-	ro.com.android.wifi-watchlist=GoogleGuest \
-	ro.error.receiver.system.apps=com.google.android.feedback \
 	ro.setupwizard.enterprise_mode=1 \
         ro.com.google.clientid=android-motorola \
 	ro.com.google.clientidbase=android-motorola \
 	ro.com.google.locationfeatures=1 \
-	ro.url.legal=http://www.google.com/intl/%s/mobile/android/basic/phone-legal.html \
-	ro.url.legal.android_privacy=http://www.google.com/intl/%s/mobile/android/basic/privacy.html \
-	ro.config.vc_call_vol_steps=7 \
 	ro.telephony.call_ring.multiple=false \
 	ro.telephony.call_ring.delay=3000 \
 	ro.url.safetylegal=http://www.motorola.com/staticfiles/Support/legal/?model=MilestoneXT720 \
 	ro.setupwizard.enable_bypass=1 \
 	ro.media.dec.jpeg.memcap=20000000 \
 	dalvik.vm.lockprof.threshold=500 \
-	dalvik.vm.dexopt-flags=m=y \
-        ro.product.multi_touch_enabled=true \
-        ro.product.max_num_touch=4 \
-        ro.com.google.gmsversion=2.2_r8 
+	dalvik.vm.dexopt-flags=m=y 
 
 DEVICE_PACKAGE_OVERLAYS += device/motorola/sholest/overlay
 
@@ -77,12 +62,14 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PACKAGES += \
     librs_jni \
-	Usb
+    Usb \
+    mot_boot_mode \
+    charge_only_mode
 
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
 
-# Passion uses high-density artwork where available
+# sholest uses high-density artwork where available
 PRODUCT_LOCALES += hdpi
 
 # copy all files under the "prebuilt" directory to system
@@ -102,6 +89,5 @@ PRODUCT_COPY_FILES += \
 
 $(call inherit-product, build/target/product/full.mk)
 
-
-PRODUCT_NAME := sholest
+PRODUCT_NAME := generic_sholest
 PRODUCT_DEVICE := sholest
