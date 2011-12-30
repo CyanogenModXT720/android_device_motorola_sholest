@@ -34,8 +34,6 @@ mot.proximity.delay=450
 #proximit sensor disable touch distance 
 mot.proximity.distance=100
 
-ro.usb.use_custom_service=1
-
 persist.sys.one_percent_batt=0
 
 persist.sys.qtouch_num=2
@@ -48,7 +46,10 @@ persist.sys.qtouch_num=2
 # to automatically report your location (bye bye, free RAM)
 persist.sys.gmaps_hack=1
 
-## Specific properties available only in CM6 for Milestone
+# apps to be kept in memory (specified by process name)
+# use with caution, RAM is limited!
+sys.keep_app_1=
+sys.keep_app_2=
 
 # set to 0 if you don't use a dock but a case with a magentic closure
 ro.config.dockobserver=1
@@ -74,6 +75,8 @@ windowsmgr.max_events_per_sec=60
 # Maximum time (in msec) we allow the CallerInfo query to run,
 # before giving up and falling back to the default ringtone.
 ro.ringtone_query_wait_time=1500
+
+ro.usb.use_custom_service=1
 
 # Logger properties
 persist.service.aplogd.enable=0
