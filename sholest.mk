@@ -63,6 +63,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     librs_jni \
     lights.sholest \
+    tiwlan.ini \
+    wlan_cu \
+    wlan_loader \
+    overlay.omap3 \
     Usb \
     mot_boot_mode \
     charge_only_mode
