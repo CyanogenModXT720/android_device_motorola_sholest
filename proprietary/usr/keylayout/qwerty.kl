@@ -87,4 +87,5 @@ key 12    MINUS             WAKE_DROPPED
 key 13    EQUALS            WAKE_DROPPED
 key 215   AT                WAKE_DROPPED
 key 226   HEADSETHOOK       WAKE
+key 112   MEDIA_MODE        WAKE
 
