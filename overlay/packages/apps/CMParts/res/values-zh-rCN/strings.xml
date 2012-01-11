@@ -1,10 +1,10 @@
-<string name="pref_disable_bootanimation_title">禁用开机动画</string>
-<string name="pref_disable_bootanimation_summary">"禁用动画以加快 启动"</string>
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2"> 
     <!-- Generic -->
     <string name="app_name">CM 设置</string>
 
+<string name="pref_disable_bootanimation_title">禁用开机动画</string>
+<string name="pref_disable_bootanimation_summary">"禁用动画以加快 启动"</string>
     <!--  Primary Screen Settings -->
     <string name="application_settings_title_head">应用程序</string>
     <string name="application_settings_title_subhead">应用程序设置</string>

@@ -1,9 +1,3 @@
-<string name="voice_quality_preferences_title">丽音设置</string>
-<string name="voice_quality_summary">选择语音配置以加强收听体验</string>
-<string name="voice_quality_entry_normal">普通</string>
-<string name="voice_quality_entry_clear">清晰</string>
-<string name="voice_quality_entry_crisp">清脆</string>
-<string name="voice_quality_entry_bright">明亮</string>
 <?xml version="1.0" encoding="UTF-8"?>
 <!--  Copyright (C) 2007 The Android Open Source Project
 
@@ -22,6 +16,13 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+<string name="voice_quality_preferences_title">丽音设置</string>
+<string name="voice_quality_summary">选择语音配置以加强收听体验</string>
+<string name="voice_quality_entry_normal">普通</string>
+<string name="voice_quality_entry_clear">清晰</string>
+<string name="voice_quality_entry_crisp">清脆</string>
+<string name="voice_quality_entry_bright">明亮</string>
     <string name="contactsIconLabel" msgid="9129800048701196916">"联系人"</string>
     <string name="contactsFavoritesLabel" msgid="5360050972935451505">"收藏"</string>
     <string name="dialerIconLabel" msgid="1761864493312440268">"拨号器"</string>
