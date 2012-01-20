@@ -59,25 +59,28 @@ LOCAL_KERNEL := device/motorola/sholest/kernel
 PRODUCT_COPY_FILES += $(LOCAL_KERNEL):kernel
 
 # Wifi related defines
-BOARD_WPA_SUPPLICANT_DRIVER := CUSTOM
-BOARD_WPA_SUPPLICANT_PRIVATE_LIB := libCustomWifi
-WPA_SUPPLICANT_VERSION      := VER_0_6_X
 BOARD_WLAN_DEVICE           := tiwlan0
 #BOARD_SOFTAP_DEVICE         := tiwlan0
+BOARD_WPA_SUPPLICANT_PRIVATE_LIB := libCustomWifi
+WPA_SUPPLICANT_VERSION      := VER_0_6_X
+BOARD_WPA_SUPPLICANT_DRIVER := CUSTOM
 WIFI_DRIVER_MODULE_PATH     := "/system/lib/modules/tiwlan_drv.ko"
-BOARD_WLAN_TI_STA_DK_ROOT   := system/wlan/ti/wilink_6_1
-WIFI_DRIVER_MODULE_ARG      := ""
 WIFI_DRIVER_MODULE_NAME     := "tiwlan_drv"
-WIFI_FIRMWARE_LOADER        := "wlan_loader"
-
-##defy
-#BOARD_WLAN_DEVICE := wl1271
 #WIFI_DRIVER_FW_STA_PATH := "/system/etc/wifi/fw_wlan1271.bin"
+WIFI_FIRMWARE_LOADER        := "wlan_loader"
 PRODUCT_WIRELESS_TOOLS := true
-#BOARD_SOFTAP_DEVICE := wl1271
 #AP_CONFIG_DRIVER_WILINK := true
 #WIFI_DRIVER_FW_AP_PATH := "/system/etc/wifi/fw_tiwlan_ap.bin"
 #WPA_SUPPL_APPROX_USE_RSSI := true
+
+
+
+BOARD_WLAN_TI_STA_DK_ROOT   := system/wlan/ti/wilink_6_1
+WIFI_DRIVER_MODULE_ARG      := ""
+
+##defy
+#BOARD_WLAN_DEVICE := wl1271
+#BOARD_SOFTAP_DEVICE := wl1271
 
 
 
