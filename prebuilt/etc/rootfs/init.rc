@@ -505,14 +505,14 @@ service dumpstate /system/bin/dumpstate -s
 #    disabled
 #    oneshot
 
-service mynet_start /system/bin/sh /data/misc/wifi/forward_start.sh
-    class post-zygote_services
-    disabled
-    oneshot
+#service mynet_start /system/bin/sh /data/misc/wifi/forward_start.sh
+#    class post-zygote_services
+#    disabled
+#    oneshot
 
-service mynet_stop /system/bin/sh /data/misc/wifi/forward_stop.sh
-    class post-zygote_services
-    disabled
-    oneshot
+#service mynet_stop /system/bin/sh /data/misc/wifi/forward_stop.sh
+#    class post-zygote_services
+#    disabled
+#    oneshot
  
  
