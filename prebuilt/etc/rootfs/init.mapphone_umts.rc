@@ -145,7 +145,7 @@ on boot
     mkdir /data/gki 0770 radio radio
     mkdir /tmp/commdrv 0770 radio radio
 
-    copy /system/etc/wifi/softap/hostapd.conf.templet /data/misc/wifi/hostapd.conf
+    copy /system/etc/wifi/softap/hostapd.conf /data/misc/wifi/hostapd.conf
     copy /system/etc/wifi/dnsmasq.conf /data/misc/wifi/dns.conf
     chown wifi wifi /data/misc/wifi/dns.conf
     chmod 666 /data/misc/wifi/dns.conf
