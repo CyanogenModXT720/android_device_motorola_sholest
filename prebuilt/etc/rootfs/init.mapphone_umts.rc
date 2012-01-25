@@ -454,8 +454,8 @@ service locDrv /system/bin/brcm_guci_drv -config /system/etc/gpsconfig.xml
     group radio inet sdcard_rw
 
 #launchGallery
-service launchgallery /system/bin/launchGallery
-    oneshot
-    disabled
-    keycodes 112
+#service launchgallery /system/bin/launchGallery
+#    oneshot
+#    disabled
+#    keycodes 112
 
