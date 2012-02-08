@@ -26,7 +26,7 @@ wifi.supplicant_scan_interval=90
 ro.opengles.version=131072
 
 # This is a high density device with more memory, so larger vm heaps for it.
-dalvik.vm.heapsize=24m
+dalvik.vm.heapsize=28m
 
 # dalvik-cache of both system and data/sdcard apps in /cache
 # (dexopt-cache-only overrides dexopt-data-only, so use it with care) 
@@ -131,6 +131,9 @@ sys.keep_app_2=
 
 # to spare some RAM
 persist.sys.purgeable_assets=1
+
+# force disable scrolling cache value is 3
+persist.sys.scrollingcache=3
 
 ro.product.locale.language=en
 ro.product.locale.region=US
