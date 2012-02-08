@@ -160,10 +160,10 @@ public class SettingsActivity extends PreferenceActivity implements
         String logger = SystemProperties.get(LOGGER_PERSIST_PROP, LOGGER_DEFAULT);
         mLoggerPref.setChecked("1".equals(logger));
 
-        mStatusBarOnepercBattery = (CheckBoxPreference) prefSet
-                .findPreference(PREF_STATUS_BAR_ONEPERC_BATTERY);
-        String onepercBattery = SystemProperties.get(ONEPERC_BATT_PERSIST_PROP, ONEPERC_BATT_DEFAULT);
-        mStatusBarOnepercBattery.setChecked("1".equals(onepercBattery));
+        //mStatusBarOnepercBattery = (CheckBoxPreference) prefSet
+        //        .findPreference(PREF_STATUS_BAR_ONEPERC_BATTERY);
+        //String onepercBattery = SystemProperties.get(ONEPERC_BATT_PERSIST_PROP, ONEPERC_BATT_DEFAULT);
+        //mStatusBarOnepercBattery.setChecked("1".equals(onepercBattery));
     }
 
     @Override
@@ -189,10 +189,6 @@ public class SettingsActivity extends PreferenceActivity implements
         } else if (preference == mLoggerPref) {
             SystemProperties.set(LOGGER_PERSIST_PROP,
                     mLoggerPref.isChecked() ? "1" : "0");
-            return true;
-        } else if (preference == mStatusBarOnepercBattery) {
-            SystemProperties.set(ONEPERC_BATT_PERSIST_PROP,
-                    mStatusBarOnepercBattery.isChecked() ? "1" : "0");
             return true;
         }
         return false;
