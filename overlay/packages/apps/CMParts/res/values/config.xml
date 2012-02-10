@@ -5,6 +5,7 @@
     <bool name="has_rgb_notification_led">true</bool>
     <bool name="has_led_flash">false</bool>
     <bool name="has_camera_button">true</bool>
+    <bool name="has_media_button">true</bool>
 </resources>
 
 
