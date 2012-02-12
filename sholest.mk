@@ -25,7 +25,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 $(call inherit-product, device/common/gps/gps_eu_supl.mk)
 
 ## (1) Also get non-open-source GSM-specific aspects if available
-$(call inherit-product-if-exists, vendor/motorola/sholest/sholest-vendor.mk)
+#$(call inherit-product-if-exists, vendor/motorola/sholest/sholest-vendor.mk)
 
 ## (2)  Finally, the least specific parts, i.e. the non-GSM-specific aspects
 PRODUCT_PROPERTY_OVERRIDES += \
