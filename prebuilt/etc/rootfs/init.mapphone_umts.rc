@@ -86,6 +86,7 @@ chown mot_usb mot_usb /proc/mtpctl
     insmod /system/lib/modules/overclock.ko
     insmod /system/lib/modules/mmcfix.ko    
     insmod /system/lib/modules/thumbee.ko
+    insmod /system/lib/modules/sensorfix.ko
 
 on early-boot
 
