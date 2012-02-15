@@ -79,17 +79,17 @@
     <!-- Each camcorder profile defines a set of predefined configuration parameters -->
     <CamcorderProfiles>
 
-        <EncoderProfile quality="hd" fileFormat="3gp" duration="60">
+        <EncoderProfile quality="hd" fileFormat="mp4" duration="60">
             <Video codec="m4v"
                    bitRate="10000000"
                    width="1280"
                    height="720"
-                   frameRate="30" />
+                   frameRate="24" />
 
             <Audio codec="aac"
                    bitRate="96000"
                    sampleRate="44100"
-                   channels="2" />
+                   channels="1" />
          </EncoderProfile>
 
         <EncoderProfile quality="high" fileFormat="mp4" duration="60">
@@ -97,7 +97,7 @@
                    bitRate="4000000"
                    width="720"
                    height="576"
-                   frameRate="25" />
+                   frameRate="24" />
 
             <Audio codec="aac"
                    bitRate="96000"
@@ -106,11 +106,11 @@
         </EncoderProfile>
 
         <EncoderProfile quality="wide" fileFormat="mp4" duration="60">
-            <Video codec="h264"
+            <Video codec="m4v"
                    bitRate="4000000"
-                   width="720"
+                   width="848"
                    height="480"
-                   frameRate="25" />
+                   frameRate="24" />
 
             <Audio codec="aac"
                    bitRate="96000"
@@ -132,7 +132,7 @@
 
         </EncoderProfile>
 
-        <ImageEncoding quality="96" />
+        <ImageEncoding quality="97" />
         <ImageEncoding quality="86" />
         <ImageEncoding quality="80" />
         <ImageDecoding memCap="20000000" />
@@ -152,13 +152,13 @@
     -->
     <VideoEncoderCap name="h264" enabled="true"
         minBitRate="64000" maxBitRate="8000000"
-        minFrameWidth="176" maxFrameWidth="720"
+        minFrameWidth="176" maxFrameWidth="848"
         minFrameHeight="144" maxFrameHeight="576"
         minFrameRate="1" maxFrameRate="30" />
 
     <VideoEncoderCap name="h263" enabled="true"
         minBitRate="64000" maxBitRate="8000000"
-        minFrameWidth="176" maxFrameWidth="720"
+        minFrameWidth="176" maxFrameWidth="848"
         minFrameHeight="144" maxFrameHeight="480"
         minFrameRate="1" maxFrameRate="30" />
 
