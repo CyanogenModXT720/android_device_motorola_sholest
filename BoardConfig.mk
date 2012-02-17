@@ -97,6 +97,8 @@ BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
 BOARD_USES_ECLAIR_LIBAUDIO := true
 BOARD_USE_FROYO_LIBCAMERA := true
+#TARGET_USE_MOTO_CUSTOM_CAMERA_PARAMETERS := true
+#we do not have custom camera parameters (they are if present in libcamera.so
 BOARD_GPS_LIBRARIES := libgps
 BOARD_USES_GPSSHIM := true
 #BOARD_USES_GPSSHIM := false
