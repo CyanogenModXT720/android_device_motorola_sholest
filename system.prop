@@ -11,7 +11,8 @@ ro.usb.use_custom_service=1
 # Default network type.
 # 3 -> GSM/WCDMA (auto mode, according to PRL)
 ro.telephony.default_network=3
-
+ro.telephony.ril_class=motow3g
+com.ti.omap_enhancement=1
 #Wifi interface
 mobiledata.itnerfaces=rmnet0
 wifi.interface=tiwlan0

@@ -255,7 +255,7 @@ on boot
     write /sys/module/lowmemorykiller/parameters/adj 0,1,2,4,7,15
 
     write /proc/sys/vm/overcommit_memory 1
-    write /proc/sys/vm/min_free_kbytes 3072
+    write /proc/sys/vm/min_free_kbytes 5120
     write /proc/sys/vm/min_free_order_shift 4
     write /sys/module/lowmemorykiller/parameters/minfree 2048,3328,4608,6656,7168,9216
 
