@@ -146,3 +146,5 @@ TARGET_CUSTOM_RELEASETOOL := ./device/motorola/sholest/releasetools/squisher
 # sholest need 2nd-init binary from motorola common
 TARGET_NEEDS_MOTOROLA_HIJACK := true
 
+# Dock Audio
+BOARD_USE_MOTO_DOCK_HACK := true
