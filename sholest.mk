@@ -67,6 +67,7 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PACKAGES += \
     xt720Parts \
+    DockAudio \
     librs_jni \
     libaudiopolicy \
     sensors.sholest \
