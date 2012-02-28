@@ -134,7 +134,7 @@ BOARD_HAVE_FM_RADIO := true
 BOARD_USE_BROADCOM_FM_VOLUME_HACK := true
 BOARD_FM_DEVICE := wl1271
 #omap enhancment
-#OMAP_ENHANCEMENT := true
+OMAP_ENHANCEMENT := true
 
 BOARD_NEVER_UMOUNT_SYSTEM := true
 TARGET_RECOVERY_PRE_COMMAND := "echo 1 > /cache/.boot_to_or; sync;"
