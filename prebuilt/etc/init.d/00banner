@@ -10,3 +10,6 @@ $L " __ __ _ ___  _ _  __  ___  __ _ _  _  _  __  __))";
 $L "((_ \\(/'((_( ((\\( ((_)((_( (('((\\( ((\`1( ((_)((_( ";
 $L "     ))                 _))";
 $L " ";
+/system/xbin/busybox touch /tmp/usbd-state
+/system/xbin/busybox echo "usb_mode_msc_adb" > /tmp/usbd-state
+/system/xbin/busybox chown system.system /tmp/usbd-state

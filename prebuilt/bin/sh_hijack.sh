@@ -2,6 +2,7 @@
 #turn on logcat during boot
    /system/xbin/busybox echo "msc_adb" > /dev/usb_device_mode
    /system/xbin/busybox touch /tmp/usbd-state
+   /system/xbin/busybox chown system.system /tmp/usbd-state
    /system/xbin/busybox echo "usb_mode_msc_adb" > /tmp/usbd-state
    /system/xbin/mount -o remount,rw rootfs /
    /system/xbin/rmdir /config
