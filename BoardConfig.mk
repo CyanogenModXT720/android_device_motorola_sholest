@@ -29,16 +29,20 @@ USE_CAMERA_STUB := false
 BOARD_USES_GENERIC_AUDIO := false
 
 TARGET_NO_BOOTLOADER := true
+TARGET_NO_KERNEL := true
 TARGET_NO_RADIOIMAGE := true
-TARGET_BOOTLOADER_BOARD_NAME := sholest
+TARGET_NO_RECOVERY := true
+
 
 # Board properties
 TARGET_BOARD_PLATFORM := omap3
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_ARCH_VARIANT := armv7-a-neon
+TARGET_ARCH_VARIANT_FPU := neon
 TARGET_GLOBAL_CFLAGS += -mtune=cortex-a8
 TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a8
+
 TARGET_OMAP3 := true
 COMMON_GLOBAL_CFLAGS += -DTARGET_OMAP3 -DOMAP_COMPAT -DMOTOROLA_UIDS
 
@@ -50,6 +54,8 @@ ARCH_ARM_HAVE_ARMV7A_BUG := true
 ## Quarx said that option get bootloop on defy
 #ARCH_ARM_HAVE_TLS_REGISTER := true
 ### will uncomment, when have test enough
+
+TARGET_BOOTLOADER_BOARD_NAME := sholest
 
 ## BUILD OPTIONS:
 TARGET_OTA_NO_KERNEL := true
@@ -71,41 +77,41 @@ WIFI_FIRMWARE_LOADER        := "wlan_loader"
 
 BOARD_USE_YUV422I_DEFAULT_COLORFORMAT := true
 BOARD_EGL_CFG := device/motorola/sholest/egl.cfg
-BOARD_CUSTOM_USB_CONTROLLER := ../../device/motorola/sholest/UsbController.cpp
+#BOARD_CUSTOM_USB_CONTROLLER := ../../device/motorola/sholest/UsbController.cpp
+DEVICE_NO_RGBX_8888 := true
 
 BOARD_HAVE_BLUETOOTH := true
-BOARD_USES_ECLAIR_LIBAUDIO := true
-BOARD_USE_FROYO_LIBCAMERA := true
-BOARD_GPS_LIBRARIES := libgps
+BOARD_HAVE_BLUETOOTH_BCM :=true
+#BOARD_GPS_LIBRARIES := libgps
 BOARD_USES_GPSSHIM := true
 BOARD_HAS_VIBRATOR_IMPLEMENTATION := ../../device/motorola/sholest/vibrator.c
 
-BOARD_BOOTIMAGE_MAX_SIZE := $(call image-size-from-data-size,0x00380000)
-BOARD_RECOVERYIMAGE_MAX_SIZE := $(call image-size-from-data-size,0x00500000)
-BOARD_SYSTEMIMAGE_MAX_SIZE := $(call image-size-from-data-size,0x0afa0000)
-BOARD_USERDATAIMAGE_MAX_SIZE := $(call image-size-from-data-size,0x0cac0000)
-BOARD_FLASH_BLOCK_SIZE := 131072
 
 HARDWARE_OMX := true
 BUILD_WITH_TI_AUDIO := 1
 BUILD_PV_VIDEO_ENCODERS := 1
+TARGET_USE_OMAP_COMPAT := true
+
+TARGET_SKIA_USE_MORE_MEMORY := false
+
 
 BOARD_USE_USB_MASS_STORAGE_SWITCH := true
 BOARD_NO_RGBX_8888 := true
 
-# Recovery
-BOARD_HAS_NO_MISC_PARTITION := true
-BOARD_RECOVERY_IGNORE_BOOTABLES := true
-BOARD_HAS_SMALL_RECOVERY := true
-BOARD_HAS_LARGE_FILESYSTEM := true
-BOARD_HAS_NO_SELECT_BUTTON := true
+COMMON_GLOBAL_CFLAGS += -DMISSING_EGL_EXTERNAL_IMAGE -DMISSING_EGL_PIXEL_FORMAT_YV12 -DMISSING_GRALLOC_BUFFERS
 
-BOARD_NEVER_UMOUNT_SYSTEM := true
+ENABLE_SENSORS_COMPAT := true
+BOARD_USES_AUDIO_LEGACY := true
+TARGET_PROVIDES_LIBAUDIO := true
+BOARD_USE_LEGACY_TOUCHSCREEN := true
+
+
 TARGET_RECOVERY_PRE_COMMAND := "echo 1 > /cache/.boot_to_or; sync;"
 TARGET_RECOVERY_PRE_COMMAND_CLEAR_REASON := true
 
 # Override cyanogen squisher to customize our update zip package
 TARGET_CUSTOM_RELEASETOOL := ./device/motorola/sholest/releasetools/squisher
+TARGET_PROVIDES_RELEASETOOLS := true
 
 # sholest need 2nd-init binary from motorola common
 TARGET_NEEDS_MOTOROLA_HIJACK := true
