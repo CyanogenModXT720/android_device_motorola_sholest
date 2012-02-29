@@ -18,6 +18,7 @@
 #define LOG_TAG "lights"
 
 #include <cutils/log.h>
+#include <cutils/properties.h>
 
 #include <stdint.h>
 #include <string.h>
@@ -46,14 +47,10 @@ char const*const LCD_FILE
 char const*const ALS_FILE
         = "/sys/class/leds/lcd-backlight/als";
 
-// XT720 DON"T HAVE KEYBOARD!
-//char const*const KEYBOARD_FILE
-//        = "/sys/class/leds/keyboard-backlight/brightness";
+char const*const KEYBOARD_FILE
+        = "/sys/class/leds/keyboard-backlight/brightness";
 char const*const BUTTON_FILE
         = "/sys/class/leds/button-backlight/brightness";
-
-char const*const AF_LED_FILE
-        = "/sys/class/leds/af-led/brightness";
 
 /*RGB file descriptors */
 char const*const RED_LED_FILE
@@ -67,11 +64,19 @@ char const*const BLUE_LED_FILE
 
 static unsigned int colorstate = 0;
 static int blinkstate = 0;
+static unsigned int lastnotificationcolor = 0;
+static int lastnotificationblink = 0;
+static int lowbattery = 0;
+static int charge_only_mode = 0;
 
 void init_globals(void)
 {
+    char value[PROPERTY_VALUE_MAX];
+
     // init the mutex
     pthread_mutex_init(&g_lock, NULL);
+    property_get("sys.chargeonly.mode", value, "0");
+    charge_only_mode = atoi(value);
 }
 
 static int
@@ -137,10 +142,7 @@ set_light_backlight(struct light_device_t* dev,
     return err;
 }
 
-/* Well, we don't have keyboard, so we don't need that.
- *
- *
- * static int
+static int
 set_light_keyboard(struct light_device_t* dev,
         struct light_state_t const* state)
 {
@@ -152,7 +154,7 @@ set_light_keyboard(struct light_device_t* dev,
     pthread_mutex_unlock(&g_lock);
 
     return err;
-}*/
+}
 
 static int
 set_light_buttons(struct light_device_t* dev,
@@ -167,46 +169,6 @@ set_light_buttons(struct light_device_t* dev,
 
     return err;
 
-}
-
-static int
-set_light_battery(struct light_device_t* dev,
-        struct light_state_t const* state)
-{
-    int err = 0;
-
-    /**
-     * there is a charging LED on the droid, but not sure how it gets set
-     * on xt720 we don't have charging led, no we don't need it.
-
-    int red, green, blue;
-    unsigned int colorRGB;
-    int onMS, offMS;
-
-    switch (state->flashMode) {
-        case LIGHT_FLASH_HARDWARE:
-        case LIGHT_FLASH_TIMED:
-            onMS = state->flashOnMS;
-            offMS = state->flashOffMS;
-            break;
-        case LIGHT_FLASH_NONE:
-        default:
-            onMS = 0;
-            offMS = 0;
-            break;
-    }
-
-    colorRGB = state->color;
-#if 0
-    LOGD("set_light_battery colorRGB=%08X, onMS=%d, offMS=%d****************\n",
-            colorRGB, onMS, offMS);
-#endif
-    err = write_int(CHARGING_LED_FILE, colorRGB ? 255 : 0);
-
-     *
-     */
-
-    return err;
 }
 
 static int
@@ -242,7 +204,43 @@ set_light_locked(unsigned int color, int blink)
     }
     return err;
 }
-// XT720 -> do we need it? 
+
+static int
+set_light_battery(struct light_device_t* dev,
+        struct light_state_t const* state)
+{
+    int err = 0;
+    int blink;
+
+    switch (state->flashMode) {
+        case LIGHT_FLASH_HARDWARE:
+        case LIGHT_FLASH_TIMED:
+            blink = 1;
+            break;
+        case LIGHT_FLASH_NONE:
+        default:
+            blink = 0;
+            break;
+    }
+#if 0
+    LOGD("set_light_battery color=%08X, blink=%d****************\n",
+            state->color, blink);
+#endif
+    if (charge_only_mode) {
+        err = set_light_locked(state->color, blink);
+    } else {
+        if (state->color == 0xffff0000) {
+            lowbattery = 1;
+            err = set_light_locked(state->color, blink);
+        } else if (lowbattery == 1) {
+            lowbattery = 0;
+            err = set_light_locked(lastnotificationcolor, lastnotificationblink);
+        }
+    }
+
+    return err;
+}
+
 static int
 set_light_notification(struct light_device_t* dev,
         struct light_state_t const* state)
@@ -264,7 +262,11 @@ set_light_notification(struct light_device_t* dev,
     LOGD("set_light_notification color=%08X, blink=%d****************\n",
             state->color, blink);
 #endif
-    err = set_light_locked(state->color, blink);
+    lastnotificationcolor = state->color;
+    lastnotificationblink = blink;
+    if (lowbattery == 0) {
+        err = set_light_locked(state->color, blink);
+    }
 
     return err;
 }
@@ -319,13 +321,13 @@ static int open_lights(const struct hw_module_t* module, char const* name,
 {
     int (*set_light)(struct light_device_t* dev,
             struct light_state_t const* state);
+
     if (0 == strcmp(LIGHT_ID_BACKLIGHT, name)) {
         set_light = set_light_backlight;
     }
-  // No keyboard, so ignore that.
-  // else if (0 == strcmp(LIGHT_ID_KEYBOARD, name)) {
-     //   set_light = set_light_keyboard;
-   // }
+    else if (0 == strcmp(LIGHT_ID_KEYBOARD, name)) {
+        set_light = set_light_keyboard;
+    }
     else if (0 == strcmp(LIGHT_ID_BUTTONS, name)) {
         set_light = set_light_buttons;
     }
@@ -367,7 +369,7 @@ const struct hw_module_t HAL_MODULE_INFO_SYM = {
     .version_major = 1,
     .version_minor = 0,
     .id = LIGHTS_HARDWARE_MODULE_ID,
-    .name = "sholest lights Module",
+    .name = "TI OMAP lights Module",
     .author = "Google, Inc.",
     .methods = &lights_module_methods,
 };

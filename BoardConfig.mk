@@ -33,6 +33,7 @@ TARGET_NO_KERNEL := true
 TARGET_NO_RADIOIMAGE := true
 TARGET_NO_RECOVERY := true
 
+#TARGET_NO_PREINSTALL := true
 
 # Board properties
 TARGET_BOARD_PLATFORM := omap3
@@ -52,7 +53,7 @@ ARCH_ARM_HAVE_ARMV7A_BUG := true
 
 ### as i have read we have the tls register
 ## Quarx said that option get bootloop on defy
-#ARCH_ARM_HAVE_TLS_REGISTER := true
+ARCH_ARM_HAVE_TLS_REGISTER := false
 ### will uncomment, when have test enough
 
 TARGET_BOOTLOADER_BOARD_NAME := sholest
@@ -86,7 +87,14 @@ BOARD_HAVE_BLUETOOTH_BCM :=true
 BOARD_USES_GPSSHIM := true
 BOARD_HAS_VIBRATOR_IMPLEMENTATION := ../../device/motorola/sholest/vibrator.c
 
+BOARD_BOOTIMAGE_MAX_SIZE := $(call image-size-from-data-size,0x00380000)
+BOARD_RECOVERYIMAGE_MAX_SIZE := $(call image-size-from-data-size,0x00500000)
+BOARD_SYSTEMIMAGE_MAX_SIZE := $(call image-size-from-data-size,0x0afa0000)
+BOARD_USERDATAIMAGE_MAX_SIZE := $(call image-size-from-data-size,0x0cac0000)
+BOARD_FLASH_BLOCK_SIZE := 131072
 
+
+USE_OPENGL_RENDERER := false
 HARDWARE_OMX := true
 BUILD_WITH_TI_AUDIO := 1
 BUILD_PV_VIDEO_ENCODERS := 1
