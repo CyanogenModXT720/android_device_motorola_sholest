@@ -96,5 +96,6 @@ USE_SHOLES_PROPERTY := true
 
 # Override cyanogen squisher to customize our update zip package
 TARGET_CUSTOM_RELEASETOOL := ./device/motorola/sholest/releasetools/squisher
+TARGET_CUSTOM_SYSTEMIMAGE_TWEAKER := ./device/motorola/sholest/releasetools/tweaker
 
 WITH_DEXPREOPT := true
