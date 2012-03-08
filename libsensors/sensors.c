@@ -112,7 +112,7 @@ const struct sensors_module_t HAL_MODULE_INFO_SYM = {
         .version_major = 1,
         .version_minor = 1,
         .id = SENSORS_HARDWARE_MODULE_ID,
-        .name = "Motorola Defy Sensors Module",
+        .name = "Motorola Milestone XT720 Sensors Module",
         .author = "CyanogenDefy",
         .methods = &sensors_module_methods,
     },

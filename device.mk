@@ -15,7 +15,7 @@
 #
 
 #
-# This is the product configuration for a generic Motorola Defy (jordan)
+# This is the product configuration for a generic Motorola Milestone XT720 (sholest)
 #
 
 # The gps config appropriate for this device
@@ -23,16 +23,9 @@ $(call inherit-product, device/common/gps/gps_eu_supl.mk)
 
 ## (3)  Finally, the least specific parts, i.e. the non-GSM-specific aspects
 PRODUCT_PROPERTY_OVERRIDES += \
-	ro.media.capture.maxres=5m \
-	ro.media.capture.flash=led \
-	ro.media.capture.flashIntensity=41 \
-	ro.media.capture.torchIntensity=25 \
-	ro.media.capture.classification=classH \
-	ro.media.capture.flip=horizontalandvertical \
 	ro.com.google.locationfeatures=1 \
 	ro.telephony.call_ring.multiple=false \
 	ro.telephony.call_ring.delay=3000 \
-	ro.url.safetylegal=http://www.motorola.com/staticfiles/Support/legal/?model=MB525 \
 	ro.media.dec.jpeg.memcap=20000000 \
 	dalvik.vm.lockprof.threshold=500 \
 	ro.kernel.android.checkjni=0 \
@@ -45,7 +38,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
 
-DEVICE_PACKAGE_OVERLAYS += device/motorola/jordan/overlay
+DEVICE_PACKAGE_OVERLAYS += device/motorola/sholest/overlay
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -67,7 +60,6 @@ PRODUCT_PACKAGES += \
 	libaudiohw_legacy audio.primary.sholest \
 
 # TO FIX for ICS
-#PRODUCT_PACKAGES += gralloc.jordan hwcomposer.jordan
 PRODUCT_PACKAGES += gralloc.default hwcomposer.default
 
 # ICS Camera
@@ -103,7 +95,7 @@ PRODUCT_PACKAGES += VisualizationWallpapers librs_jni
 PRODUCT_PACKAGES += Trebuchet FileManager Torch
 
 # Prebuilt boot.img
-LOCAL_KERNEL := device/motorola/jordan/kernel
+LOCAL_KERNEL := device/motorola/sholest/kernel
 PRODUCT_COPY_FILES += \
 	$(LOCAL_KERNEL):kernel
 
