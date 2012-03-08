@@ -1,10 +1,12 @@
 /*
- * Copyright (c) 2008-2009, Kionix, Inc. All Rights Reserved.
+ * Copyright (C) 2009 Kionix, Inc.
+ * Written by Chris Hudson <chudson@kionix.com>
  *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Copyright (C) 2010 Motorola, Inc.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 as
+ * published by the Free Software Foundation.
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -12,8 +14,9 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- *
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
+ * 02111-1307, USA
  */
 
 #ifndef __KXTF9_H__
@@ -31,19 +34,16 @@
 #define KXTF9_IOCTL_SET_ENABLE		_IOW(KXTF9_IOCTL_BASE, 2, int)
 #define KXTF9_IOCTL_GET_ENABLE		_IOR(KXTF9_IOCTL_BASE, 3, int)
 #define KXTF9_IOCTL_SET_G_RANGE		_IOW(KXTF9_IOCTL_BASE, 4, int)
-
 #define KXTF9_IOCTL_SET_TILT_ENABLE	_IOW(KXTF9_IOCTL_BASE, 5, int)
 #define KXTF9_IOCTL_SET_TAP_ENABLE	_IOW(KXTF9_IOCTL_BASE, 6, int)
 #define KXTF9_IOCTL_SET_WAKE_ENABLE	_IOW(KXTF9_IOCTL_BASE, 7, int)
-#define KXTF9_IOCTL_SET_PM_MODE		_IOW(KXTF9_IOCTL_BASE, 8, int)
-#define KXTF9_IOCTL_SELF_TEST		_IOW(KXTF9_IOCTL_BASE, 9, int)
-#define KXTF9_IOCTL_SET_SENSITIVITY     _IOW(KXTF9_IOCTL_BASE, 10, int)
+#define KXTF9_IOCTL_SET_SENSITIVITY	_IOW(KXTF9_IOCTL_BASE, 8, int)
 
 /* CONTROL REGISTER 1 BITS */
 #define RES_12BIT		0x40
-#define KXTF9_G_2G 		0x00
-#define KXTF9_G_4G 		0x08
-#define KXTF9_G_8G 		0x10
+#define KXTF9_G_2G		0x00
+#define KXTF9_G_4G		0x08
+#define KXTF9_G_8G		0x10
 #define TPE			0x01	/* tilt position function enable bit */
 #define WUFE			0x02	/* wake-up function enable bit */
 #define TDTE			0x04	/* tap/double-tap function enable bit */
@@ -72,9 +72,13 @@
 #define ODR100			0x03
 #define ODR50			0x02
 #define ODR25			0x01
-#define ODR12_5			0x00
+#define ODR12_5			0x00	/* Do not use per Kionix */
+/* Interrupt status */
+#define KXTF9_INT_TAP2		0x08000000
+#define KXTF9_INT_TAP1		0x04000000
+#define KXTF9_INT_TILT		0x01000000
 
-#define SENSITIVITY_REGS 0x07
+#define SENSITIVITY_REGS	7
 
 #ifdef __KERNEL__
 struct kxtf9_platform_data {
@@ -122,4 +126,3 @@ struct kxtf9_platform_data {
 #endif /* __KERNEL__ */
 
 #endif  /* __KXTF9_H__ */
-
