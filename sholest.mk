@@ -103,7 +103,9 @@ PRODUCT_PACKAGES += \
     libhostapdcli \
     Usb \
     mot_boot_mode \
-    charge_only_mode
+    charge_only_mode \
+    com.ti.omap.omap_mm_library \
+    libomap_mm_library_jni
     
 
 # we have enough storage space to hold precise GC data
