@@ -89,7 +89,7 @@ BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM :=true
 #BOARD_GPS_LIBRARIES := libgps
 BOARD_USES_GPSSHIM := true
-BOARD_HAS_VIBRATOR_IMPLEMENTATION := ../../device/motorola/sholest/vibrator.c
+#BOARD_HAS_VIBRATOR_IMPLEMENTATION := ../../device/motorola/sholest/vibrator.c
 
 BOARD_BOOTIMAGE_PARTITION_SIZE := $(call image-size-from-data-size,0x00380000)
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := $(call image-size-from-data-size,0x00500000)

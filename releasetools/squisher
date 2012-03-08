@@ -1,11 +1,15 @@
 #!/bin/sh
 #
 # Squish a CM otapackage for distribution
-# cyanogen
+# cyanogen / CyanogenDefy / Atrix-Dev-Team
 #
 
-echo "SHOLEST SQUISHER:"
-echo "================="
+echo "SHOLEST SQUISHER"
+echo "================"
+
+DEVICE_OUT=$ANDROID_BUILD_TOP/out/target/product/sholest
+DEVICE_TOP=$ANDROID_BUILD_TOP/device/motorola/sholest
+VENDOR_TOP=$ANDROID_BUILD_TOP/vendor/motorola/sholest
 
 OUT_TARGET_HOST=`uname -a | grep Darwin`
 if [ -z "$OUT_TARGET_HOST" ]
@@ -27,23 +31,25 @@ if [ -z "$OUT" -o ! -d "$OUT" ]; then
 fi
 
 if [ "$TARGET_BUILD_TYPE" = "debug" ]; then
-    OTAPACKAGE=$OUT/${TARGET_PRODUCT}_debug-ota-$TARGET_BUILD_VARIANT.$LOGNAME.zip
+    OTAPACKAGE=$OUT/${TARGET_PRODUCT}_debug-ota-$TARGET_BUILD_VARIANT.$USER.zip
+elif [ "$TARGET_BUILD_VARIANT" = "userdebug" ]; then
+    OTAPACKAGE=$OUT/$TARGET_PRODUCT-ota-eng.$USER.zip
 else
-    OTAPACKAGE=$OUT/$TARGET_PRODUCT-ota-$TARGET_BUILD_VARIANT.$LOGNAME.zip
+    OTAPACKAGE=$OUT/$TARGET_PRODUCT-ota-$TARGET_BUILD_VARIANT.$USER.zip
 fi
 if [ ! -f "$OTAPACKAGE" ]; then
-	echo "$OTAPACKAGE doesn't exist!";
+	echo "$OTAPACKAGE doesn't exist!"
 	exit 1
 fi
 
-OPTICHARGER=$ANDROID_BUILD_TOP/vendor/cyanogen/tools/opticharger
+OPTICHARGER=$DEVICE_TOP/releasetools/opticharger
 QUIET=-q
 DELETE_BINS="applypatch applypatch_static check_prereq recovery updater"
 
 
 # Some products want a squashfs for xbin for space
 case "$TARGET_PRODUCT" in
-	cyanogen_dream_sapphire) WANT_SQUASHFS=1 ;;
+	cm_dream_sapphire) WANT_SQUASHFS=1 ;;
 	*) WANT_SQUASHFS=0 ;;
 esac
 
@@ -76,7 +82,6 @@ rm -rf $REPACK
 mkdir -p $REPACK
 echo
 
-
 # Unpack the otapackage and opticharge all apks
 mkdir $REPACK/ota
 (
@@ -85,10 +90,20 @@ printf "Unpacking $OTAPACKAGE..."
 unzip $QUIET $OTAPACKAGE
 echo
 cd $REPACK/ota/system/framework
-$OPTICHARGER framework-res.apk
-cd $REPACK/ota/system/app
-find ./ -name \*.apk | $XARGS $OPTICHARGER
 )
+
+# Include device specific script
+if [ -f $DEVICE_TOP/releasetools/squisher.sh ]; then
+       . $DEVICE_TOP/releasetools/squisher.sh
+fi
+
+if [ "$1" != "fast" ]; then
+	$OPTICHARGER framework-res.apk
+	cd $REPACK/ota/system/app
+	find ./ -name \*.apk | $XARGS $OPTICHARGER
+else
+	echo "skipping apk optimization"
+fi
 
 
 if [ "$WANT_SQUASHFS" -eq 1 ]; then
@@ -99,7 +114,7 @@ if [ "$WANT_SQUASHFS" -eq 1 ]; then
 	cp -a $REPACK/ota/system/xbin $REPACK/_xbin/
 	rm -f $REPACK/_xbin/su $REPACK/ota/system/bin/su
 	mv $REPACK/ota/system/xbin/su $REPACK/ota/system/bin/su
-	chmod -R 555 $REPACK/_xbin/*
+	chmod -R 755 $REPACK/_xbin/*
 
 	# Create symlinks for su and busybox (since updater-script can't work on the squashfs filesystem).
 	# Forgive me for the regex hell here. 
@@ -113,7 +128,7 @@ if [ "$WANT_SQUASHFS" -eq 1 ]; then
 	mksquashfs $REPACK/_xbin/* $REPACK/_xbin.sqf $squash_opts
 	rm -rf $REPACK/ota/system/xbin/*
 	mv $REPACK/_xbin.sqf $REPACK/ota/system/xbin/xbin.sqf
-	chmod 444 $REPACK/ota/system/xbin/xbin.sqf
+	chmod 644 $REPACK/ota/system/xbin/xbin.sqf
 
 	# Remove xbin stuff and fix up updater-script
 	$SED -i -e's,system/xbin/su,system/bin/su,g' -e'/xbin/d' $updater
@@ -126,29 +141,31 @@ $SED -i \
 	-e '/ro\.build\.type/s/eng/user/' \
 	$REPACK/ota/system/build.prop
 
-# Include device specific script
-. $ANDROID_BUILD_TOP/device/motorola/sholest/releasetools/squisher.sh
-
 # Delete unnecessary binaries
-( cd $REPACK/ota/system/bin; echo $DELETE_BINS | xargs rm -f; )
+if [ -n "$DELETE_BINS" ]; then
 
-# Delete leftover wireless driver
-# rm -rf $REPACK/ota/system/lib/modules/*/kernel/drivers/net
+	echo "Removing unwanted binaries..."
+	cd $REPACK/ota/system/bin && echo $DELETE_BINS | xargs /bin/rm -f
+fi
 
-# No need for recovery
-rm -rf $REPACK/ota/recovery
+cd $REPACK/ota/system/bin && find -name "*_test" -exec /bin/rm -f {} \;
+cd $REPACK/ota/system/bin && find -name "*_Test" -exec /bin/rm -f {} \;
+cd $REPACK/ota/system/bin && find -name "test_*" -exec /bin/rm -f {} \;
+cd $REPACK/ota/system/bin && find -name "*Test*" -exec /bin/rm -f {} \;
+cd $REPACK
 
 # Strip modules
 [ -d $REPACK/ota/system/lib/modules ] && \
-	find $REPACK/ota/system/lib/modules -name "*.ko" -print0 | xargs -0 arm-eabi-strip --strip-unneeded
+	find $REPACK/ota/system/lib/modules -name "*.ko" -not -name "overclock*" -print0 | xargs -0 arm-eabi-strip --strip-unneeded
 
 # Determine what to name the new signed package
-if [ -z "$CYANOGEN_NIGHTLY" ]; then
-	MODVERSION=`sed -n -e'/ro\.modversion/s/^.*CyanogenMod-//p' $REPACK/ota/system/build.prop`
-	: ${MODVERSION:=nightly}
-	OUTFILE=$OUT/CyanogenMod-$MODVERSION-signed.zip
-else
-	OUTFILE=$OUT/update-squished.zip
+MODVERSION=`sed -n -e'/ro\.modversion/s/^.*=//p' $REPACK/ota/system/build.prop`
+: ${MODVERSION:=nightly}
+OUTFILE=$OUT/update-cm-$MODVERSION-signed.zip
+
+if [ -n "$CM_NIGHTLY" ]; then
+	MODVERSION=`sed -n -e'/ro\.modversion/s/^.*=//p' $REPACK/ota/system/build.prop`
+	OUTFILE=$OUT/CM$MODVERSION.zip
 fi
 
 # Pack it up and sign
@@ -157,7 +174,7 @@ printf "Zipping package..."
 echo
 printf "Signing package..."
 SECURITYDIR=$ANDROID_BUILD_TOP/build/target/product/security
-java -Xmx512m \
+java -Xmx768m \
 	-jar $ANDROID_BUILD_TOP/out/host/$OUT_TARGET_HOST/framework/signapk.jar \
 	-w $SECURITYDIR/testkey.x509.pem $SECURITYDIR/testkey.pk8 \
 	$REPACK/update.zip $OUTFILE
@@ -175,6 +192,14 @@ echo
 echo "Package complete: $OUTFILE"
 cat $img.md5sum
 echo
+# Build date and current time:
+cat $OUT/system/build.prop | grep ro.build.date=
+ls -l $OUTFILE
+echo
 )
+
+if [ -x $DEVICE_TOP/releasetools/addons ]; then
+	$DEVICE_TOP/releasetools/addons recovery
+fi
 
 exit 0
