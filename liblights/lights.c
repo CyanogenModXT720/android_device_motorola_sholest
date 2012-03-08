@@ -265,7 +265,7 @@ int blink;
         default:
             blink = 0;
             break;
-    }   return err;
+    }   
 
     if (charge_only_mode) {
         err = set_light_locked(state->color, blink);
