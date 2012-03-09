@@ -1,10 +1,9 @@
-ui_print("Welcome to MODVERSION!");
-assert(getprop("ro.product.device") == "sholest" || getprop("ro.build.product") == "sholest" || getprop("ro.product.board") == "sholest");
-show_progress(0.500000, 0);
 format("yaffs2", "MTD", "system",0);
 mount("yaffs2", "MTD", "system", "/system");
 show_progress(0.500000, 40);
 package_extract_dir("system", "/system");
+run_program("/sbin/touch","/system/firstboot");
+
 symlink("busybox", "/system/xbin/[", "/system/xbin/[[",
         "/system/xbin/arp", "/system/xbin/ash", "/system/xbin/awk",
         "/system/xbin/basename", "/system/xbin/bbconfig", "/system/xbin/brctl",
@@ -77,6 +76,19 @@ symlink("toolbox", "/system/bin/cat", "/system/bin/cmp",
         "/system/bin/top", "/system/bin/uptime", "/system/bin/vmstat",
         "/system/bin/watchprops",
         "/system/bin/wipe");
+symlink("/system/bin/logwrapper.bin","/system/xbin/logwrapper");
+symlink("/system/bin/bootmenu", "/system/bin/logwrapper");
+symlink("/system/bootmenu/binary/lsof", "/system/bin/lsof");
+
+package_extract_file("system/bin/bootmenu", "/system/bootmenu/binary/bootmenu");
+set_perm_recursive(0, 0, 0755, 0644, "/system");
+set_perm_recursive(0, 0, 0755, 0755, "/system/bootmenu/binary/");
+set_perm_recursive(0, 0, 0755, 0755, "/system/bootmenu/script/");
+set_perm_recursive(0, 0, 0755, 0755, "/system/bootmenu/recovery/sbin/");
+set_perm_recursive(0, 0, 0755, 0755, "/system/bootmenu/2nd-boot/sbin/");
+set_perm(0, 0, 0755, "/system/bootmenu/2nd-init/init");
+set_perm(0, 0, 0755, "/system/bootmenu/2nd-boot/init");
+set_perm_recursive(0, 2000, 0775, 0664, "/system/bootmenu/config/");
 set_perm_recursive(0, 0, 0755, 0644, "/system");
 set_perm_recursive(0, 2000, 0755, 0755, "/system/bin");
 set_perm(0, 3003, 02750, "/system/bin/netcfg");

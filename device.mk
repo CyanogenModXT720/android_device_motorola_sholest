@@ -84,6 +84,9 @@ PRODUCT_PACKAGES += Usb
 
 PRODUCT_PACKAGES += e2fsck
 
+# Bootmenu 
+PRODUCT_PACKAGES += bootmenu
+
 # Publish that we support the live wallpaper feature.
 PRODUCT_PACKAGES += LiveWallpapers LiveWallpapersPicker MagicSmokeWallpapers 
 PRODUCT_PACKAGES += VisualizationWallpapers librs_jni
