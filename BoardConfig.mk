@@ -59,8 +59,6 @@ ARCH_ARM_HAVE_TLS_REGISTER := false
 TARGET_BOOTLOADER_BOARD_NAME := sholest
 
 ## BUILD OPTIONS:
-TARGET_OTA_NO_KERNEL := true
-TARGET_OTA_EXTRA_ARGS := -e device/motorola/sholest/install-orbootstrap --no_kernel true --no_recovery true --backup false --override_device sholest
 LOCAL_KERNEL := device/motorola/sholest/kernel
 PRODUCT_COPY_FILES += $(LOCAL_KERNEL):kernel
 
@@ -89,7 +87,6 @@ BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM :=true
 #BOARD_GPS_LIBRARIES := libgps
 BOARD_USES_GPSSHIM := true
-#BOARD_HAS_VIBRATOR_IMPLEMENTATION := ../../device/motorola/sholest/vibrator.c
 
 BOARD_BOOTIMAGE_PARTITION_SIZE := $(call image-size-from-data-size,0x00380000)
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := $(call image-size-from-data-size,0x00500000)
@@ -118,11 +115,20 @@ TARGET_PROVIDES_LIBAUDIO := true
 BOARD_USE_LEGACY_TOUCHSCREEN := true
 
 # Recovery
+TARGET_RECOVERY_PIXEL_FORMAT := "BGRA_8888"
 BOARD_HAS_NO_MISC_PARTITION := true
 BOARD_RECOVERY_IGNORE_BOOTABLES := true
 BOARD_HAS_SMALL_RECOVERY := true
 BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_HAS_NO_SELECT_BUTTON := true
+BOARD_HAS_LARGE_FILESYSTEM := true
+BOARD_NEVER_UMOUNT_SYSTEM := true
+BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/motorola/sholest/recovery_keys.c
+BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := yaffs2
+TARGET_USERIMAGES_USE_EXT4 := false
+TARGET_RECOVERY_PRE_COMMAND := "/system/bootmenu/script/reboot_command.sh"
+TARGET_RECOVERY_PRE_COMMAND_CLEAR_REASON := true
+
 
 #TARGET_RECOVERY_PRE_COMMAND := "echo 1 > /cache/.boot_to_or; sync;"
 #TARGET_RECOVERY_PRE_COMMAND_CLEAR_REASON := true
