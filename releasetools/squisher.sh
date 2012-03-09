@@ -4,6 +4,7 @@
 # Delete unwanted apps
 rm -f $REPACK/ota/system/app/CMUpdateNotify.apk
 rm -f $REPACK/ota/system/app/RomManager.apk
+rm -f $REPACK/ota/system/app/CameraMoto.apk
 rm -f $REPACK/ota/system/xbin/irssi
 
 # prebuilt boot, devtree, logo & updater-script
