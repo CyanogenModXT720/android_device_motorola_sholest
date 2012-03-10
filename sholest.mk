@@ -62,7 +62,6 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PACKAGES += \
     librs_jni \
-    libaudiopolicy \
     sensors.sholest \
     lights.sholest \
     gps.sholest \
@@ -82,7 +81,6 @@ PRODUCT_PACKAGES += \
     libVendor_ti_omx \
     tiwlan.ini \
     dspexec \
-    overlay.omap3 \
     wlan_cu \
     libtiOsLib \
     wlan_loader \
