@@ -32,8 +32,8 @@
 
 #include "SensorKXTF9.h"
 #include "SensorAK8973.h"
-#include "SensorISL29030.h"
-
+#include "LightSensor.h"
+#include "ProximitySensor.h"
 /*****************************************************************************/
 
 struct sensors_poll_context_t
@@ -52,8 +52,8 @@ private:
     {
         KXTF9     = 0,
         AK8973    = 1,
-        ISL29030P = 2,
-        ISL29030L = 3,
+        Proximity = 2,
+        Light = 3,
         numSensorDrivers,
         numFds,
     };
@@ -77,9 +77,9 @@ private:
             case SENSOR_TYPE_AMBIENT_TEMPERATURE:
                 return AK8973;
             case SENSOR_TYPE_PROXIMITY:
-                return ISL29030P;
+                return Proximity;
             case SENSOR_TYPE_LIGHT:
-                return ISL29030L;
+                return Light;
         }
         return -EINVAL;
     }
@@ -99,15 +99,15 @@ sensors_poll_context_t::sensors_poll_context_t()
     mPollFds[AK8973].events = POLLIN;
     mPollFds[AK8973].revents = 0;
 
-    mSensors[ISL29030P] = new SensorISL29030P();
-    mPollFds[ISL29030P].fd = mSensors[ISL29030P]->getFd();
-    mPollFds[ISL29030P].events = POLLIN;
-    mPollFds[ISL29030P].revents = 0;
+    mSensors[Proximity] = new ProximitySensor();
+    mPollFds[Proximity].fd = mSensors[Proximity]->getFd();
+    mPollFds[Proximity].events = POLLIN;
+    mPollFds[Proximity].revents = 0;
 
-    mSensors[ISL29030L] = new SensorISL29030L();
-    mPollFds[ISL29030L].fd = mSensors[ISL29030L]->getFd();
-    mPollFds[ISL29030L].events = POLLIN;
-    mPollFds[ISL29030L].revents = 0;
+    mSensors[Light] = new LightSensor();
+    mPollFds[Light].fd = mSensors[Light]->getFd();
+    mPollFds[Light].events = POLLIN;
+    mPollFds[Light].revents = 0;
 
     int wakeFds[2];
     int result = pipe(wakeFds);

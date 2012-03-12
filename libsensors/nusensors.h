@@ -52,6 +52,12 @@ int init_nusensors(hw_module_t const* module, hw_device_t** device);
 #define KXTF9_CONVERT_A_X                  (-KXTF9_CONVERT_A)
 #define KXTF9_CONVERT_A_Y                  (KXTF9_CONVERT_A)
 #define KXTF9_CONVERT_A_Z                  (-KXTF9_CONVERT_A)
+#define CM_DEVICE_NAME      "/dev/sfh7743"
+#define LS_DEVICE_NAME      "/dev"
+
+#define EVENT_TYPE_PROXIMITY        ABS_DISTANCE
+#define EVENT_TYPE_LIGHT            LED_MISC // led sensor 1
+#define EVENT_TYPE_LIGHT2           MSC_RAW  // led sensor 2
 
 /*
   Orientation events:

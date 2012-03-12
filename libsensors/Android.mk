@@ -41,7 +41,8 @@ LOCAL_SRC_FILES := \
 
 LOCAL_SRC_FILES +=  SensorKXTF9.cpp
 LOCAL_SRC_FILES +=  SensorAK8973.cpp
-LOCAL_SRC_FILES +=  SensorISL29030.cpp
+LOCAL_SRC_FILES +=  ProximitySensor.cpp
+LOCAL_SRC_FILES +=  LightSensor.cpp
 
 LOCAL_SHARED_LIBRARIES := liblog libcutils
 LOCAL_PRELINK_MODULE := false
