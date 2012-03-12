@@ -127,21 +127,13 @@ BOARD_NEVER_UMOUNT_SYSTEM := true
 BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/motorola/sholest/recovery_keys.c
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := yaffs2
 TARGET_USERIMAGES_USE_EXT4 := false
-TARGET_RECOVERY_PRE_COMMAND := "/system/bootmenu/script/reboot_command.sh"
+
+
+TARGET_RECOVERY_PRE_COMMAND := "echo 1 > /cache/.boot_to_or; sync;"
 TARGET_RECOVERY_PRE_COMMAND_CLEAR_REASON := true
-
-
-#TARGET_RECOVERY_PRE_COMMAND := "echo 1 > /cache/.boot_to_or; sync;"
-#TARGET_RECOVERY_PRE_COMMAND_CLEAR_REASON := true
 
 # Override cyanogen squisher to customize our update zip package
 TARGET_CUSTOM_RELEASETOOL := ./device/motorola/sholest/releasetools/squisher
 TARGET_PROVIDES_RELEASETOOLS := true
-
+TARGET_NEEDS_MOTOROLA_HIJACK := true
 # Bootmenu
-BOARD_USES_BOOTMENU := true
-BOARD_SDCARD_DEVICE_PRIMARY   := /dev/block/mmcblk0p1
-BOARD_SDCARD_DEVICE_SECONDARY := /dev/block/mmcblk0
-BOARD_SDEXT_DEVICE  := /dev/block/mmcblk0p2
-BOARD_SYSTEM_DEVICE := /dev/block/mtdblock7
-BOARD_DATA_DEVICE   := /dev/block/mtdblock9
