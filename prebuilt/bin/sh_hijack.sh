@@ -1,18 +1,17 @@
 #!/system/bin/sh
-
-#turn on logcat during boot
-   /system/xbin/busybox echo "msc_adb" > /dev/usb_device_mode
-   /system/xbin/busybox touch /tmp/usbd-state
-   /system/xbin/busybox echo "usb_mode_msc_adb" > /tmp/usbd-state
    /system/xbin/mount -o remount,rw rootfs /
    /system/xbin/rmdir /config
    /system/xbin/rmdir /sdcard
+   /system/xbin/rm -f /sbin/charge_only_mode
+   /system/xbin/rm -f /init.mapphone_cdma.rc
+   /system/xbin/rm -f /init.goldfish.rc
+   /system/xbin/rm -f /init_prep_keypad.sh
    /system/xbin/cp -fr /etc/rootfs/* /
+   /system/xbin/chmod 750 /sbin/*
+   /system/xbin/chmod 750 /init
+   /system/xbin/ln -s /init /sbin/ueventd
 
-#   echo "-16" > /proc/$$/oom_adj
-
-   /system/xbin/umount /dev/cpuctl
-   /system/xbin/umount /sqlite_stmt_journals
-   /system/xbin/umount /dev/pts
+#   echo "msc_adb" > /dev/usb_device_mode
+#   echo "usb_mode_msc_adb" > /tmp/usbd_current_state
 
    exec /system/bin/2nd-init

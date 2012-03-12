@@ -54,6 +54,11 @@ PRODUCT_COPY_FILES += \
 	frameworks/base/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
 	packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:/system/etc/permissions/android.software.live_wallpaper.xml \
 
+
+# MOTOROLA COMMON 
+PRODUCT_PACKAGES += \
+	mot_boot_mode \
+    charge_only_mode 
 # ICS sound
 PRODUCT_PACKAGES += \
 	libaudioutils audio.a2dp.default audio_policy.sholest \
