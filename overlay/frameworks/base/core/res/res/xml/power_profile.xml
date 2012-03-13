@@ -25,7 +25,7 @@
   <!-- CPU wakelock held for 830ms on bluetooth headset at command. 43mA * 830 -->
   <item name="bluetooth.at">35690</item>
   <item name="screen.full">115</item>
-  <item name="wifi.on">10</item>
+  <item name="wifi.on">4</item>
   <item name="wifi.active">130</item>
   <item name="wifi.scan">104</item>
   <item name="dsp.audio">75</item>
@@ -38,24 +38,16 @@
       <value>3</value>
   </array>
   <array name="cpu.speeds">
-    <value>800000</value>
-    <value>720000</value>
+    <value>1000000</value>
     <value>600000</value>
-    <value>550000</value>
-    <value>500000</value>
-    <value>250000</value>
-    <value>125000</value>
+    <value>300000</value>
   </array>
   <!-- Power consumption in suspend -->
   <item name="cpu.idle">4</item>
   <!-- Power consumption at different speeds -->
   <array name="cpu.active">
       <value>280</value>
-      <value>236</value>
-      <value>207</value>
       <value>182</value>
-      <value>165</value>
-      <value>87</value>
       <value>66</value>
   </array>
 </device>

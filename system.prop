@@ -56,4 +56,5 @@ jpeg.libskiahw.decoder.enable=0
 ro.ringtone_query_wait_time=1500
 #battd
 persist.sys.one_percent_batt=0
-
+mobiledata.interfaces=rmnet0,gannet0
+ro.telephony.ril.v3=skipbrokendatacall,signalstrength

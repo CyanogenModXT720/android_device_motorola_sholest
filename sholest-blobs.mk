@@ -20,6 +20,24 @@ PRODUCT_COPY_FILES := \
     device/motorola/sholest/proprietary/lib/libril-moto-umts-1.so:obj/lib/libril-moto-umts-1.so \
     device/motorola/sholest/proprietary/lib/hw/gralloc.omap3.so:obj/lib/hw/gralloc.omap3.so
 
+
+#KEYBOARD
+PRODUCT_COPY_FILES := \
+    prebuilt/usr/idc/internal.idc:system/usr/idc/lm3530_led.idc \
+    prebuilt/usr/idc/internal.idc:system/usr/idc/accelerometer.idc \
+    prebuilt/usr/idc/internal.idc:system/usr/idc/compass.idc \
+    prebuilt/usr/idc/internal.idc:system/usr/idc/light-prox.idc \
+    prebuilt/usr/idc/internal.idc:system/usr/idc/proximity.idc \
+    prebuilt/usr/idc/sholes-keypad.idc:system/usr/idc/sholes-keypad.idc \
+    prebuilt/usr/idc/cpcap-key.idc:system/usr/idc/cpcap-key.idc \
+    prebuilt/usr/idc/qtouch-touchscreen.idc:system/usr/idc/qtouch-touchscreen.idc \
+    prebuilt/usr/qwerty.kl:system/usr/keylayout/qwerty.kl \
+    prebuilt/usr/qwerty.kl:system/usr/keylayout/qtouch-touchscreen.kl \
+    prebuilt/usr/keypad.kl:system/usr/keylayout/sholes-keypad.kl \
+    prebuilt/usr/keypad.kl:system/usr/keylayout/umts_jordan-keypad.kl \
+    prebuilt/usr/cpcap-key.kl:system/usr/keylayout/cpcap-key.kl \
+    prebuilt/usr/keychars/cpcap-key.kcm:system/usr/keychars/cpcap-key.kcm
+
 # All the blobs necessary 
 # copy all files under the "proprietary" directory to system
 PRODUCT_COPY_FILES += $(shell \
