@@ -191,8 +191,8 @@ set_light_locked(unsigned int color, int blink)
         blinkstate = blink;
     }
 
-    red = (color >> 16) & 0xFF;
-    green = (color >> 8) & 0xFF;
+    red = ((color >> 16) & 0xFF) * .1;
+    green = ((color >> 8) & 0xFF) * .5;
     blue = color & 0xFF;
 
     // ensure blinking is off
