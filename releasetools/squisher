@@ -159,9 +159,14 @@ cd $REPACK
 	find $REPACK/ota/system/lib/modules -name "*.ko" -not -name "overclock*" -print0 | xargs -0 arm-eabi-strip --strip-unneeded
 
 # Determine what to name the new signed package
-MODVERSION=`sed -n -e'/ro\.modversion/s/^.*=//p' $REPACK/ota/system/build.prop`
+PRODUCT_VERSION_MAJOR = 9
+PRODUCT_VERSION_MINOR = 0
+PRODUCT_VERSION_MAINTENANCE = 4
+MODVERSION=CyanogenMod-$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)$(PRODUCT_VERSION_DEVICE_SPECIFIC)-$(PRODUCT_RELEASE_NAME)-$(shell date +%Y%m%d)-KANG
+
+#MODVERSION=`sed -n -e'/ro\.modversion/s/^.*=//p' $REPACK/ota/system/build.prop`
 : ${MODVERSION:=nightly}
-OUTFILE=$OUT/update-cm-$MODVERSION-signed.zip
+OUTFILE=$OUT/$MODVERSION-signed.zip
 
 if [ -n "$CM_NIGHTLY" ]; then
 	MODVERSION=`sed -n -e'/ro\.modversion/s/^.*=//p' $REPACK/ota/system/build.prop`

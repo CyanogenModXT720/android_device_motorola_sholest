@@ -107,6 +107,7 @@ LOCAL_KERNEL := device/motorola/sholest/kernel
 PRODUCT_COPY_FILES += \
 	$(LOCAL_KERNEL):kernel
 
+
 # Vendor blobs 
 $(call inherit-product, device/motorola/sholest/sholest-blobs.mk)
 

@@ -13,6 +13,8 @@
 # limitations under the License.
 
 # Prebuilt libraries that are needed to build open-source libraries
+DEVICE_PREBUILT := device/motorola/sholest/prebuilt
+PREBUILT_DIR =
 PRODUCT_COPY_FILES := \
     device/motorola/sholest/proprietary/lib/libgps.so:obj/lib/libgps.so \
     device/motorola/sholest/proprietary/lib/libcamera.so:obj/lib/libcamera.so \
@@ -22,21 +24,21 @@ PRODUCT_COPY_FILES := \
 
 
 #KEYBOARD
-PRODUCT_COPY_FILES := \
-    prebuilt/usr/idc/internal.idc:system/usr/idc/lm3530_led.idc \
-    prebuilt/usr/idc/internal.idc:system/usr/idc/accelerometer.idc \
-    prebuilt/usr/idc/internal.idc:system/usr/idc/compass.idc \
-    prebuilt/usr/idc/internal.idc:system/usr/idc/light-prox.idc \
-    prebuilt/usr/idc/internal.idc:system/usr/idc/proximity.idc \
-    prebuilt/usr/idc/sholes-keypad.idc:system/usr/idc/sholes-keypad.idc \
-    prebuilt/usr/idc/cpcap-key.idc:system/usr/idc/cpcap-key.idc \
-    prebuilt/usr/idc/qtouch-touchscreen.idc:system/usr/idc/qtouch-touchscreen.idc \
-    prebuilt/usr/qwerty.kl:system/usr/keylayout/qwerty.kl \
-    prebuilt/usr/qwerty.kl:system/usr/keylayout/qtouch-touchscreen.kl \
-    prebuilt/usr/keypad.kl:system/usr/keylayout/sholes-keypad.kl \
-    prebuilt/usr/keypad.kl:system/usr/keylayout/umts_jordan-keypad.kl \
-    prebuilt/usr/cpcap-key.kl:system/usr/keylayout/cpcap-key.kl \
-    prebuilt/usr/keychars/cpcap-key.kcm:system/usr/keychars/cpcap-key.kcm
+PRODUCT_COPY_FILES += \
+    $(DEVICE_PREBUILT)/usr/idc/internal.idc:system/usr/idc/lm3530_led.idc \
+    $(DEVICE_PREBUILT)/usr/idc/internal.idc:system/usr/idc/accelerometer.idc \
+    $(DEVICE_PREBUILT)/usr/idc/internal.idc:system/usr/idc/compass.idc \
+    $(DEVICE_PREBUILT)/usr/idc/internal.idc:system/usr/idc/light-prox.idc \
+    $(DEVICE_PREBUILT)/usr/idc/internal.idc:system/usr/idc/proximity.idc \
+    $(DEVICE_PREBUILT)/usr/idc/sholes-keypad.idc:system/usr/idc/sholes-keypad.idc \
+    $(DEVICE_PREBUILT)/usr/idc/cpcap-key.idc:system/usr/idc/cpcap-key.idc \
+    $(DEVICE_PREBUILT)/usr/idc/qtouch-touchscreen.idc:system/usr/idc/qtouch-touchscreen.idc \
+    $(DEVICE_PREBUILT)/usr/qwerty.kl:system/usr/keylayout/qwerty.kl \
+    $(DEVICE_PREBUILT)/usr/qwerty.kl:system/usr/keylayout/qtouch-touchscreen.kl \
+    $(DEVICE_PREBUILT)/usr/keypad.kl:system/usr/keylayout/sholes-keypad.kl \
+    $(DEVICE_PREBUILT)/usr/keypad.kl:system/usr/keylayout/umts_jordan-keypad.kl \
+    $(DEVICE_PREBUILT)/usr/cpcap-key.kl:system/usr/keylayout/cpcap-key.kl \
+    $(DEVICE_PREBUILT)/usr/keychars/cpcap-key.kcm:system/usr/keychars/cpcap-key.kcm
 
 # All the blobs necessary 
 # copy all files under the "proprietary" directory to system

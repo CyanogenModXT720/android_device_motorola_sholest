@@ -8,8 +8,8 @@ rm -f $REPACK/ota/system/media/video/*.480p.mp4
 rm -f $REPACK/ota/system/etc/init.d/04modules
 
 # use the static busybox as bootmenu shell, and some static utilities
-cp -f $DEVICE_OUT/utilities/busybox $REPACK/ota/system/bootmenu/binary/busybox
-cp -f $DEVICE_OUT/utilities/lsof $REPACK/ota/system/bootmenu/binary/lsof
+#cp -f $DEVICE_OUT/utilities/busybox $REPACK/ota/system/bootmenu/binary/busybox
+#cp -f $DEVICE_OUT/utilities/lsof $REPACK/ota/system/bootmenu/binary/lsof
 
 cp -f $REPACK/ota/system/lib/hw/audio.a2dp.default.so $REPACK/ota/system/lib/liba2dp.so
 
