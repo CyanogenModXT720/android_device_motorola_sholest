@@ -106,6 +106,7 @@ setprop ro.sys.atvc_allow_efem 0
 # Install other kernel modules
     insmod /system/lib/modules/mmcfix.ko
 	insmod /system/lib/modules/thumbee.ko
+    insmod /system/lib/modules/xt_quote2.ko
 
 on early-boot
 
