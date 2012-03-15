@@ -79,15 +79,15 @@ static const struct sensor_t sSensorList[] = {
         1, SENSORS_HANDLE_BASE + SENSOR_TYPE_ORIENTATION, SENSOR_TYPE_ORIENTATION,
         270.0f, 90.0f, 0.2f, ONCHANGED, { } },
 */
-    { "ISL29030 Proximity Sensor",
-        "Intersil Corporation",
+    { "SHF7743 Proximity sensor",
+        "OSRAM Opto Semiconductors",
         1, SENSORS_HANDLE_BASE + SENSOR_TYPE_PROXIMITY, SENSOR_TYPE_PROXIMITY,
-        100.0f, 1.0f, 25.0f, 0, { } }, // (IR LED can use a lot of battery)
+        INT_MAX, INT_MAX, 0.045f, 0, { } }, 
 
-    { "ISL29030 Light Sensor",
-        "Intersil Corporation",
+    { "LM3530 Light Sensor",
+        "National Semiconductor",
         1, SENSORS_HANDLE_BASE + SENSOR_TYPE_LIGHT, SENSOR_TYPE_LIGHT,
-        8192.0f, 1.0f, 0.5f, 0, { } },
+        27000.0f, 1.0f, 0.0f, 0, { } },
 };
 
 /*****************************************************************************/
