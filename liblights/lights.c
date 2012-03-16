@@ -54,25 +54,19 @@ static int g_last_button_brightness;
 
 char const*const LCD_FILE = "/sys/class/leds/lcd-backlight/brightness";
 char const*const ALS_FILE = "/sys/class/leds/lcd-backlight/als";
-char const*const BUTTON_ON_FILE = "/sys/class/leds/button-backlight/brightness";
-char const*const BUTTON_BRIGHT_FILE = "/proc/backlight/brightness";
+char const*const BUTTON_FILE = "/sys/class/leds/button-backlight/brightness";
 
 /* RGB file descriptors */
 char const*const RED_LED_FILE = "/sys/class/leds/red/brightness";
 char const*const RED_BLINK_FILE = "/sys/class/leds/red/blink";
 char const*const GREEN_LED_FILE = "/sys/class/leds/green/brightness";
 char const*const BLUE_LED_FILE = "/sys/class/leds/blue/brightness";
-char const*const CHARGE_LED_FILE = "/sys/class/leds/usb/brightness";
+char const*const CHARGE_LED_FILE = "/sys/class/leds/blue/brightness";
 
 void init_globals(void)
 {
     // init the mutex
     pthread_mutex_init(&g_lock, NULL);
-    memset(&g_battery, 0, sizeof(g_battery));
-    memset(&g_notification, 0, sizeof(g_notification));
-
-    g_charge_led_active = 0;
-    g_last_button_brightness = -1;
 }
 
 static int
@@ -133,54 +127,32 @@ set_light_backlight(struct light_device_t* dev,
 
     pthread_mutex_lock(&g_lock);
     err = write_int(ALS_FILE, als_mode);
-    if (!err) {
+	if (err) 
+		LOGE("set_light_backlight error: %d", err);
+//    if (!err) {
         err = write_int(LCD_FILE, brightness);
-    }
+//    }
     pthread_mutex_unlock(&g_lock);
 
     return err;
 }
+
 
 static int
 set_light_buttons(struct light_device_t* dev,
         struct light_state_t const* state)
 {
     int err = 0;
-    int brightness = rgb_to_brightness(state);
-
-    if (brightness > 0) {
-        char prop[PROPERTY_VALUE_MAX];
-
-        if (property_get("persist.sys.button_brightness", prop, NULL)) {
-            int button_brightness_scale = atoi(prop);
-            if (button_brightness_scale == 0) {
-                brightness = 0;
-            } else if (button_brightness_scale != 100) {
-                brightness = (brightness * button_brightness_scale + 50) / 100;
-            }
-        }
-    }
+    int on = is_lit(state);
 
     pthread_mutex_lock(&g_lock);
-
-    if (g_last_button_brightness < 0 ||
-        (g_last_button_brightness == 0 && brightness > 0) ||
-        (g_last_button_brightness > 0 && brightness == 0))
-    {
-        err = write_int(BUTTON_ON_FILE, brightness ? 1 : 0);
-    }
-
-    if (err == 0 && brightness > 0 && brightness != g_last_button_brightness) {
-        err = write_int(BUTTON_BRIGHT_FILE, brightness);
-    }
-
-    g_last_button_brightness = brightness;
-
+    err = write_int(BUTTON_FILE, on ? 255:0);
     pthread_mutex_unlock(&g_lock);
 
     return err;
 
 }
+
 
 static int
 set_light_locked(struct light_device_t *dev, struct light_state_t *state)
@@ -338,7 +310,7 @@ const struct hw_module_t HAL_MODULE_INFO_SYM = {
     .version_major = 1,
     .version_minor = 0,
     .id = LIGHTS_HARDWARE_MODULE_ID,
-    .name = "Jordan lights Module",
+    .name = "Sholest lights Module",
     .author = "CyanogenDefy, AOSP, Google",
     .methods = &lights_module_methods,
 };
