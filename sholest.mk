@@ -64,6 +64,9 @@ PRODUCT_PACKAGES += \
 	libaudioutils audio.a2dp.default audio_policy.sholest \
 	libaudiohw_legacy audio.primary.sholest \
 
+# Lights 
+PRODUCT_PACKAGES += \
+	lights.sholest
 # TO FIX for ICS
 PRODUCT_PACKAGES += gralloc.default hwcomposer.default
 

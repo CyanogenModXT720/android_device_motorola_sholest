@@ -150,7 +150,7 @@ set_light_buttons(struct light_device_t* dev,
 
     if (brightness > 0) {
         char prop[PROPERTY_VALUE_MAX];
-/* disabled, need java fix
+
         if (property_get("persist.sys.button_brightness", prop, NULL)) {
             int button_brightness_scale = atoi(prop);
             if (button_brightness_scale == 0) {
@@ -159,7 +159,6 @@ set_light_buttons(struct light_device_t* dev,
                 brightness = (brightness * button_brightness_scale + 50) / 100;
             }
         }
-*/
     }
 
     pthread_mutex_lock(&g_lock);
@@ -171,9 +170,9 @@ set_light_buttons(struct light_device_t* dev,
         err = write_int(BUTTON_ON_FILE, brightness ? 1 : 0);
     }
 
-//    if (err == 0 && brightness > 0 && brightness != g_last_button_brightness) {
+    if (err == 0 && brightness > 0 && brightness != g_last_button_brightness) {
         err = write_int(BUTTON_BRIGHT_FILE, brightness);
-//    }
+    }
 
     g_last_button_brightness = brightness;
 
@@ -339,7 +338,7 @@ const struct hw_module_t HAL_MODULE_INFO_SYM = {
     .version_major = 1,
     .version_minor = 0,
     .id = LIGHTS_HARDWARE_MODULE_ID,
-    .name = "Sholest lights Module",
+    .name = "Jordan lights Module",
     .author = "CyanogenDefy, AOSP, Google",
     .methods = &lights_module_methods,
 };
