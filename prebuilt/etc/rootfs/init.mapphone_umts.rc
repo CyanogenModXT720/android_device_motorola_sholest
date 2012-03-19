@@ -106,6 +106,7 @@ setprop ro.sys.atvc_allow_efem 0
 # Install other kernel modules
     insmod /system/lib/modules/mmcfix.ko
 	insmod /system/lib/modules/thumbee.ko
+    insmod /system/lib/modules/xt_owner2.ko 
     insmod /system/lib/modules/xt_quote2.ko
 
 on early-boot
@@ -461,11 +462,6 @@ service battd /system/bin/battd
 #    group radio inet log sdcard_rw
 #    oneshot
 
-service clean_dex /system/bin/sh /system/bin/clean_dex.sh
-    class pre-zygote_services
-    oneshot
-    user system
-    group system 
 
 service ssmgrd /system/xbin/ssmgrd
     class post-zygote_services
@@ -594,36 +590,11 @@ service locDrv /system/bin/brcm_guci_drv -config /system/etc/gpsconfig.xml
     user radio
     group radio inet sdcard_rw
 
-service pm_init /system/bin/sh /system/bin/pm_init.sh
+service touchscreen /system/bin/touchroi
     class post-zygote_services
     oneshot
 
-# aplogd is controlled by the persist.service.aplogd.enable system property
-service aplogd /system/bin/aplogd
-    class post-zygote_services
-    socket ap_aol_cmd  stream 666 system system
-    user log
-    group log system sdcard_rw
-    oneshot
 
-service gkilogd /system/bin/gkilogd
-    class post-zygote_services
-    socket gki_aol_cmd stream 660 radio log
-    user radio
-    group radio log sdcard_rw
-   
-service secclkd /system/bin/secclkd
-    class post-zygote_services
-    user system
-    group system radio
-    oneshot
-
-# bugreport is triggered by the KEY_LEFTSHIFT and KEY_DEL keycodes
-service bugreport /system/bin/dumpstate -d -v -o /sdcard/bugreports/bugreport
-    disabled
-    user root
-    oneshot
-    keycodes 42 14
 
 # launchGallery
 service launchgallery /system/bin/launchGallery
