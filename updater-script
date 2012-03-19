@@ -77,6 +77,7 @@ symlink("toolbox", "/system/bin/cat", "/system/bin/cmp",
         "/system/bin/top", "/system/bin/uptime", "/system/bin/vmstat",
         "/system/bin/watchprops",
         "/system/bin/wipe");
+symlink("lights.sholest.so", "/system/lib/hw/lights.default.so");
 set_perm_recursive(0, 0, 0755, 0644, "/system");
 set_perm_recursive(0, 2000, 0755, 0755, "/system/bin");
 set_perm(0, 3003, 02750, "/system/bin/netcfg");
