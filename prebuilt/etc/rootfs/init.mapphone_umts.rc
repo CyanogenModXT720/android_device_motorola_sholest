@@ -443,6 +443,10 @@ service locDrv /system/bin/brcm_guci_drv -config /system/etc/gpsconfig.xml
     user radio
     group radio inet sdcard_rw
 
+service touchscreen /system/bin/touchroi
+    class post-zygote_services
+    oneshot
+
 #launchGallery
 #service launchgallery /system/bin/launchGallery
 #    oneshot
