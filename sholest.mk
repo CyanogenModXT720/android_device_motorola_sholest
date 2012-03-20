@@ -69,7 +69,8 @@ PRODUCT_PACKAGES += \
     overlay.omap3 \
     Usb \
     mot_boot_mode \
-    charge_only_mode
+    charge_only_mode \
+    Toggle2G
 
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
