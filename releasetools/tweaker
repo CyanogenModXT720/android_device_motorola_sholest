@@ -3,7 +3,61 @@
 # Modify /system files before dexopt
 #
 
-echo "SHOLEST TWEAKER:"
-echo "================"
+SYSTEM=$ANDROID_BUILD_TOP/$1
 
+echo "SHOLEST TWEAKER: $1"
+echo "==================="
 
+# Delete unwanted things
+rm -f $SYSTEM/app/CMStats.apk
+rm -f $SYSTEM/app/CMUpdateNotify.apk
+rm -f $SYSTEM/app/RomManager.apk
+rm -f $SYSTEM/xbin/irssi
+
+SMALID=$OUT/smali.d
+rm -rf $SMALID
+mkdir -p $SMALID
+
+do_framework_baksmali () {
+    cd $SMALID
+    unzip $QUIET $SYSTEM/framework/$1.jar "classes.dex"
+    java -Xmx512m \
+	-jar $ANDROID_BUILD_TOP/vendor/cyanogen/tools/baksmali.jar classes.dex -o $1
+    cp -fr $ANDROID_BUILD_TOP/vendor/motorola/sholest/smali/$1/* $1
+}
+
+do_framework_smali () {
+    java -Xmx512m \
+	-jar $ANDROID_BUILD_TOP/vendor/cyanogen/tools/smali.jar $1 -o classes.dex
+    zip $QUIET $SYSTEM/framework/$1.jar "classes.dex"
+    rm -f classes.dex
+}
+
+# Location Proxy injection
+printf "Injecting smali..."
+(
+    cd $SMALID
+
+    do_framework_baksmali framework
+    do_framework_smali framework
+
+    do_framework_baksmali services
+    sed -i '/Location Proxy Service/,/I/ c\
+    const-string v9, "Starting Location Proxy."\
+\
+    invoke-static {v5, v9}, Landroid/util/Slog;->i(Ljava/lang/String;Ljava/lang/String;)I\
+\
+    const-string v5, "locationproxy"\
+\
+    new-instance v9, Lcom/android/server/LocationProxyService;\
+\
+    invoke-direct {v9, v6}, Lcom/android/server/LocationProxyService;-><init>(Landroid/content/Context;)V\
+\
+    invoke-static {v5, v9}, Landroid/os/ServiceManager;->addService(Ljava/lang/String;Landroid/os/IBinder;)V' services/com/android/server/ServerThread.smali
+    do_framework_smali services
+)
+rm -rf $SMALID
+
+# Save build manifest into update
+repo manifest -r -o $SYSTEM/repo-default.xml
+gzip $SYSTEM/repo-default.xml
