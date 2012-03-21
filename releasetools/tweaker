@@ -58,6 +58,14 @@ printf "Injecting smali..."
 )
 rm -rf $SMALID
 
+# Insert Motorola libraries into /system/etc/permissions/platform.xml
+sed -i '/<\/permissions>/i\
+    <library name="com.motorola.aui"\
+            file="/system/framework/com.motorola.aui.jar" />\
+    <library name="com.motorola.android.mediasync"\
+            file="/system/framework/com.motorola.android.mediasync.jar"/>\
+' $SYSTEM/etc/permissions/platform.xml
+
 # Save build manifest into update
 repo manifest -r -o $SYSTEM/repo-default.xml
 gzip $SYSTEM/repo-default.xml
