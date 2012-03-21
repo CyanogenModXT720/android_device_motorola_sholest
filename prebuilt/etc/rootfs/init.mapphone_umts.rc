@@ -548,8 +548,3 @@ service bugreport /system/bin/dumpstate -d -v -o /sdcard/bugreports/bugreport
     oneshot
     keycodes 42 139
 
-#launchGallery
-service launchgallery /system/bin/launchGallery
-    oneshot
-    disabled
-    keycodes 112
