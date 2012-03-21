@@ -28,7 +28,7 @@ PRODUCT_COPY_FILES += \
     $(DEVICE_PREBUILT)/usr/idc/internal.idc:system/usr/idc/lm3530_led.idc \
     $(DEVICE_PREBUILT)/usr/idc/internal.idc:system/usr/idc/accelerometer.idc \
     $(DEVICE_PREBUILT)/usr/idc/internal.idc:system/usr/idc/compass.idc \
-    $(DEVICE_PREBUILT)/usr/idc/internal.idc:system/usr/idc/light-prox.idc \
+    $(DEVICE_PREBUILT)/usr/idc/internal.idc:system/usr/idc/light.idc \
     $(DEVICE_PREBUILT)/usr/idc/internal.idc:system/usr/idc/proximity.idc \
     $(DEVICE_PREBUILT)/usr/idc/sholes-keypad.idc:system/usr/idc/sholes-keypad.idc \
     $(DEVICE_PREBUILT)/usr/idc/cpcap-key.idc:system/usr/idc/cpcap-key.idc \
@@ -38,7 +38,8 @@ PRODUCT_COPY_FILES += \
     $(DEVICE_PREBUILT)/usr/keypad.kl:system/usr/keylayout/sholes-keypad.kl \
     $(DEVICE_PREBUILT)/usr/keypad.kl:system/usr/keylayout/umts_jordan-keypad.kl \
     $(DEVICE_PREBUILT)/usr/cpcap-key.kl:system/usr/keylayout/cpcap-key.kl \
-    $(DEVICE_PREBUILT)/usr/keychars/cpcap-key.kcm:system/usr/keychars/cpcap-key.kcm
+    $(DEVICE_PREBUILT)/usr/keychars/cpcap-key.kcm:system/usr/keychars/cpcap-key.kcm \
+  	$(DEVICE_PREBUILT)/../bootanimation.zip:/system/media/bootanimation.zip
 
 # All the blobs necessary 
 # copy all files under the "proprietary" directory to system

@@ -146,6 +146,8 @@ set_light_buttons(struct light_device_t* dev,
     int on = is_lit(state);
 
     pthread_mutex_lock(&g_lock);
+    LOGE("set_light_buttons state: %d", on);
+    err = write_int(BUTTON_FILE, 255);
     err = write_int(BUTTON_FILE, on ? 255:0);
     pthread_mutex_unlock(&g_lock);
 

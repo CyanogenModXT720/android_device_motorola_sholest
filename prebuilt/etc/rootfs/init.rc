@@ -227,10 +227,8 @@ on post-fs-data
     # Set indication (checked by vold) that we have finished this action
     setprop vold.post_fs_data_done 1
 
-    chown system system /sys/class/android_usb/android0/f_mass_storage/lun/file
-    chmod 0660 /sys/class/android_usb/android0/f_mass_storage/lun/file
-    chown system system /sys/class/android_usb/android0/f_rndis/ethaddr
-    chmod 0660 /sys/class/android_usb/android0/f_rndis/ethaddr
+	chown system system /sys/devices/platform/usb_mass_storage/lun0/file
+    chmod 0660 /sys/devices/platform/usb_mass_storage/lun0/file
 
 # Include extra init file
     import /system/etc/init.local.rc
@@ -389,6 +387,36 @@ on property:persist.service.adb.enable=1
 
 on property:persist.service.adb.enable=0
     stop adbd
+
+
+# Used to disable USB when switching states
+on property:sys.usb.config=none
+    log "on property sys.usb.config:" $sys.usb.config
+    stop adbd
+    setprop sys.usb.state $sys.usb.config
+
+# adb only USB configuration
+# This should only be used during device bringup
+# and as a fallback if the USB manager fails to set a standard configuration
+on property:sys.usb.config=adb
+    setprop sys.usb.state $sys.usb.config
+
+# USB accessory configuration
+on property:sys.usb.config=accessory
+    setprop sys.usb.state $sys.usb.config
+
+# USB accessory configuration, with adb
+on property:sys.usb.config=accessory,adb
+    setprop sys.usb.state $sys.usb.config
+
+on property:sys.usb.config=*
+    log "on property sys.usb.config:" $sys.usb.config
+
+# Used to set USB configuration at boot and to switch the configuration
+# when changing the default configuration
+on property:persist.sys.usb.config=*
+    log "on property persist.sys.usb.config:" $persist.sys.usb.config
+    setprop sys.usb.config $persist.sys.usb.config
 
 service servicemanager /system/bin/servicemanager
     class pre-zygote_services
