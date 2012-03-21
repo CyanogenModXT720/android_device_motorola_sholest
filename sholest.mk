@@ -39,8 +39,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	ro.url.safetylegal=http://www.motorola.com/staticfiles/Support/legal/?model=MilestoneXT720 \
 	ro.setupwizard.enable_bypass=1 \
 	ro.media.dec.jpeg.memcap=20000000 \
-	dalvik.vm.lockprof.threshold=500 \
-	dalvik.vm.dexopt-flags=m=y 
+	dalvik.vm.lockprof.threshold=500
 
 DEVICE_PACKAGE_OVERLAYS += device/motorola/sholest/overlay
 
