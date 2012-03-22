@@ -443,27 +443,7 @@ service battd /system/bin/battd
     group mot_accy mot_pwric
     oneshot
 
-#service batt2d /system/bin/batt2d
-#    socket battdsock stream 0660 mot_accy mot_accy
-#    user root
-#    group mot_accy mot_pwric
-#    oneshot
-
-#service catcommands /system/bin/catcommands
-#    class pre-zygote_services
-#    group radio 
-
-#service bplogd_daemon /system/bin/bplogd_daemon
-#    class pre-zygote_services
-#    socket dlog_cmds stream 660 radio log
-#    socket bp_pd_status stream 660 radio log
-#    socket bp_aol_cmd stream 666 radio log
-#    user radio
-#    group radio inet log sdcard_rw
-#    oneshot
-
-
-service ssmgrd /system/xbin/ssmgrd
+service ssmgrd /system/bin/ssmgrd
     class post-zygote_services
     group radio input mot_pwric
     oneshot
