@@ -67,6 +67,20 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PACKAGES += \
     xt720Parts \
+    AudioEffectSettings \
+    CameraMoto \
+    CompassCalibrate \
+    ExtDispService \
+    FMRadio-fwals \
+    Gestures \
+    MediaGallery \
+    MotorolaSettingsProvider \
+    PersonalPortal \
+    PhoneConfig \
+    ProgramMenu \
+    ProgramMenuSystem \
+    QuickOffice \
+    VideoPlayerMoto \
     DockAudio \
     librs_jni \
     libaudiopolicy \
