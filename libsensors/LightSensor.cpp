@@ -39,11 +39,16 @@ LightSensor::LightSensor()
     mPendingEvent.sensor = 3;
     mPendingEvent.type = SENSOR_TYPE_LIGHT;
     memset(mPendingEvent.data, 0, sizeof(mPendingEvent.data));
-
+    
     setInitialState();
+	 LOGE("LightSensor: hello!");
 }
 
 LightSensor::~LightSensor() {
+	LOGE("LightSensor: hello!");
+	setInitialState();
+	open_device();
+	
 }
 
 int LightSensor::setInitialState() {

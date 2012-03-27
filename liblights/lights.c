@@ -80,7 +80,7 @@ write_int(char const* path, int value)
         char buffer[20];
         int bytes = sprintf(buffer, "%d\n", value);
         int amt = write(fd, buffer, bytes);
-        close(fd);
+		close(fd);
         return amt == -1 ? -errno : 0;
     } else {
         if (already_warned == 0) {
@@ -113,27 +113,12 @@ set_light_backlight(struct light_device_t* dev,
 {
     int err = 0;
     int brightness = rgb_to_brightness(state);
-    int als_mode;
-
-    switch (state->brightnessMode) {
-        case BRIGHTNESS_MODE_SENSOR:
-            als_mode = AUTOMATIC;
-            break;
-        case BRIGHTNESS_MODE_USER:
-        default:
-            als_mode = MANUAL_SENSOR;
-            break;
-    }
-
+	int on = is_lit(state);
+    
+	
     pthread_mutex_lock(&g_lock);
-    err = write_int(ALS_FILE, als_mode);
-	if (err) 
-		LOGE("set_light_backlight error: %d", err);
-//    if (!err) {
-        err = write_int(LCD_FILE, brightness);
-//    }
+    err = write_int(LCD_FILE, brightness);
     pthread_mutex_unlock(&g_lock);
-
     return err;
 }
 
@@ -142,6 +127,7 @@ static int
 set_light_buttons(struct light_device_t* dev,
         struct light_state_t const* state)
 {
+	LOGE("Set_lights_buttons func in use");
     int err = 0;
     int on = is_lit(state);
 
@@ -267,23 +253,29 @@ static int open_lights(const struct hw_module_t* module, char const* name,
 {
     int (*set_light)(struct light_device_t* dev,
             struct light_state_t const* state);
-
+	LOGE("Current name: %s", name);
     if (0 == strcmp(LIGHT_ID_BACKLIGHT, name)) {
+	LOGE("LIGHT_ID_BACKLIGHT");
         set_light = set_light_backlight;
     }
     else if (0 == strcmp(LIGHT_ID_BUTTONS, name)) {
+	LOGE("LIGHT_ID_BUTTONS");
         set_light = set_light_buttons;
     }
     else if (0 == strcmp(LIGHT_ID_BATTERY, name)) {
+	LOGE("LIGHT_ID_BATTERY");
         set_light = set_light_battery;
     }
     else if (0 == strcmp(LIGHT_ID_NOTIFICATIONS, name)) {
+	LOGE("LIGHT_ID_NOTIFICATIONS");
         set_light = set_light_notification;
     }
     else if (0 == strcmp(LIGHT_ID_ATTENTION, name)) {
+	LOGE("LIGHT_ID_ATTENTION");
         set_light = set_light_attention;
     }
     else {
+	LOGE("Strange behavior");
         return -EINVAL;
     }
 

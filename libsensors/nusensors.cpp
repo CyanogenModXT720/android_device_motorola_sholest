@@ -69,8 +69,11 @@ private:
         switch (handle)
         {
             case SENSOR_TYPE_ACCELEROMETER:
-            //case SENSOR_TYPE_ORIENTATION:
-                return KXTF9;
+#ifdef USE_KXTF9_ACCELEROMETER                
+			return KXTF9;
+#else
+			return AK8973
+#endif
             //case SENSOR_TYPE_ACCELEROMETER:
             case SENSOR_TYPE_ORIENTATION:
             case SENSOR_TYPE_MAGNETIC_FIELD:
