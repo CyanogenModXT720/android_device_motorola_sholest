@@ -83,7 +83,7 @@ BOARD_HOSTAPD_DRIVER_NAME   := wilink
 
 BOARD_USE_YUV422I_DEFAULT_COLORFORMAT := true
 BOARD_EGL_CFG := device/motorola/sholest/egl.cfg
-#BOARD_CUSTOM_USB_CONTROLLER := ../../device/motorola/sholest/UsbController.cpp
+BOARD_CUSTOM_USB_CONTROLLER := ../../device/motorola/sholest/UsbController.cpp
 DEVICE_NO_RGBX_8888 := true
 
 BOARD_HAVE_BLUETOOTH := true
@@ -114,6 +114,10 @@ ENABLE_SENSORS_COMPAT := true
 BOARD_USES_AUDIO_LEGACY := true
 TARGET_PROVIDES_LIBAUDIO := true
 BOARD_USE_LEGACY_TOUCHSCREEN := true
+#BOARD_CUSTOM_USB_CONTROLLER := ../../device/motorola/sholest/UsbController.cpp
+#BOARD_HAS_VIBRATOR_IMPLEMENTATION := ../../device/motorola/sholest/vibrator.c
+
+
 
 # Recovery
 TARGET_RECOVERY_PIXEL_FORMAT := "BGRA_8888"
@@ -136,4 +140,3 @@ TARGET_RECOVERY_PRE_COMMAND_CLEAR_REASON := true
 TARGET_CUSTOM_RELEASETOOL := ./device/motorola/sholest/releasetools/squisher
 TARGET_PROVIDES_RELEASETOOLS := true
 TARGET_NEEDS_MOTOROLA_HIJACK := true
-# Bootmenu
