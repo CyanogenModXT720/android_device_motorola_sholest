@@ -83,7 +83,7 @@ BOARD_HOSTAPD_DRIVER_NAME   := wilink
 
 BOARD_USE_YUV422I_DEFAULT_COLORFORMAT := true
 BOARD_EGL_CFG := device/motorola/sholest/egl.cfg
-BOARD_CUSTOM_USB_CONTROLLER := ../../device/motorola/sholest/UsbController.cpp
+#BOARD_CUSTOM_USB_CONTROLLER := ../../device/motorola/sholest/UsbController.cpp
 DEVICE_NO_RGBX_8888 := true
 
 BOARD_HAVE_BLUETOOTH := true
@@ -115,7 +115,8 @@ BOARD_USES_AUDIO_LEGACY := true
 TARGET_PROVIDES_LIBAUDIO := true
 BOARD_USE_LEGACY_TOUCHSCREEN := true
 #BOARD_CUSTOM_USB_CONTROLLER := ../../device/motorola/sholest/UsbController.cpp
-#BOARD_HAS_VIBRATOR_IMPLEMENTATION := ../../device/motorola/sholest/vibrator.c
+BOARD_HAS_VIBRATOR_IMPLEMENTATION := ../../device/motorola/sholest/vibrator.c
+TARGET_CUSTOM_BLUEDROID := ../../../device/motorola/sholest/bluedroid.c
 
 
 
