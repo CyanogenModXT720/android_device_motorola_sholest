@@ -119,6 +119,8 @@ BOARD_HAS_VIBRATOR_IMPLEMENTATION := ../../device/motorola/sholest/vibrator.c
 TARGET_CUSTOM_BLUEDROID := ../../../device/motorola/sholest/bluedroid.c
 
 
+BOARD_MASS_STORAGE_FILE_PATH := "/sys/devices/platform/usb_mass_storage/lun0/file"
+TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/platform/usb_mass_storage/lun0/file"
 
 # Recovery
 TARGET_RECOVERY_PIXEL_FORMAT := "BGRA_8888"
