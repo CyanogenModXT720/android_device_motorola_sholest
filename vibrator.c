@@ -62,3 +62,13 @@ int sendit(int timeout_ms)
         ret = vibe(THE_LINEAR_DEVICE, timeout_ms);
     return ret;
 }
+
+int vibrator_on(int timeout_ms)
+{
+	return sendit(timeout_ms);
+}
+
+int vibrator_off()
+{
+	retruen sendit(0);
+}
