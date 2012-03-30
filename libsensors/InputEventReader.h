@@ -32,7 +32,7 @@ class InputEventCircularReader
     struct input_event* const mBufferEnd;
     struct input_event* mHead;
     struct input_event* mCurr;
-    size_t mFreeSpace;
+    ssize_t mFreeSpace;
 
 public:
     InputEventCircularReader(size_t numEvents);

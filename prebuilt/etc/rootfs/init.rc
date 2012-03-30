@@ -2,7 +2,7 @@ on early-init
     # Set init and its forked children's oom_adj.
     write /proc/1/oom_adj -16
 
-#    start ueventd
+    start ueventd
 
 # create mountpoints
     mkdir /mnt 0775 root system

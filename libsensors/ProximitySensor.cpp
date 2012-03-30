@@ -37,7 +37,7 @@ ProximitySensor::ProximitySensor()
       mHasPendingEvent(false)
 {
     mPendingEvent.version = sizeof(sensors_event_t);
-    mPendingEvent.sensor = 2;
+    mPendingEvent.sensor = ID_P;
     mPendingEvent.type = SENSOR_TYPE_PROXIMITY;
     memset(mPendingEvent.data, 0, sizeof(mPendingEvent.data));
 
