@@ -64,9 +64,10 @@ PRODUCT_PACKAGES += \
 	libaudioutils audio.a2dp.default audio_policy.sholest \
 	libaudiohw_legacy audio.primary.sholest \
 
-# Lights 
+# Lights  and sensors
 PRODUCT_PACKAGES += \
 	lights.sholest
+	sensors.sholest
 # TO FIX for ICS
 PRODUCT_PACKAGES += gralloc.default hwcomposer.default
 
