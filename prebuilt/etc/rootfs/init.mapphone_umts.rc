@@ -598,6 +598,9 @@ service touchscreen /system/bin/touchroi
     class post-zygote_services
     oneshot
 
+service fmradio /system/bin/fmradioserver
+    class post-zygote_services
+    group bluetooth net_raw net_bt net_bt_admin
 
 
 # launchGallery
