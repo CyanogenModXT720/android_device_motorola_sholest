@@ -70,5 +70,5 @@ int vibrator_on(int timeout_ms)
 
 int vibrator_off()
 {
-	retruen sendit(0);
+	return sendit(0);
 }
