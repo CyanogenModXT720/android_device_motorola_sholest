@@ -11,5 +11,5 @@ $L "((_ \\(/'((_( ((\\( ((_)((_( (('((\\( ((\`1( ((_)((_( ";
 $L "     ))                 _))";
 $L " ";
 /system/xbin/busybox touch /tmp/usbd-state
-/system/xbin/busybox echo "usb_mode_ngp_adb" > /tmp/usbd-state
+/system/xbin/busybox echo -n "usb_mode_ngp_adb" > /tmp/usbd-state
 /system/xbin/busybox chown system.system /tmp/usbd-state
