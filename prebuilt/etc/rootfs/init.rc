@@ -232,20 +232,20 @@ on boot
     setprop ro.HEAVY_WEIGHT_APP_ADJ 3
     setprop ro.SECONDARY_SERVER_ADJ 4
     setprop ro.BACKUP_APP_ADJ 5
-    setprop ro.HOME_APP_ADJ 3
+    setprop ro.HOME_APP_ADJ 6 #3 let the launcher take more timeouts:)
     setprop ro.HIDDEN_APP_MIN_ADJ 7
     setprop ro.EMPTY_APP_ADJ 15
 
 # Define the memory thresholds at which the above process classes will
 # be killed.  These numbers are in pages (4k).
     setprop ro.FOREGROUND_APP_MEM 2048 #1536      ## slot 1, adj 0                     
-    setprop ro.VISIBLE_APP_MEM 3328 #3072         ## slot 2, adj 1                   
-    setprop ro.PERCEPTIBLE_APP_MEM 4608 #4096     ## slot 3, adj 2           
-    setprop ro.HEAVY_WEIGHT_APP_MEM 4608 #4096    ## slot 3, adj 2                
-    setprop ro.SECONDARY_SERVER_MEM 6656 #6144    ## slot 4, adj 4           
-    setprop ro.BACKUP_APP_MEM 6656 #6144          ## slot 4, adj 4           
-    setprop ro.HOME_APP_MEM 6656 #6144            ## slot 4, adj 4           
-    setprop ro.HIDDEN_APP_MEM 7168 #6656          ## slot 5, adj 7           
+    setprop ro.VISIBLE_APP_MEM 4096 #3328 #3072         ## slot 2, adj 1                   
+    setprop ro.PERCEPTIBLE_APP_MEM 5120 #4608 #4096     ## slot 3, adj 2           
+    setprop ro.HEAVY_WEIGHT_APP_MEM 5120 #4608 #4096    ## slot 3, adj 2                
+    setprop ro.SECONDARY_SERVER_MEM 7168 #6656 #6144    ## slot 4, adj 4           
+    setprop ro.BACKUP_APP_MEM 7168 #6656 #6144          ## slot 4, adj 4           
+    setprop ro.HOME_APP_MEM 7168 #6656 #6144            ## slot 4, adj 4           
+    setprop ro.HIDDEN_APP_MEM 8192 #7168 #6656          ## slot 5, adj 7           
     setprop ro.EMPTY_APP_MEM 9216 #8192           ## slot 6, adj 15
 
 # Write value must be consistent with the above properties.
@@ -254,10 +254,13 @@ on boot
 # classes will still be killed first.
     write /sys/module/lowmemorykiller/parameters/adj 0,1,2,4,7,15
 
-    write /proc/sys/vm/overcommit_memory 1
-    write /proc/sys/vm/min_free_kbytes 5120
+    write /proc/sys/vm/overcommit_memory 0  # still overcommit but not unconditional
+    write /proc/sys/vm/min_free_kbytes 8192 # 5120 try to lower mem pagination
     write /proc/sys/vm/min_free_order_shift 4
-    write /sys/module/lowmemorykiller/parameters/minfree 2048,3328,4608,6656,7168,9216
+    write /sys/module/lowmemorykiller/parameters/minfree 2048,4096,5120,7168,8192,9216
+
+    write /proc/sys/vm/swappiness 15 # default is 60
+    write /proc/sys/vm/vfs_cache_pressure 300 # default is 100
 
     # Set init its forked children's oom_adj.
     write /proc/1/oom_adj -16
