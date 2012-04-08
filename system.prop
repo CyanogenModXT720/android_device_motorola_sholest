@@ -15,6 +15,7 @@ ro.telephony.ril_class=motow3g
 #com.ti.omap_enhancement=1
 com.ti.have_hdmi=1
 #tv.hdmi.uicloning.enable=1
+browser.tioptimization=1
 #Wifi interface
 mobiledata.itnerfaces=rmnet0
 wifi.interface=tiwlan0
