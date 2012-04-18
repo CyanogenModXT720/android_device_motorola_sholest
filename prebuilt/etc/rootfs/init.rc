@@ -375,7 +375,7 @@ service crond /system/xbin/crond
 on property:persist.service.crond.enable=1
     start crond
 
-on property:persist.service.crond.enable=1
+on property:persist.service.crond.enable=0
     stop crond
 
 on property:service.adb.tcp.port=5555
