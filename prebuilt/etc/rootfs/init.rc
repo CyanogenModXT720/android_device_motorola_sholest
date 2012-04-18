@@ -369,7 +369,7 @@ on property:persist.service.adb.enable=1
 on property:persist.service.adb.enable=0
     stop adbd
 
-service crond /system/xbin/crond
+service crond /system/xbin/crond -f
     disabled
 
 on property:persist.service.crond.enable=1
