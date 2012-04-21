@@ -81,6 +81,7 @@ BOARD_USE_FROYO_LIBCAMERA := true
 BOARD_GPS_LIBRARIES := libgps
 BOARD_USES_GPSSHIM := true
 BOARD_HAS_VIBRATOR_IMPLEMENTATION := ../../device/motorola/sholest/vibrator.c
+BOARD_HAVE_HDMI := true
 
 BOARD_BOOTIMAGE_MAX_SIZE := $(call image-size-from-data-size,0x00380000)
 BOARD_RECOVERYIMAGE_MAX_SIZE := $(call image-size-from-data-size,0x00500000)
