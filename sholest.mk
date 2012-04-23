@@ -81,6 +81,8 @@ PRODUCT_PACKAGES += \
     ProgramMenuSystem \
     QuickOffice \
     VideoPlayerMoto \
+    DLNA \
+    DlnaSystemService \
     DockAudio \
     librs_jni \
     libaudiopolicy \
