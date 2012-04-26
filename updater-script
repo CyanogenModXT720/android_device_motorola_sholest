@@ -101,6 +101,7 @@ set_perm(0, 0, 06755, "/system/xbin/procmem");
 set_perm(0, 0, 06755, "/system/xbin/procrank");
 set_perm(0, 0, 06755, "/system/xbin/su");
 set_perm(0, 0, 06755, "/system/xbin/tcpdump");
+set_perm(0, 0, 06755, "/system/etc/rootfs/init");
 show_progress(0.200000, 0);
 show_progress(0.200000, 10);
 show_progress(0.200000, 10);

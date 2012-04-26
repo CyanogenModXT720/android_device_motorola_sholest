@@ -2,6 +2,7 @@
 # It is the final build step (after OTA package)
 
 # Delete unwanted apps
+DEVICE_OUT=$ANDROID_BUILD_TOP/out/target/product/sholest
 rm -f $REPACK/ota/system/app/CMUpdateNotify.apk
 rm -f $REPACK/ota/system/app/RomManager.apk
 rm -f $REPACK/ota/system/xbin/irssi
