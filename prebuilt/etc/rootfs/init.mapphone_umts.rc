@@ -66,10 +66,10 @@ chmod 0660 /dev/mtp
 chmod 0660 /dev/ttyGS0
 chmod 0660 /dev/usb_device_mode
 chmod 0660 /proc/mtpctl
-chown mot_usb mot_usb /dev/mtp
-chown mot_usb mot_usb /dev/ttyGS0
-chown mot_usb mot_usb /dev/usb_device_mode
-chown mot_usb mot_usb /proc/mtpctl
+chown root system /dev/mtp
+chown root system /dev/ttyGS0
+chown root system /dev/usb_device_mode
+chown root system /proc/mtpctl
 
 # Install kernel modules
     insmod /system/lib/modules/twofish_common.ko
@@ -380,7 +380,7 @@ service gkisystem /system/bin/gkisystem
     socket location_shim stream 660 radio system
     socket gpshal_socket stream 660 radio system
     socket opprofdaemon  stream 660 radio system
-    group radio system mot_accy
+    group radio system
     onrestart exec /system/bin/gki_pd_notifier
 
 service fmradio /system/bin/fmradioserver
@@ -388,14 +388,14 @@ service fmradio /system/bin/fmradioserver
     group bluetooth net_raw net_bt net_bt_admin
 
 service battd /system/bin/battd
-    socket battdsock stream 0660 mot_accy mot_accy
+    socket battdsock stream 0660 system
     user root
-    group mot_accy root
+    group system root
     oneshot
 
 service ssmgrd /system/bin/ssmgrd
     class post-zygote_services
-    group radio input root
+    group radio input root system
     oneshot
 
 # Ecompass daemon
@@ -451,6 +451,9 @@ service locDrv /system/bin/brcm_guci_drv -config /system/etc/gpsconfig.xml
 
 service touchscreen /system/bin/touchroi
     class post-zygote_services
+    oneshot
+service hostapd /system/bin/hostap -d /data/misc/wifi/hostapd.conf
+    disabled
     oneshot
 
 #launchGallery
