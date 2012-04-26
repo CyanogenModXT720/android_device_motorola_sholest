@@ -50,6 +50,17 @@ on init
 # enable usb adb mode
 #    write /dev/usb_device_mode msc_adb
 
+# peshovec tweaks
+write /proc/sys/kernel/sem 500, 512000, 64, 2048
+write /proc/sys/kernel/sched_latency_ns 600000
+write /proc/sys/kernel/sched_min_granularity_ns 400000
+write /proc/sys/kernel/sched_wakeup_granularity_ns 400000
+write /proc/sys/kernel/sched_shares_ratelimit 256000
+write /proc/sys/kernel/hung_task_timeout_secs 0
+write /proc/sys/kernel/threads-max 5000
+write /proc/sys/vm/min_free_kbytes 6144
+
+
 # usb permissions
 chmod 0660 /dev/mtp
 chmod 0660 /dev/ttyGS0
@@ -379,12 +390,12 @@ service fmradio /system/bin/fmradioserver
 service battd /system/bin/battd
     socket battdsock stream 0660 mot_accy mot_accy
     user root
-    group mot_accy mot_pwric
+    group mot_accy root
     oneshot
 
 service ssmgrd /system/bin/ssmgrd
     class post-zygote_services
-    group radio input mot_pwric
+    group radio input root
     oneshot
 
 # Ecompass daemon
