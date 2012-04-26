@@ -15,6 +15,6 @@
    /system/xbin/umount /sqlite_stmt_journals
    /system/xbin/umount /dev/pts
 # add ueventd binary 
-	ln -s /init /sbin/ueventd 
+   /system/xbin/ln -s /init /sbin/ueventd 
 
    exec /system/bin/2nd-init
