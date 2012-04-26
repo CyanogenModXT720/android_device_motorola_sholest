@@ -65,11 +65,7 @@ chown mot_usb mot_usb /proc/mtpctl
     insmod /system/lib/modules/twofish.ko
     insmod /system/lib/modules/dm-mod.ko
     insmod /system/lib/modules/dm-crypt.ko
-	insmod /system/lib/modules/2ndboot.ko
 
-# 2ndboot hbootctrl
-
-	mknod /dev/hbootctrl c `cat /proc/devices |grep hboot|awk '{print $1}'` 0
 # Install BP related kernel modules
     #Start the engine modules for netmux first for other daemons depends on it
     insmod /system/lib/modules/netmux.ko
@@ -349,8 +345,7 @@ service keypadinit /system/bin/sh /system/bin/init_prep_keypad.sh
 service usbd /system/bin/usbd
     class pre-zygote_services
     user root
-    group mot_usb system
-    socket usbd stream 0666 mot_usb mot_usb
+    socket usbd stream 0666 root system
 
 service nvm-daemon /system/bin/nvm_daemon
     class pre-zygote_services
