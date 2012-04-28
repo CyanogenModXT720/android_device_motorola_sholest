@@ -62,7 +62,7 @@ symlink("busybox", "/system/xbin/[", "/system/xbin/[[",
         "/system/xbin/yes",
         "/system/xbin/zcat");
 symlink("toolbox", "/system/bin/cat", "/system/bin/cmp",
-        "/system/bin/date", "/system/bin/dd", "/system/bin/dmesg",
+        "/system/bin/date", "/system/bin/dd", 
         "/system/bin/getevent", "/system/bin/getprop", "/system/bin/hd",
         "/system/bin/id", "/system/bin/ifconfig", "/system/bin/iftop",
         "/system/bin/insmod", "/system/bin/ioctl", "/system/bin/ionice",
