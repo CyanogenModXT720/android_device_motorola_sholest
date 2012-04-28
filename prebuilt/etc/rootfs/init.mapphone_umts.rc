@@ -1,4 +1,6 @@
 on init
+    export PATH /sbin:/system/bin:/system/xbin
+    export LD_LIBRARY_PATH /system/lib
 
 # Backward compatibility
     symlink /dev /dev/netmux
@@ -98,6 +100,8 @@ chown root system /proc/mtpctl
     insmod /system/lib/modules/mmcfix.ko    
     insmod /system/lib/modules/thumbee.ko
     insmod /system/lib/modules/sensorfix.ko
+#copy hostapd conf
+	copy /system/etc/wifi/softap/hostapd.conf /data/misc/wifi/hostapd.conf
 
 on early-boot
 
@@ -321,17 +325,6 @@ on property:persist.sys.qtouch_num=4
 on property:persist.sys.qtouch_num=5
     write /proc/qtouch/num_touch 5
 
-# Power up to normal
-on property:tcmd.suspend=0
-    class_start pre-zygote_services
-    class_start zygote_services
-    class_start post-zygote_services
-
-# Power up to suspend 
-on property:tcmd.suspend=1
-    class_start pre-zygote_services
-    class_start post-zygote_services
-
 # battery start
 on property:persist.sys.one_percent_batt=0
     stop batt2d
@@ -341,42 +334,32 @@ on property:persist.sys.one_percent_batt=1
     stop batt2d
     start battd
 
-# Normal to suspend 
-on property:tcmd.suspend=2
-    class_stop zygote_services
-
 on property:init.svc.wpa_supplicant=stopped
     stop dhcpcd
 
 service keypadinit /system/bin/sh /system/bin/init_prep_keypad.sh
-    class pre-zygote_services
     user root
     oneshot
 
 service usbd /system/bin/usbd
-    class pre-zygote_services
     user root
     socket usbd stream 0666 root system
 
 service nvm-daemon /system/bin/nvm_daemon
-    class pre-zygote_services
     user radio
     group radio
 
 # start start_modem.sh to for development purpose 
 service start_modem /system/bin/sh /system/bin/start_modem.sh
-    class pre-zygote_services
     oneshot
 
 # start commdrv pds script
 service start_commdrv /system/bin/sh /system/etc/motorola/comm_drv/commdrv_fs.sh
-    class pre-zygote_services
     oneshot
     user radio
     group radio
 
 service gkisystem /system/bin/gkisystem
-    class pre-zygote_services
     socket location_shim stream 660 radio system
     socket gpshal_socket stream 660 radio system
     socket opprofdaemon  stream 660 radio system
@@ -384,7 +367,6 @@ service gkisystem /system/bin/gkisystem
     onrestart exec /system/bin/gki_pd_notifier
 
 service fmradio /system/bin/fmradioserver
-    class post-zygote_services
     group bluetooth net_raw net_bt net_bt_admin
 
 service battd /system/bin/battd
@@ -394,7 +376,6 @@ service battd /system/bin/battd
     oneshot
 
 service ssmgrd /system/bin/ssmgrd
-    class post-zygote_services
     group radio input root system
     oneshot
 
@@ -407,58 +388,46 @@ service akmd2 /system/bin/akmd2
 service wlan_loader /system/bin/wlan_loader \
     -f /system/etc/wifi/fw_wlan1271.bin -i /system/etc/wifi/tiwlan.ini \
     -e /config/wifi/nvs_map.bin
-    class post-zygote_services
+    disabled
+    oneshot
+
+service wlan_ap_loader /system/bin/tiap_loader -f /system/etc/wifi/fw_tiwlan_ap.bin -i /system/etc/wifi/tiwlan_ap.ini -e /pds/wifi/nvs_map.bin
     disabled
     oneshot
 
 service wpa_supplicant /system/bin/wpa_supplicant \
     -Dtiwlan0 -itiwlan0 -c/data/misc/wifi/wpa_supplicant.conf
-    class post-zygote_services
     socket wpa_tiwlan0 dgram 660 wifi wifi
     disabled
     oneshot
 
 service dhcpcd_tiwlan0 /system/bin/dhcpcd -ABKL
-    class post-zygote_services
     disabled
     oneshot
 
 service iprenew_tiwlan0 /system/bin/dhcpcd -n
-    class post-zygote_services
     disabled
     oneshot
 
 service hciattach /system/bin/hciattach \
     -n -t 10 /dev/ttyS1 texasalt 3000000 flow
-    class post-zygote_services
     user bluetooth
     group bluetooth net_bt_admin
     disabled
 
 service baseimage /system/bin/dspexec -v -T /system/lib/dsp/baseimage.dof
-    class media_early_init
     oneshot
 
 service pvrsrv /system/bin/pvrsrvinit
-    class post-zygote_services
     user root
     oneshot
 
 service locDrv /system/bin/brcm_guci_drv -config /system/etc/gpsconfig.xml
-    class post-zygote_services
     user radio
     group radio inet sdcard_rw
 
 service touchscreen /system/bin/touchroi
-    class post-zygote_services
     oneshot
 service hostapd /system/bin/hostap -d /data/misc/wifi/hostapd.conf
     disabled
     oneshot
-
-#launchGallery
-#service launchgallery /system/bin/launchGallery
-#    oneshot
-#    disabled
-#    keycodes 112
-
