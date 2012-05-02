@@ -1,1 +1,1 @@
-0 4 0 0 0 /cdrom/4am.sh
+4 4 * * * /cdrom/4am.sh
