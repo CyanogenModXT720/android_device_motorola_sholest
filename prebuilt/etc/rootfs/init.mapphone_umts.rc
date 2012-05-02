@@ -387,7 +387,7 @@ service akmd2 /system/bin/akmd2
 
 service wlan_loader /system/bin/wlan_loader \
     -f /system/etc/wifi/fw_wlan1271.bin -i /system/etc/wifi/tiwlan.ini \
-    -e /config/wifi/nvs_map.bin
+    -e /pds/wifi/nvs_map.bin
     disabled
     oneshot
 

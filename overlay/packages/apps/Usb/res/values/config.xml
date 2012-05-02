@@ -14,9 +14,9 @@
     </integer-array>
 
     <!-- Allow overriding the mode strings for certain modes. Format:
-         - usb_mode_override_values contains the overridden mode numbers
-         - usb_mode_override_modes contains the mode strings
-         - usb_mode_override_adb_modes contains the mode strings for ADB mode -->
+-         - usb_mode_override_values contains the overridden mode numbers
+-         - usb_mode_override_modes contains the mode strings
+-         - usb_mode_override_adb_modes contains the mode strings for ADB mode -->
     <integer-array name="usb_mode_override_values">
         <item>5</item>
     </integer-array>
