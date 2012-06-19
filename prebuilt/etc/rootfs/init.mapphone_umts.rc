@@ -103,6 +103,8 @@ chown root system /proc/mtpctl
 #copy hostapd conf
 	copy /system/etc/wifi/softap/hostapd.conf /data/misc/wifi/hostapd.conf
 
+# Set default governor to interactive for reboot fixing...
+write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
 on early-boot
 
     chmod 0666 /dev/DspBridge
@@ -308,7 +310,9 @@ mount rootfs rootfs / ro remount
 
 on property:sys.chargeonly.mode=1
     start console
+	start battd
     exec /system/bin/charge_only_mode
+	stop zygote
 
 on property:persist.sys.omap_dss_mode=0
     write /sys/devices/omapdss/display0/update_mode 2

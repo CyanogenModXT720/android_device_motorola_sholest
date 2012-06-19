@@ -1,9 +1,10 @@
 #!/system/bin/sh
 
 #turn on logcat during boot
-   /system/xbin/busybox echo "msc_adb" > /dev/usb_device_mode
+#   /system/xbin/busybox echo "msc_adb" > /dev/usb_device_mode
    /system/xbin/busybox touch /tmp/usbd-state
-   /system/xbin/busybox echo "usb_mode_ngp_adb"> /tmp/usbd-state
+   /system/xbin/busybox chmod 777 /tmp/usbd-state
+   /system/xbin/busybox echo "disconnected"> /tmp/usbd-state
    /system/xbin/mount -o remount,rw rootfs /
    /system/xbin/rmdir /config
    /system/xbin/rmdir /sdcard

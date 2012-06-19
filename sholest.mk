@@ -95,8 +95,7 @@ PRODUCT_PACKAGES += \
     libhostapdcli \
     Usb \
     mot_boot_mode \
-    charge_only_mode \
-	libfnc
+    charge_only_mode 
 	#usbd.sholest
     
 
