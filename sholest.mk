@@ -72,7 +72,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += gralloc.default hwcomposer.default
 
 # ICS Camera
-PRODUCT_PACKAGES += Camera camera.sholest
+PRODUCT_PACKAGES += Camera 
 
 # Wifi packages
 PRODUCT_PACKAGES += iwmulticall hostap wlan_loader wlan_cu wpa_supplicant

@@ -88,6 +88,18 @@ setprop ro.sys.atvc_allow_efem 0
     insmod /system/lib/modules/modem_pm_driver.ko
     insmod /system/lib/modules/sec.ko
 
+# New pvr libs 
+insmod /system/lib/modules/symsearch.ko
+insmod /system/lib/modules/pvr-off.ko
+
+# workaround the missing omapfb.vram bootarg
+
+write /sys/devices/platform/omapdss/overlay0/enabled 0
+write /sys/devices/platform/omapfb/graphics/fb0/size 4194304
+write /sys/devices/platform/omapdss/overlay0/enabled 1
+insmod /system/lib/modules/pvrsrvkm.ko
+insmod /system/lib/modules/omaplfb.ko
+
 # Install app2sd kernel modules
     insmod /system/lib/modules/crc16.ko
     insmod /system/lib/modules/mbcache.ko
