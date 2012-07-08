@@ -476,6 +476,10 @@ service wlan_loader /system/bin/wlan_loader \
     class main
     disabled
     oneshot
+service locDrv /system/bin/brcm_guci_drv -config /system/etc/gpsconfig.xml
+    class late_start
+    user radio
+    group radio inet sdcard_rw
 
 service wlan_ap_loader /system/bin/logwrapper /system/bin/tiap_loader -f /system/etc/wifi/fw_tiwlan_ap.bin -i /system/etc/wifi/tiwlan_ap.ini -e /pds/wifi/nvs_map.bin
 	class main
