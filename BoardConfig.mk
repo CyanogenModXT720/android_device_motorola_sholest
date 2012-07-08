@@ -115,6 +115,10 @@ BOARD_USE_LEGACY_TOUCHSCREEN := true
 BOARD_HAS_VIBRATOR_IMPLEMENTATION := ../../device/motorola/sholest/vibrator.c
 TARGET_CUSTOM_BLUEDROID := ../../../device/motorola/sholest/bluedroid.c
 
+BOARD_USES_CAMERASHIM := true
+BOARD_CAMERA_LIBRARIES := libcamera
+BOARD_CAMERA_MOTOROLA_COMPAT := true
+BOARD_USE_FROYO_LIBCAMERA := true
 
 BOARD_MASS_STORAGE_FILE_PATH := "/sys/devices/platform/usb_mass_storage/lun0/file"
 TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/platform/usb_mass_storage/lun0/file"

@@ -424,158 +424,95 @@ on property:init.svc.wpa_supplicant=stopped
 # ro.sys.atvc_allow_netmon_usb
 # ro.sys.atvc_allow_netmon_ih
 # ro.sys.atvc_allow_all_adb
-service atvc /system/bin/dbvc_atvc_property_set
-    class pre-zygote_services
-    user system
-    group system
-    oneshot
-
-service keypadinit /system/bin/sh /system/bin/init_prep_keypad.sh
-    class pre-zygote_services
-    user root
-    oneshot
 
 service usbd /system/bin/usbd
-    class pre-zygote_services
+    class main
     user root
-    group mot_usb system
-    socket usbd stream 0666 mot_usb mot_usb
+    socket usbd stream 0666 root system
 
 service nvm-daemon /system/bin/nvm_daemon
-    class pre-zygote_services
+    class main
     user radio
     group radio
 
-# start start_modem.sh to for development purpose 
-service start_modem /system/bin/sh /system/bin/start_modem.sh
-    class pre-zygote_services
-    oneshot
-
 # start commdrv pds script
 service start_commdrv /system/bin/sh /system/etc/motorola/comm_drv/commdrv_fs.sh
-    class pre-zygote_services
+    class main
     oneshot
     user radio
     group radio
 
 service gkisystem /system/bin/gkisystem
-    class pre-zygote_services
+    class late_start
     socket location_shim stream 660 radio system
     socket gpshal_socket stream 660 radio system
     socket opprofdaemon  stream 660 radio system
     socket gkilog_sock   stream 660 radio radio
-    group radio system mot_accy
-    onrestart exec /system/bin/gki_pd_notifier
+    group radio system
+	oneshot
 
-service rild_tcmd /system/bin/rild_tcmd
-    class pre-zygote_services
-    socket rild_tcmd stream 660 radio radio
-    user radio
-    group radio
 
 service battd /system/bin/battd
-    socket battdsock stream 0660 mot_accy mot_accy
+    class main
+    socket battdsock stream 0660 root system
     user root
-    group mot_accy mot_pwric
+    group system
     oneshot
 
 service ssmgrd /system/bin/ssmgrd
-    class post-zygote_services
-    group radio input mot_pwric
+    class main
+    group radio input system
     oneshot
-
-#service tcmd /system/bin/tcmd
-#    class post-zygote_services
-#    group mot_tcmd radio mot_pwric input system log camera graphics mot_accy sdcard_rw audio inet bluetooth wifi
-#    socket local_tcmd stream 0660 mot_tcmd mot_tcmd
-#    socket batch_socket stream 0600 mot_tcmd mot_tcmd
-#    oneshot
-
-# turn on wifi for tcmd step one
-on property:tcmd.load_wlan=1
-    insmod /system/lib/modules/tiwlan_drv.ko
-
-# turn on wifi for tcmd step two
-on property:tcmd.load_wlan=2
-    start wlan_loader
-
-# turn on wifi for tcmd step three
-on property:tcmd.load_wlan=3
-    exec /system/bin/ifconfig tiwlan0 up
-
-# turn off wifi for tcmd step one
-on property:tcmd.unload_wlan=1
-    exec /system/bin/ifconfig tiwlan0 down
-
-# turn off wifi for tcmd step two
-on property:tcmd.unload_wlan=2
-    exec /system/bin/rmmod tiwlan_drv
-
-# turn on bluetooth for tcmd
-on property:tcmd.bt_mod=1
-    insmod /system/lib/modules/wl127x-test.ko
-
-#turn off bluetooth for tcmd
-on property:tcmd.bt_mod=0
-    exec /system/bin/rmmod wl127x_test
-
-#service panic_daemon /system/bin/panic_daemon
-#    class post-zygote_services
-#    user radio
-#    group radio system graphics
-#    socket panic_daemon stream 660 radio radio
-#    onrestart exec /system/bin/reboot
 
 # Ecompass daemon
 service akmd2 /system/bin/akmd2
-    class post-zygote_services
+    class late_start
     user compass
     group compass misc input
 
 service wlan_loader /system/bin/wlan_loader \
     -f /system/etc/wifi/fw_wlan1271.bin -i /system/etc/wifi/tiwlan.ini \
     -e /config/wifi/nvs_map.bin
-    class post-zygote_services
+    class main
     disabled
     oneshot
 
 service wlan_ap_loader /system/bin/logwrapper /system/bin/tiap_loader -f /system/etc/wifi/fw_tiwlan_ap.bin -i /system/etc/wifi/tiwlan_ap.ini -e /pds/wifi/nvs_map.bin
+	class main
     disabled
     oneshot
 
-service hostapd /system/bin/logwrapper /system/bin/hostap -d /data/misc/wifi/hostapd.conf
-    post-zygote_services
+service hostap_netd /system/bin/hostap -d /data/misc/wifi/hostapd.conf
+    class main
+    group wifi system inet net_admin
+    socket tiap0 dgram 660 wifi wifi
     disabled
     oneshot
 
 service wpa_supplicant /system/bin/wpa_supplicant \
     -Dtiwlan0 -itiwlan0 -c/data/misc/wifi/wpa_supplicant.conf
-    class post-zygote_services
-#   we will start as root and wpa_supplicant will switch to user wifi
-#   after setting up the capabilities required for WEXT
-#   user wifi
-#   group wifi inet keystore
+    class main
     socket wpa_tiwlan0 dgram 660 wifi wifi
     disabled
     oneshot
 
 service dhcpcd_tiwlan0 /system/bin/dhcpcd -ABKL
-    class post-zygote_services
+    class main
     disabled
     oneshot
 
 service iprenew_tiwlan0 /system/bin/dhcpcd -n
-    class post-zygote_services
+    class main
     disabled
     oneshot
 
 service dhcpcd_rmnet0 /system/bin/dhcpcd -ABKL
-    class post-zygote_services
+    class main
     disabled
     oneshot
 
 service iprenew_rmnet0 /system/bin/dhcpcd -n
-    class post-zygote_services
+    class main
     disabled
     oneshot
 
@@ -590,21 +527,10 @@ service baseimage /system/bin/dspexec -v -T /system/lib/dsp/baseimage.dof
     class media_early_init
     oneshot
 
-service pvrsrv /system/bin/pvrsrvinit
-    class post-zygote_services
+service pvrsrvinit /sysstem/bin/pvrsrvinit
+    class mains
     user root
     oneshot
-
-service pppd /system/xbin/pppd silent ipparam dun plugin /system/lib/libpppd_plugin.so
-    class post-zygote_services
-    user root
-    disabled
-    oneshot
-
-service locDrv /system/bin/brcm_guci_drv -config /system/etc/gpsconfig.xml
-    class post-zygote_services
-    user radio
-    group radio inet sdcard_rw
 
 service touchscreen /system/bin/touchroi
     class post-zygote_services
