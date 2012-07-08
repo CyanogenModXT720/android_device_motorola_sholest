@@ -56,8 +56,7 @@ ARCH_ARM_HAVE_TLS_REGISTER := false
 TARGET_BOOTLOADER_BOARD_NAME := sholest
 
 ## BUILD OPTIONS:
-LOCAL_KERNEL := device/motorola/sholest/kernel
-PRODUCT_COPY_FILES += $(LOCAL_KERNEL):kernel
+TARGET_PREBUILT_KERNEL := device/motorola/sholest/kernel 
 
 # Wifi related defines
 BOARD_WLAN_DEVICE           := wl1271
