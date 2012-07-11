@@ -342,6 +342,11 @@ mount rootfs rootfs / ro remount
 # Set core max size (2G)
     setrlimit 4 2147483648 2147483648
 
+on property:persist.service.adb.enable=1
+    start adbd
+
+on property:persist.service.adb.enable=0
+    stop adbd
 # The properties introduced by moto
 
 on property:persist.sys.one_percent_batt=0
@@ -365,42 +370,12 @@ on property:persist.sys.qtouch_num=4
 on property:persist.sys.qtouch_num=5
     write /proc/qtouch/num_touch 5
 
-# Power up to normal
-on property:tcmd.suspend=0
-    class_start pre-zygote_services
-    class_start zygote_services
-    class_start post-zygote_services
-
-# Power up to suspend 
-on property:tcmd.suspend=1
-    class_start pre-zygote_services
-    class_start post-zygote_services
-
-# Normal to suspend 
-on property:tcmd.suspend=2
-    class_stop zygote_services
-
-# aplogd on at boot in emulator
-on property:ro.kernel.qemu=1
-    start aplogd
-
-on property:persist.service.aplogd.enable=1
-    start aplogd
-
-on property:persist.service.aplogd.enable=0
-    stop aplogd
-
-on property:ro.sys.atvc_allow_gki_log=1
-    start gkilogd
-
-on property:ro.sys.atvc_allow_gki_log=0
-    stop gkilogd
-
 # Moto safe power down
 on property:sys.reboot=1
     stop ssmgrd
     exec /system/bin/sleep 10
     exec /system/bin/reboot
+
 
 on property:sys.shutdown=1
     stop ssmgrd
@@ -424,6 +399,7 @@ on property:init.svc.wpa_supplicant=stopped
 # ro.sys.atvc_allow_netmon_usb
 # ro.sys.atvc_allow_netmon_ih
 # ro.sys.atvc_allow_all_adb
+
 
 service usbd /system/bin/usbd
     class main
@@ -531,7 +507,7 @@ service baseimage /system/bin/dspexec -v -T /system/lib/dsp/baseimage.dof
     class media_early_init
     oneshot
 
-service pvrsrvinit /sysstem/bin/pvrsrvinit
+service pvrsrvinit /system/bin/pvrsrvinit
     class mains
     user root
     oneshot

@@ -11,6 +11,7 @@ rm -f $REPACK/ota/system/media/video/*.480p.mp4
 rm -f $REPACK/ota/system/etc/init.d/04modules
 cp -f $DEVICE_OUT/root/init $REPACK/ota/system/etc/rootfs/init
 cp -f $DEVICE_OUT/root/init.rc $REPACK/ota/system/etc/rootfs/init.rc
+cp -f $DEVICE_OUT/root/sbin/adbd $REPACK/ota/system/etc/rootfs/sbin/adbd
 # use the static busybox as bootmenu shell, and some static utilities
 #cp -f $DEVICE_OUT/utilities/busybox $REPACK/ota/system/bootmenu/binary/busybox
 #cp -f $DEVICE_OUT/utilities/lsof $REPACK/ota/system/bootmenu/binary/lsof
