@@ -437,8 +437,7 @@ service battd /system/bin/battd
 
 service ssmgrd /system/bin/ssmgrd
     class main
-	user root
-    group radio
+    group root radio
     oneshot
 
 # Ecompass daemon
@@ -499,7 +498,7 @@ service iprenew_rmnet0 /system/bin/dhcpcd -n
 
 service hciattach /system/bin/hciattach \
     -n -t 10 /dev/ttyS1 texasalt 3000000 flow
-    class post-zygote_services
+    class main
     user bluetooth
     group bluetooth net_bt_admin
     disabled
@@ -518,7 +517,7 @@ service touchscreen /system/bin/touchroi
     oneshot
 
 service fmradio /system/bin/fmradioserver
-    class post-zygote_services
+    class main
     group bluetooth net_raw net_bt net_bt_admin
 
 
