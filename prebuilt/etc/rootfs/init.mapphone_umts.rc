@@ -437,7 +437,8 @@ service battd /system/bin/battd
 
 service ssmgrd /system/bin/ssmgrd
     class main
-    group radio input system
+	user root
+    group radio
     oneshot
 
 # Ecompass daemon
@@ -508,12 +509,12 @@ service baseimage /system/bin/dspexec -v -T /system/lib/dsp/baseimage.dof
     oneshot
 
 service pvrsrvinit /system/bin/pvrsrvinit
-    class mains
+    class main
     user root
     oneshot
 
 service touchscreen /system/bin/touchroi
-    class post-zygote_services
+    class main
     oneshot
 
 service fmradio /system/bin/fmradioserver
