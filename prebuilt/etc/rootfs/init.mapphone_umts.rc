@@ -432,7 +432,7 @@ service battd /system/bin/battd
     class main
     socket battdsock stream 0660 root system
     user root
-    group system
+    group root system
     oneshot
 
 service ssmgrd /system/bin/ssmgrd
