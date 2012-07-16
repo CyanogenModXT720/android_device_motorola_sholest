@@ -113,42 +113,6 @@ insmod /system/lib/modules/omaplfb.ko
 
 on boot
     
-    chown compass compass /dev/lis331dlh
-    chmod 660 /dev/lis331dlh
-    chown compass compass /dev/akm8973
-    chmod 660 /dev/akm8973
-    chown compass compass /dev/sfh7743
-    chmod 660 /dev/sfh7743
-    chown compass compass /dev/akm8973_dev
-    chmod 660 /dev/akm8973_dev
-    chown compass compass /dev/akm8973_aot
-    chmod 660 /dev/akm8973_aot
-
-    chown radio radio /dev/ttyUSB0
-    chmod 640 /dev/ttyUSB0
-    chown radio radio /dev/ttyS0
-    chmod 640 /dev/ttyS0
-    chown radio radio /dev/ts0710mux0
-    chmod 640 /dev/ts0710mux0
-    chown radio radio /dev/ts0710mux1
-    chmod 640 /dev/ts0710mux1
-    chown radio radio /dev/ts0710mux2
-    chmod 640 /dev/ts0710mux2
-    chown radio radio /dev/ts0710mux3
-    chmod 640 /dev/ts0710mux3
-    chown radio radio /dev/ts0710mux4
-    chmod 640 /dev/ts0710mux4
-    chown radio radio /dev/ts0710mux5
-    chmod 640 /dev/ts0710mux5
-    chown radio radio /dev/ts0710mux6
-    chmod 640 /dev/ts0710mux6
-    chown radio radio /dev/ts0710mux7
-    chmod 640 /dev/ts0710mux7
-    chown radio radio /dev/ts0710mux8
-    chmod 640 /dev/ts0710mux8
-    chown radio radio /dev/ts0710mux9
-    chmod 640 /dev/ts0710mux9
-
     # create moto specific dirs for wifi
     mkdir /data/system 0771 system system
     # wifi dirs
