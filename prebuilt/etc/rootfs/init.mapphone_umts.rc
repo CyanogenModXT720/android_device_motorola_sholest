@@ -51,16 +51,6 @@ on init
 # enable usb adb mode
     write /dev/usb_device_mode msc_adb
 
-# usb permissions
-chmod 0660 /dev/mtp
-chmod 0660 /dev/ttyGS0
-chmod 0660 /dev/usb_device_mode
-chmod 0660 /proc/mtpctl
-chown mot_usb mot_usb /dev/mtp
-chown mot_usb mot_usb /dev/ttyGS0
-chown mot_usb mot_usb /dev/usb_device_mode
-chown mot_usb mot_usb /proc/mtpctl
-
 #moto debug properties
 setprop ro.sys.atvc_allow_gki_log 0
 setprop ro.sys.atvc_allow_bp_log 0
@@ -120,11 +110,6 @@ insmod /system/lib/modules/omaplfb.ko
 	insmod /system/lib/modules/thumbee.ko
     insmod /system/lib/modules/xt_owner2.ko 
     insmod /system/lib/modules/xt_quote2.ko
-
-on early-boot
-
-    chmod 0666 /dev/DspBridge
-    class_start media_early_init
 
 on boot
     
@@ -504,7 +489,7 @@ service hciattach /system/bin/hciattach \
     disabled
 
 service baseimage /system/bin/dspexec -v -T /system/lib/dsp/baseimage.dof
-    class media_early_init
+    class main
     oneshot
 
 service pvrsrvinit /system/bin/pvrsrvinit
