@@ -67,7 +67,8 @@ PRODUCT_PACKAGES += \
 # Lights  and sensors
 PRODUCT_PACKAGES += \
 	lights.sholest \
-	sensors.sholest
+	sensors.sholest \
+	camera.sholest
 # TO FIX for ICS
 PRODUCT_PACKAGES += gralloc.default hwcomposer.default
 
