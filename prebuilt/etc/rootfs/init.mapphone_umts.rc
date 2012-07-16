@@ -1,5 +1,9 @@
 on init
 
+# Sdcard missing symlinks from aosp
+	export EXTERNAL_STORAGE /mnt/sdcard
+    mkdir /mnt/sdcard 0000 system system
+    symlink /mnt/sdcard /sdcard
 # Backward compatibility
     symlink /dev /dev/netmux
 
@@ -368,11 +372,10 @@ service start_commdrv /system/bin/sh /system/etc/motorola/comm_drv/commdrv_fs.sh
     group radio
 
 service gkisystem /system/bin/gkisystem
-    class late_start
+    class main
     socket location_shim stream 660 radio system
     socket gpshal_socket stream 660 radio system
     socket opprofdaemon  stream 660 radio system
-    socket gkilog_sock   stream 660 radio radio
     group radio system
 	oneshot
 
@@ -391,7 +394,7 @@ service ssmgrd /system/bin/ssmgrd
 
 # Ecompass daemon
 service akmd2 /system/bin/akmd2
-    class late_start
+    class main
     user compass
     group compass misc input
 
@@ -402,7 +405,7 @@ service wlan_loader /system/bin/wlan_loader \
     disabled
     oneshot
 service locDrv /system/bin/brcm_guci_drv -config /system/etc/gpsconfig.xml
-    class late_start
+    class main
     user radio
     group radio inet sdcard_rw
 

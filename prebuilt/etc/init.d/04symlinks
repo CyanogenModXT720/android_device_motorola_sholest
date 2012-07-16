@@ -1,7 +1,0 @@
-#!/system/bin/sh
-
-for dir in app app-private dalvik-cache ; do
-    rm -f /data/$dir -R # survives iff directory
-    install -m 771 -o 1000 -g 1000 -d /data/$dir
-done
-

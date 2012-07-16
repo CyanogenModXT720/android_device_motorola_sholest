@@ -22,7 +22,7 @@
 #include <errno.h>
 #define THE_DEVICE "/sys/class/timed_output/vibrator/enable"
 #define THE_LINEAR_DEVICE "/sys/class/timed_output/lvibrator/enable"
-#define MAX_LINEAR_DEVICE 150
+#define MAX_LINEAR_DEVICE 1500
 
 static int vibe(char *dev, int timeout_ms)
 {
