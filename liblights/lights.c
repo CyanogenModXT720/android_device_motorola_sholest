@@ -39,7 +39,8 @@ static pthread_mutex_t g_lock = PTHREAD_MUTEX_INITIALIZER;
 
 char const*const LCD_FILE
         = "/sys/class/leds/lcd-backlight/brightness";
-
+char const*const ALS_FILE
+        = "/sys/class/leds/lcd-backlight/als";
 char const*const KEYBOARD_FILE
         = "/sys/class/leds/keyboard-backlight/brightness";
 char const*const BUTTON_FILE
@@ -113,16 +114,27 @@ set_light_backlight(struct light_device_t* dev,
         struct light_state_t const* state)
 {
     int err = 0;
+    int als_mode;
+
     int brightness = rgb_to_brightness(state);
 
+    switch(state->brightnessMode) {
+        case BRIGHTNESS_MODE_SENSOR:
+            als_mode = AUTOMATIC;
+            break;
+        case BRIGHTNESS_MODE_USER:
+        default:
+            als_mode = MANUAL_SENSOR;
+            break;
+    }
 
     pthread_mutex_lock(&g_lock);
+    err = write_int(ALS_FILE, als_mode);
     err = write_int(LCD_FILE, brightness);
     pthread_mutex_unlock(&g_lock);
 
     return err;
 }
-
 static int
 set_light_keyboard(struct light_device_t* dev,
         struct light_state_t const* state)
