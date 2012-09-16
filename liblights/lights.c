@@ -32,6 +32,11 @@
 
 #include <hardware/lights.h>
 
+// taken from led-lm3530.h in kernel source, these are als modes
+#define MANUAL          0
+#define AUTOMATIC       1
+#define MANUAL_SENSOR   2
+
 /******************************************************************************/
 
 static pthread_once_t g_init = PTHREAD_ONCE_INIT;
@@ -41,6 +46,7 @@ char const*const LCD_FILE
         = "/sys/class/leds/lcd-backlight/brightness";
 char const*const ALS_FILE
         = "/sys/class/leds/lcd-backlight/als";
+
 char const*const KEYBOARD_FILE
         = "/sys/class/leds/keyboard-backlight/brightness";
 char const*const BUTTON_FILE
@@ -135,6 +141,7 @@ set_light_backlight(struct light_device_t* dev,
 
     return err;
 }
+
 static int
 set_light_keyboard(struct light_device_t* dev,
         struct light_state_t const* state)
@@ -142,9 +149,9 @@ set_light_keyboard(struct light_device_t* dev,
     int err = 0;
     int on = is_lit(state);
 
-      pthread_mutex_lock(&g_lock);
-      err = write_int(KEYBOARD_FILE, on ? 255:0);
-      pthread_mutex_unlock(&g_lock);
+    pthread_mutex_lock(&g_lock);
+    err = write_int(KEYBOARD_FILE, on ? 255:0);
+    pthread_mutex_unlock(&g_lock);
 
     return err;
 }

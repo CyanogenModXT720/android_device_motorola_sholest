@@ -385,7 +385,6 @@ service ssmgrd /system/bin/ssmgrd
 
 # Ecompass daemon
 service akmd2 /system/bin/akmd2
-    class post-zygote_services
     user compass
     group compass misc input
 
